@@ -2,6 +2,7 @@
    DARK THEME (default)
 ───────────────────────────────────────────── */
 :root {
+  --nav-height: 48px;
   --bg:        #000000;
   --surface:   #0a0a0a;
   --surface2:  #111111;
@@ -179,8 +180,8 @@ html.light .tog-thumb { transform:translateX(13px); }
 /* ─────────────────────────────────────────────
    MAIN LAYOUT
 ───────────────────────────────────────────── */
-main { max-width:1800px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; gap:2.5rem; align-items:flex-start; }
-@media (max-width: 768px) {
+main { max-width:1400px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; gap:2.5rem; align-items:flex-start; }
+@media (max-width: 899px) {
   main { flex-direction:column; }
 }
 
@@ -189,12 +190,15 @@ main { max-width:1800px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
 ───────────────────────────────────────────── */
 .domain-tabs {
   display:flex; flex-direction:column; gap:.6rem; width:260px; min-width:260px; flex-shrink:0;
-  position:sticky; top:100px; margin-bottom:0;
+  position:sticky; top:calc(var(--nav-height) + 1.5rem); margin-bottom:0;
 }
-@media (max-width: 768px) {
-  .domain-tabs { flex-direction:row; position:static; min-width:100%; margin-bottom:2.5rem; flex-wrap:wrap; }
+@media (max-width: 899px) {
+  .domain-tabs { flex-direction:row; position:static; min-width:100%; margin-bottom:2rem; flex-wrap:wrap; }
 }
-.content-wrapper { flex:1; min-width:0; }
+@media (min-width: 900px) and (max-width: 1299px) {
+  .domain-tabs { width:200px; min-width:200px; }
+}
+.content-wrapper { flex:1; min-width:0; max-width:860px; }
 .dtab {
   font-family:'JetBrains Mono',monospace; font-size:0.9rem; letter-spacing:.04em;
   padding:.4rem 1rem; border-radius:4px;
@@ -248,7 +252,11 @@ main { max-width:1800px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
 /* ─────────────────────────────────────────────
    TASK SECTION
 ───────────────────────────────────────────── */
-.task-section { margin-bottom:3.5rem; }
+.task-section { margin-bottom:0; padding-bottom:3.5rem; }
+.task-section + .task-section {
+  border-top: 2px solid var(--border);
+  padding-top: 3rem;
+}
 .task-header {
   display:flex; align-items:flex-start; gap:1rem;
   margin-bottom:1.8rem; padding-bottom:1.1rem;
@@ -537,7 +545,7 @@ html.light .task-details ul li::before { color: var(--accent); }
   margin: 3rem 0;
 }
 .domain-reflection h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Merriweather', serif;
   font-size:1.75rem;
   color: var(--h1);
   margin-bottom: 1rem;
@@ -557,6 +565,43 @@ html.light .task-details ul li::before { color: var(--accent); }
   margin-bottom: 0.5rem;
 }
 
+/* ─────────────────────────────────────────────
+   KNOWLEDGE CHECK COLLAPSIBLE TOGGLE
+───────────────────────────────────────────── */
+.mcq-section-toggle {
+  border-top: 2px solid var(--border);
+  padding-top: 0.5rem;
+}
+.mcq-section-toggle > summary {
+  font-family: 'Merriweather', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--h1);
+  padding: 0.6rem 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  transition: color 0.2s;
+}
+.mcq-section-toggle > summary::-webkit-details-marker { display: none; }
+.mcq-section-toggle > summary::after {
+  content: '▾';
+  font-size: 1.1rem;
+  color: var(--muted);
+  transition: transform 0.22s;
+  flex-shrink: 0;
+}
+.mcq-section-toggle[open] > summary::after { transform: rotate(180deg); }
+.mcq-section-toggle > summary:hover { color: var(--accent); }
+.mcq-section-toggle[open] > summary {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar { width:6px; height:6px; }
 ::-webkit-scrollbar-track { background:var(--bg); }
@@ -570,7 +615,7 @@ html.light .task-details ul li::before { color: var(--accent); }
   min-width: 240px;
   flex-shrink:0;
   position: sticky;
-  top: 100px;
+  top: calc(var(--nav-height) + 1.5rem);
   display: none;
 }
 @media (min-width: 1300px) {

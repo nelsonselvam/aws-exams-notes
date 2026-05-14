@@ -22,16 +22,23 @@
   </div>
 </header>
 
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="dom-link">← All Guides</a>
+    <span class="nav-sep">SAA-C03</span>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="toglbl">🌙 Dark</span>
+      <div class="tog-track"><div class="tog-thumb"></div></div>
+    </button>
+  </div>
+</nav>
+
 <!-- ════════════════════ MAIN ════════════════════ -->
 <main>
 
 <!-- domain tab pills -->
 <div class="domain-tabs">
-  <button class="theme-toggle" onclick="toggleTheme()" style="margin-bottom: 1.5rem; width: fit-content; align-self: flex-start;">
-    <span id="toglbl">🌙 Dark</span>
-    <div class="tog-track"><div class="tog-thumb"></div></div>
-  </button>
-
   <div class="dgroup">
     <div class="dtab active" onclick="showDomain(0)">Domain 1 — Design Secure Architectures <small style="opacity:.6">30%</small></div>
     <div class="dtasks active" id="tasks-d0">
@@ -407,8 +414,10 @@
       </div>
     </div>
     <div class="mcq-section-dynamic" data-task="t11" style="margin-top: 3rem;">
-      <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; border-bottom: 2px solid var(--border); padding-bottom:0.5rem; margin-bottom:1.5rem;">Knowledge Check</h3>
-      <div class="mcq-dynamic-container"></div>
+      <details class="mcq-section-toggle">
+        <summary>Knowledge Check</summary>
+        <div class="mcq-dynamic-container"></div>
+      </details>
     </div>
 </section><!-- /task 1.1 -->
 
@@ -719,8 +728,10 @@
       </div>
     </div>
     <div class="mcq-section-dynamic" data-task="t12" style="margin-top: 3rem;">
-      <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; border-bottom: 2px solid var(--border); padding-bottom:0.5rem; margin-bottom:1.5rem;">Knowledge Check</h3>
-      <div class="mcq-dynamic-container"></div>
+      <details class="mcq-section-toggle">
+        <summary>Knowledge Check</summary>
+        <div class="mcq-dynamic-container"></div>
+      </details>
     </div>
 </section><!-- /task 1.2 -->
 
@@ -959,8 +970,10 @@
       </div>
     </div>
     <div class="mcq-section-dynamic" data-task="t13" style="margin-top: 3rem;">
-      <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; border-bottom: 2px solid var(--border); padding-bottom:0.5rem; margin-bottom:1.5rem;">Knowledge Check</h3>
-      <div class="mcq-dynamic-container"></div>
+      <details class="mcq-section-toggle">
+        <summary>Knowledge Check</summary>
+        <div class="mcq-dynamic-container"></div>
+      </details>
     </div>
 </section><!-- /task 1.3 -->
 </div><!-- /domain 1 -->
@@ -1201,7 +1214,7 @@
               <li>"DAX can be used with any database" — <strong>FALSE</strong>; DAX is exclusively for DynamoDB.</li>
               <li>"ElastiCache Memcached supports Multi-AZ automatic failover" — <strong>FALSE</strong>; Memcached has no replication or failover. Only Redis supports Multi-AZ with automatic failover.</li>
               <li>"Caching always improves consistency" — <strong>FALSE</strong>; caching introduces potential stale data; TTL and invalidation strategies must be carefully designed.</li>
-              <li>">CloudFront</a> caches all content types by default" — <strong>FALSE</strong>; caching behavior depends on Cache-Control headers and <a href=.</li>
+              <li>"CloudFront caches all content types by default" — <strong>FALSE</strong>; caching behavior is controlled by Cache-Control and TTL settings. Dynamic content (API responses, authenticated pages) is typically not cached and passes through to origin on every request.</li>
             </ul>
           </div>
         </div>
@@ -1231,7 +1244,7 @@
             <ul class="bl" style="margin-bottom:0;">
               <li>"ALB provides a static IP address" — <strong>FALSE</strong>; ALB uses DNS names that resolve to dynamic IPs. Use Global Accelerator in front of ALB for static IPs.</li>
               <li>"NLB supports path-based routing" — <strong>FALSE</strong>; NLB operates at Layer 4 and routes by IP/port only.</li>
-              <li>"You can attach a WAF to an NLB" — <strong>FALSE</strong>; WAF only works with ALB, <a href=.</li>
+              <li>"You can attach a WAF to an NLB" — <strong>FALSE</strong>; WAF only works with ALB, CloudFront, API Gateway, and AppSync. NLB operates at Layer 4 with no HTTP context, so WAF (a Layer 7 firewall) cannot be applied to it.</li>
               <li>"Cross-Zone Load Balancing is enabled by default on all LBs" — <strong>FALSE</strong>; it's enabled by default on ALB but disabled by default on NLB and Gateway LB.</li>
             </ul>
           </div>
@@ -1239,8 +1252,10 @@
       </div>
     </div>
     <div class="mcq-section-dynamic" data-task="t21" style="margin-top: 3rem;">
-      <h3 style="font-family:'Outfit', sans-serif; font-size:1.5rem; border-bottom: 2px solid var(--border); padding-bottom:0.5rem; margin-bottom:1.5rem;">Knowledge Check</h3>
-      <div class="mcq-dynamic-container"></div>
+      <details class="mcq-section-toggle">
+        <summary>Knowledge Check</summary>
+        <div class="mcq-dynamic-container"></div>
+      </details>
     </div>
   </section><!-- /task 2.1 -->
 
@@ -1776,7 +1791,7 @@
     <li>How to design network architecture (for example, subnet tiers, routing, IP addressing)</li>
     <li>Load balancing concepts (for example, Application Load Balancer)</li>
     <li>Network connection options (for example, AWS VPN, AWS Direct Connect, AWS PrivateLink)</li>
-    <li>Data analytics and visualization services with appropriate use cases (for example, Amazon Athena, AWS Lake Formation, Amazon QuickSuite)</li>
+    <li>Data analytics and visualization services with appropriate use cases (for example, Amazon Athena, AWS Lake Formation, Amazon QuickSight)</li>
     <li>Data ingestion patterns (for example, frequency)</li>
     <li>Data transfer services with appropriate use cases (for example, AWS DataSync, AWS Storage Gateway)</li>
     <li>Data transformation services with appropriate use cases (for example, AWS Glue)</li>
@@ -1822,10 +1837,10 @@
         <div class="sec-lbl">Network Connection Options</div>
         <table class="tbl">
           <tr><th>Service</th><th>Use Case</th></tr>
-          <tr><td>AWS PrivateLink</td><td>Expose service privately to other VPCs/accounts without VPC peering or internet</td></tr>
-          <tr><td>VPC Peering</td><td>Direct private connectivity between 2 VPCs (same or different account/region)</td></tr>
-          <tr><td>AWS Transit Gateway</td><td>Hub-and-spoke: connect 100s of VPCs + on-prem through one gateway</td></tr>
-          <tr><td>AWS PrivateLink</td><td>Securely access AWS services or partner services from VPC without internet</td></tr>
+          <tr><td>AWS PrivateLink</td><td>Expose services privately to other VPCs/accounts without VPC peering or internet; uses interface endpoints</td></tr>
+          <tr><td>VPC Peering</td><td>Direct private connectivity between 2 VPCs (same or different account/region); non-transitive</td></tr>
+          <tr><td>AWS Transit Gateway</td><td>Hub-and-spoke: connect 100s of VPCs + on-prem through one gateway; supports transitive routing</td></tr>
+          <tr><td>AWS Site-to-Site VPN</td><td>IPsec-encrypted tunnel over the public internet from on-prem to VPC; minutes to set up</td></tr>
         </table>
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>Static IP requirement + non-HTTP</strong> → Global Accelerator. <strong>Cache web content globally</strong> → <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html" target="_blank" style="color:var(--accent2);">CloudFront</a>. <strong>Connect many VPCs at scale</strong> → Transit Gateway (not peering — peering doesn't scale, no transitive routing). <strong>Expose SaaS privately</strong> → PrivateLink.</p></div>
         <div class="trap">
@@ -1836,7 +1851,7 @@
               <li>"VPC peering allows transitive routing — traffic from VPC A can reach VPC C via VPC B" — <strong>FALSE</strong>; VPC peering is non-transitive. Use Transit Gateway for hub-and-spoke.</li>
               <li>"Global Accelerator caches content at edge locations" — <strong>FALSE</strong>; it routes traffic via the AWS backbone to the nearest healthy endpoint — no caching.</li>
               <li>"PrivateLink requires VPC peering" — <strong>FALSE</strong>; PrivateLink uses interface endpoints independent of peering.</li>
-              <li>">CloudFront</a> can only serve content from S3" — <strong>FALSE</strong>; <a href=.</li>
+              <li>"CloudFront can only serve content from S3" — <strong>FALSE</strong>; CloudFront supports any HTTP origin including ALBs, EC2 instances, on-prem web servers, and API Gateway — S3 is just the most common static origin.</li>
             </ul>
           </div>
         </div>
@@ -1901,7 +1916,7 @@
       <div class="card-body">
         <table class="tbl">
           <tr><th>Service</th><th>Purpose</th><th>Key Facts</th></tr>
-          <tr><td>Kinesis Data Streams (KDS)</td><td>Real-time custom ingestion</td><td>Shards: 1 MB/s in, 2 MB/s out per shard; 7-day default retention (max 365 days)</td></tr>
+          <tr><td>Kinesis Data Streams (KDS)</td><td>Real-time custom ingestion</td><td>Shards: 1 MB/s in, 2 MB/s out per shard; 24-hour default retention (extendable up to 365 days)</td></tr>
           <tr><td>Amazon Data Firehose</td><td>Managed delivery to destinations</td><td>Fully managed; delivers to S3, Redshift, OpenSearch, Splunk; no consumers to manage</td></tr>
           <tr><td>Kinesis Video Streams</td><td>Video ingestion &amp; playback</td><td>Ingest video from devices; ML processing</td></tr>
           <tr><td>Amazon MSK</td><td>Managed Apache Kafka</td><td>Lift-and-shift Kafka workloads; standard Kafka API</td></tr>
@@ -1916,7 +1931,7 @@
               <li>"KDS and Firehose are interchangeable" — <strong>FALSE</strong>; KDS requires custom consumer code; Firehose is managed delivery to a fixed set of destinations.</li>
               <li>"Adding Kinesis shards reduces read latency" — <strong>FALSE</strong>; shards increase throughput (MB/s), not latency.</li>
               <li>"MSK replaces SQS" — <strong>FALSE</strong>; MSK is Managed Kafka for high-throughput streaming; SQS is a simpler decoupled queue service.</li>
-              <li>"Kinesis default retention is 24 hours" — <strong>PARTIALLY FALSE</strong>; default is 24 hours on creation, but the commonly used extended default is 7 days; maximum is 365 days.</li>
+              <li>"Kinesis default retention is 24 hours" — <strong>TRUE</strong>; the default retention period IS 24 hours. It can be extended up to 365 days via the Extended Data Retention feature (additional cost). There is no "7-day default" — that is a common misconception.</li>
             </ul>
           </div>
         </div>
@@ -2289,7 +2304,7 @@
               <li>"One shared NAT Gateway is always cheaper than one per AZ" — <strong>NOT ALWAYS</strong>; a single NAT GW saves hourly cost but all cross-AZ traffic to it incurs $0.01/GB each way. At high data volumes, per-AZ NAT GWs are cheaper.</li>
               <li>"VPC Interface Endpoints are free like Gateway Endpoints" — <strong>FALSE</strong>; Interface Endpoints (PrivateLink) cost ~$0.01/hr per AZ plus data processing fees. Only S3 and DynamoDB Gateway Endpoints are free.</li>
               <li>"Transit Gateway is cheaper than VPC peering for two VPCs" — <strong>FALSE</strong>; TGW charges per attachment and per GB processed. For two VPCs, direct peering has no hourly or data charge (only standard EC2 data transfer rates).</li>
-              <li>">CloudFront</a> eliminates all origin data transfer costs" — <strong>FALSE</strong>; <a href=.</li>
+              <li>"CloudFront eliminates all origin data transfer costs" — <strong>FALSE</strong>; CloudFront reduces origin load by caching, but on cache misses it still fetches from the origin (incurring data transfer). CloudFront egress is cheaper per GB than direct S3/EC2 egress, but costs are not zero.</li>
             </ul>
           </div>
         </div>

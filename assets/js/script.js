@@ -69,16 +69,6 @@ window.showDomain = function(idx) {
   window.scrollTo({top:0, behavior:'smooth'});
 };
 
-// nav task click → smooth scroll within current domain
-window.navTask = function(navId) {
-  const el = document.getElementById(navId);
-  if (!el) return;
-  const target = el.dataset.target;
-  if (!target) return;
-  const sec = document.getElementById(target);
-  if (sec) sec.scrollIntoView({behavior:'smooth'});
-};
-
 // init
 document.addEventListener('DOMContentLoaded', function() {
   window.showDomain(0);
@@ -90,12 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // smooth scroll for any in-page anchors (skip bare "#" hrefs)
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const href = a.getAttribute('href');
-    if (!href || href === '#') return;
-    const target = document.querySelector(href);
-    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+// must run inside DOMContentLoaded — anchors don't exist yet at parse time
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+    });
   });
 });
 
@@ -177,31 +170,32 @@ window.buildTOC = function() {
 };
 
 window.addEventListener('scroll', () => {
+  // TOC scrollspy
   const links = document.querySelectorAll('.toc-link');
   let currentId = '';
-  
-  const cards = document.querySelectorAll('.domain-section.active .card');
-  cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    if (rect.top <= 150) {
-      currentId = card.id;
-    }
+  document.querySelectorAll('.domain-section.active .card').forEach(card => {
+    if (card.getBoundingClientRect().top <= 150) currentId = card.id;
   });
-  
   links.forEach(l => {
-    l.classList.remove('active');
-    if (l.getAttribute('href') === '#' + currentId) {
-      l.classList.add('active');
-    }
+    l.classList.toggle('active', l.getAttribute('href') === '#' + currentId);
   });
+
+  // Scroll-to-top button visibility
+  const btn = document.getElementById('scrollTopBtn');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 300);
 });
 
-// Hook into showDomain
+// Extend showDomain to also rebuild TOC, update progress, and reset expand state
 const originalShowDomain = window.showDomain;
 window.showDomain = function(idx) {
   originalShowDomain(idx);
   setTimeout(window.buildTOC, 100);
   setTimeout(window.updateProgressBar, 150);
+
+  // Reset expand/collapse state so button label matches reality after switching domains
+  allExpanded = false;
+  const btn = document.getElementById('toggleAllCardsBtn');
+  if (btn) btn.textContent = 'Expand All';
 };
 
 // ─── SEARCH & EXPAND ─────────────────────────────────────────
@@ -330,15 +324,3 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(window.initProgressTracking, 200);
 });
 
-// ─── SCROLL TO TOP ───────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  const btn = document.getElementById('scrollTopBtn');
-  if (btn) {
-    const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrolled > 300) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  }
-});
