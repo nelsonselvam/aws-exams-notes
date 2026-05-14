@@ -147,6 +147,20 @@
     .card.disabled::before {
       display: none;
     }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+    .exam-logo svg {
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(255,153,0,0.25));
+      transition: filter 0.3s;
+    }
+    .card:hover .exam-logo svg {
+      filter: drop-shadow(0 4px 14px rgba(255,153,0,0.45));
+    }
   </style>
 </head>
 <body>
@@ -157,7 +171,25 @@
   </header>
   <main>
     <a href="./exams/aws-saa-c03/index.html" class="card">
-      <span class="badge">SAA-C03</span>
+      <div class="card-top">
+        <span class="badge">SAA-C03</span>
+        <div class="exam-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="76" height="76" aria-label="AWS Certified Solutions Architect Associate badge">
+            <defs>
+              <linearGradient id="g-saa" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF9900"/>
+                <stop offset="100%" stop-color="#FFC300"/>
+              </linearGradient>
+            </defs>
+            <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#1b2536" stroke="url(#g-saa)" stroke-width="3.5"/>
+            <polygon points="50,14 82,32.5 82,67.5 50,86 18,67.5 18,32.5" fill="none" stroke="url(#g-saa)" stroke-width="1.2" opacity="0.45"/>
+            <text x="50" y="48" text-anchor="middle" fill="#FF9900" font-size="22" font-weight="900" font-family="Arial Black,Arial,sans-serif">AWS</text>
+            <text x="50" y="59.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-family="Arial,sans-serif" letter-spacing="1.8">CERTIFIED</text>
+            <text x="50" y="70" text-anchor="middle" fill="#FF9900" font-size="5.8" font-family="Arial,sans-serif">Solutions Architect</text>
+            <text x="50" y="80" text-anchor="middle" fill="#8fa3b8" font-size="5.2" font-family="Arial,sans-serif" letter-spacing="0.6">ASSOCIATE</text>
+          </svg>
+        </div>
+      </div>
       <h2>Solutions Architect – Associate</h2>
       <p>Complete study guide covering Secure, Resilient, High-Performing, and Cost-Optimized architectures.</p>
       <div class="card-footer">
@@ -167,7 +199,25 @@
     </a>
 
     <a href="#" class="card disabled">
-      <span class="badge">DVA-C02</span>
+      <div class="card-top">
+        <span class="badge">DVA-C02</span>
+        <div class="exam-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="76" height="76" aria-label="AWS Certified Developer Associate badge">
+            <defs>
+              <linearGradient id="g-dva" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF9900"/>
+                <stop offset="100%" stop-color="#FFC300"/>
+              </linearGradient>
+            </defs>
+            <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#1b2536" stroke="url(#g-dva)" stroke-width="3.5"/>
+            <polygon points="50,14 82,32.5 82,67.5 50,86 18,67.5 18,32.5" fill="none" stroke="url(#g-dva)" stroke-width="1.2" opacity="0.45"/>
+            <text x="50" y="48" text-anchor="middle" fill="#FF9900" font-size="22" font-weight="900" font-family="Arial Black,Arial,sans-serif">AWS</text>
+            <text x="50" y="59.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-family="Arial,sans-serif" letter-spacing="1.8">CERTIFIED</text>
+            <text x="50" y="71" text-anchor="middle" fill="#FF9900" font-size="7" font-family="Arial,sans-serif">Developer</text>
+            <text x="50" y="81" text-anchor="middle" fill="#8fa3b8" font-size="5.2" font-family="Arial,sans-serif" letter-spacing="0.6">ASSOCIATE</text>
+          </svg>
+        </div>
+      </div>
       <h2>Developer – Associate</h2>
       <p>In-depth coverage of AWS development, deployment, security, and troubleshooting.</p>
       <div class="card-footer">
@@ -176,7 +226,25 @@
     </a>
 
     <a href="#" class="card disabled">
-      <span class="badge">SAP-C02</span>
+      <div class="card-top">
+        <span class="badge">SAP-C02</span>
+        <div class="exam-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="76" height="76" aria-label="AWS Certified Solutions Architect Professional badge">
+            <defs>
+              <linearGradient id="g-sap" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF9900"/>
+                <stop offset="100%" stop-color="#FFC300"/>
+              </linearGradient>
+            </defs>
+            <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#1b2536" stroke="url(#g-sap)" stroke-width="3.5"/>
+            <polygon points="50,14 82,32.5 82,67.5 50,86 18,67.5 18,32.5" fill="none" stroke="url(#g-sap)" stroke-width="1.2" opacity="0.45"/>
+            <text x="50" y="48" text-anchor="middle" fill="#FF9900" font-size="22" font-weight="900" font-family="Arial Black,Arial,sans-serif">AWS</text>
+            <text x="50" y="59.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-family="Arial,sans-serif" letter-spacing="1.8">CERTIFIED</text>
+            <text x="50" y="70" text-anchor="middle" fill="#FF9900" font-size="5.8" font-family="Arial,sans-serif">Solutions Architect</text>
+            <text x="50" y="80" text-anchor="middle" fill="#8fa3b8" font-size="5.2" font-family="Arial,sans-serif" letter-spacing="0.6">PROFESSIONAL</text>
+          </svg>
+        </div>
+      </div>
       <h2>Solutions Architect – Professional</h2>
       <p>Advanced networking, multi-account strategies, migration, and complex architectures.</p>
       <div class="card-footer">

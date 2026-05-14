@@ -12,12 +12,30 @@
 <!-- ════════════════════ HEADER ════════════════════ -->
 <header>
   <div class="hdr-inner">
-    <a href="https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html" target="_blank" class="exam-badge" >AWS Certified Solutions Architect — Associate · SAA-C03</a>
-    <h1>Complete Study Guide<br/><em>All Four Domains</em></h1>
-    <div class="hdr-meta">
-      <span>📋 Domains: <strong>4</strong></span>
-      <span>⚡ Pass Score: <strong>720 / 1000</strong></span>
-      <span>❓ Scored Questions: <strong>50</strong></span>
+    <div class="hdr-text">
+      <a href="https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html" target="_blank" class="exam-badge">AWS Certified Solutions Architect — Associate · SAA-C03</a>
+      <h1>Complete Study Guide<br/><em>All Four Domains</em></h1>
+      <div class="hdr-meta">
+        <span>📋 Domains: <strong>4</strong></span>
+        <span>⚡ Pass Score: <strong>720 / 1000</strong></span>
+        <span>❓ Scored Questions: <strong>50</strong></span>
+      </div>
+    </div>
+    <div class="hdr-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" aria-label="AWS Certified Solutions Architect Associate">
+        <defs>
+          <linearGradient id="hdr-g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF9900"/>
+            <stop offset="100%" stop-color="#FFC300"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#1b2536" stroke="url(#hdr-g)" stroke-width="3.5"/>
+        <polygon points="50,14 82,32.5 82,67.5 50,86 18,67.5 18,32.5" fill="none" stroke="url(#hdr-g)" stroke-width="1.2" opacity="0.45"/>
+        <text x="50" y="48" text-anchor="middle" fill="#FF9900" font-size="22" font-weight="900" font-family="Arial Black,Arial,sans-serif">AWS</text>
+        <text x="50" y="59.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-family="Arial,sans-serif" letter-spacing="1.8">CERTIFIED</text>
+        <text x="50" y="70" text-anchor="middle" fill="#FF9900" font-size="5.8" font-family="Arial,sans-serif">Solutions Architect</text>
+        <text x="50" y="80" text-anchor="middle" fill="#8fa3b8" font-size="5.2" font-family="Arial,sans-serif" letter-spacing="0.6">ASSOCIATE</text>
+      </svg>
     </div>
   </div>
 </header>
@@ -32,51 +50,40 @@
       <div class="tog-track"><div class="tog-thumb"></div></div>
     </button>
   </div>
+  <div class="nav-domains">
+    <div class="dtab active" onclick="showDomain(0)">D1 — Secure Architectures <small>30%</small></div>
+    <div class="dtab" onclick="showDomain(1)">D2 — Resilient Architectures <small>26%</small></div>
+    <div class="dtab" onclick="showDomain(2)">D3 — High-Performing <small>24%</small></div>
+    <div class="dtab" onclick="showDomain(3)">D4 — Cost-Optimized <small>20%</small></div>
+  </div>
+  <div class="nav-subtasks dtasks active" id="tasks-d0">
+    <a href="#t11" class="tlink">1.1 — IAM &amp; Access</a>
+    <a href="#t12" class="tlink">1.2 — Secure Workloads</a>
+    <a href="#t13" class="tlink">1.3 — Data Security</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d1">
+    <a href="#t21" class="tlink">2.1 — Scalable &amp; Loosely Coupled</a>
+    <a href="#t22" class="tlink">2.2 — Highly Available &amp; Fault-Tolerant</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d2">
+    <a href="#t31" class="tlink">3.1 — Storage</a>
+    <a href="#t32" class="tlink">3.2 — Compute</a>
+    <a href="#t33" class="tlink">3.3 — Databases</a>
+    <a href="#t34" class="tlink">3.4 — Networking</a>
+    <a href="#t35" class="tlink">3.5 — Data Ingestion</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d3">
+    <a href="#t41" class="tlink">4.1 — Storage</a>
+    <a href="#t42" class="tlink">4.2 — Compute</a>
+    <a href="#t43" class="tlink">4.3 — Databases</a>
+    <a href="#t44" class="tlink">4.4 — Networking</a>
+  </div>
+  <div class="nav-progress"><div class="progress-fill" id="prog" style="width:0%"></div></div>
 </nav>
 
 <!-- ════════════════════ MAIN ════════════════════ -->
 <main>
 
-<!-- domain tab pills -->
-<div class="domain-tabs">
-  <div class="dgroup">
-    <div class="dtab active" onclick="showDomain(0)">Domain 1 — Design Secure Architectures <small style="opacity:.6">30%</small></div>
-    <div class="dtasks active" id="tasks-d0">
-      <a href="#t11" class="tlink">1.1 - IAM & Access</a>
-      <a href="#t12" class="tlink">1.2 - Secure Workloads</a>
-      <a href="#t13" class="tlink">1.3 - Data Security</a>
-    </div>
-  </div>
-
-  <div class="dgroup">
-    <div class="dtab" onclick="showDomain(1)">Domain 2 — Design Resilient Architectures <small style="opacity:.6">26%</small></div>
-    <div class="dtasks" id="tasks-d1">
-      <a href="#t21" class="tlink">2.1 - Scalable & Loosely Coupled</a>
-      <a href="#t22" class="tlink">2.2 - Highly Available & Fault-Tolerant</a>
-    </div>
-  </div>
-
-  <div class="dgroup">
-    <div class="dtab" onclick="showDomain(2)">Domain 3 — High-Performing Architectures <small style="opacity:.6">24%</small></div>
-    <div class="dtasks" id="tasks-d2">
-      <a href="#t31" class="tlink">3.1 - Storage</a>
-      <a href="#t32" class="tlink">3.2 - Compute</a>
-      <a href="#t33" class="tlink">3.3 - Databases</a>
-      <a href="#t34" class="tlink">3.4 - Networking</a>
-      <a href="#t35" class="tlink">3.5 - Data Ingestion</a>
-    </div>
-  </div>
-
-  <div class="dgroup">
-    <div class="dtab" onclick="showDomain(3)">Domain 4 — Cost-Optimized Architectures <small style="opacity:.6">20%</small></div>
-    <div class="dtasks" id="tasks-d3">
-      <a href="#t41" class="tlink">4.1 - Storage</a>
-      <a href="#t42" class="tlink">4.2 - Compute</a>
-      <a href="#t43" class="tlink">4.3 - Databases</a>
-      <a href="#t44" class="tlink">4.4 - Networking</a>
-    </div>
-  </div>
-</div>
 <div class="content-wrapper">
 
 
@@ -85,8 +92,6 @@
   <button id="toggleAllCardsBtn" onclick="toggleAllCards()">Expand All</button>
   <button id="quizModeBtn" onclick="toggleQuizMode()" style="background:var(--accent); color:#fff; border:none;">Quiz Mode</button>
 </div>
-<div class="progress-wrap">
-<div class="progress-fill" id="prog" style="width:25%"></div></div>
 
 <!-- ══════════════════════════════════════════════════════
      DOMAIN 1: DESIGN SECURE ARCHITECTURES
@@ -304,6 +309,19 @@
           <li>EC2 uses an <strong>Instance Profile</strong> — SDK auto-fetches and rotates credentials from IMDS</li>
         </ul>
         <div class="ex"><div class="xl">Cross-Account Pattern</div><p>Dev account (Account A) needs to read S3 in Prod account (Account B). Solution: Create an IAM Role in Account B with a trust policy allowing Account A's IAM principal. Devs call sts:AssumeRole → get scoped temp creds → access S3. No permanent keys are shared between accounts.</p></div>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        sequenceDiagram
+          participant A as Account A (Dev)
+          participant STS as AWS STS
+          participant B as Account B (Prod S3)
+          Note over B: Trust Policy allows Account A principal
+          A->>STS: AssumeRole(RoleARN in Account B)
+          STS-->>A: Temp Credentials (15 min–12 hr)
+          A->>B: Access S3 with Temp Credentials
+          Note over A,B: No permanent keys shared across accounts
+        </div>
+
         <div class="sec-lbl">Key STS API Calls</div>
         <table class="tbl">
           <tr><th>API</th><th>Use Case</th></tr>
@@ -352,6 +370,19 @@
           <tr><td>Can override</td><td>Trumps identity policies</td><td>Overridden by SCP</td></tr>
         </table>
         <div class="ex"><div class="xl">SCP Scenario</div><p>SCP on "Dev OU" denies <code>ec2:TerminateInstances</code>. An IAM admin in a member account tries to terminate EC2. Result: <strong>DENIED</strong>. SCP is an absolute ceiling — even AdministratorAccess cannot exceed what the SCP permits.</p></div>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph TD
+          Root["Root"] --> Mgmt["Management Account\n(not restricted by SCPs)"]
+          Root --> ProdOU["Production OU\nSCP: Deny DeleteBucket"]
+          Root --> DevOU["Dev OU\nSCP: Deny EC2 Terminate"]
+          Root --> Sandbox["Sandbox OU"]
+          ProdOU --> ProdA["Account: Prod-US"]
+          ProdOU --> ProdB["Account: Prod-EU"]
+          DevOU --> DevA["Account: Dev-Team"]
+          Sandbox --> SandA["Account: Sandbox"]
+        </div>
+
         <div class="sec-lbl">AWS Control Tower</div>
         <ul class="bl">
           <li>Automates multi-account setup with a <strong>Landing Zone</strong> (secure baseline)</li>
@@ -626,6 +657,17 @@
           <tr><td>Integrates with</td><td>ALB, API GW, social IdPs (Google, Facebook)</td><td>IAM roles, S3, DynamoDB</td></tr>
         </table>
         <div class="ex"><div class="xl">End-to-End Flow</div><p>Mobile app → authenticates with <strong>User Pool</strong> → receives JWT → exchanges JWT at <strong>Identity Pool</strong> → Identity Pool calls STS → app receives scoped AWS temp creds → uploads directly to user's S3 prefix. User Pool = who you are; Identity Pool = what you can access in AWS.</p></div>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph LR
+          App["Mobile App"] -->|"1. Sign in"| UP["Cognito\nUser Pool"]
+          UP -->|"2. JWT token"| App
+          App -->|"3. Exchange JWT"| IP["Cognito\nIdentity Pool"]
+          IP -->|"4. AssumeRole"| STS["AWS STS"]
+          STS -->|"5. Temp AWS creds"| App
+          App -->|"6. Direct access"| S3["S3 Bucket\n(user prefix)"]
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Mobile / web app / social login / customers"</strong> → Cognito. <strong>"Employees / workforce / SSO"</strong> → <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html" target="_blank" style="color:var(--accent2);">IAM Identity Center</a>. The distinction is customer-facing vs. workforce-facing.</p></div>
         <div class="mnemonic">
           <span class="mnemonic-ico">💡</span>
@@ -707,6 +749,15 @@
           <tr><td>Cost</td><td>Low</td><td>Higher (port-hour + data transfer)</td></tr>
         </table>
         <div class="ex"><div class="xl">Redundant Hybrid Pattern</div><p><strong>Primary:</strong> Direct Connect (consistent, low latency). <strong>Backup:</strong> Site-to-Site VPN over internet. Add VPN on top of DX for encryption when compliance requires it. This gives performance + resilience.</p></div>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph LR
+          DC["On-Premises\nDatacenter"]
+          DC -->|"Primary: Direct Connect\nPrivate fiber, 1–100 Gbps\nNot encrypted by default"| VGW["Virtual Private\nGateway"]
+          DC -->|"Backup: Site-to-Site VPN\nIPsec over internet\nEncrypted, variable latency"| VGW
+          VGW --> VPC["AWS VPC\n(Private Subnets)"]
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>Consistent bandwidth + compliance + data must not traverse internet</strong> → Direct Connect. <strong>Quick setup + encrypted + lower cost</strong> → VPN. <strong>DX not encrypted by default</strong> — layer VPN over DX when encryption is required.</p></div>
         <div class="mnemonic">
           <span class="mnemonic-ico">💡</span>
@@ -1085,6 +1136,18 @@
           <li><strong>Express Workflows:</strong> High-volume, short-duration (up to 5 min), at-least-once</li>
           <li>Handles retries, error catching, parallel branches, and human approval steps</li>
         </ul>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph TD
+          S1["Order Received"] --> S2["Validate Payment\n(Lambda)"]
+          S2 -->|"Success"| S3["Parallel State"]
+          S2 -->|"Failure / Retry"| S4["Notify Customer\n(Error state)"]
+          S3 -->|"Branch 1"| S5["Update Inventory\n(Lambda)"]
+          S3 -->|"Branch 2"| S6["Send Confirmation\n(SNS)"]
+          S5 --> S7["Order Complete"]
+          S6 --> S7
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>Cold start latency</strong> → Provisioned Concurrency. <strong>Orchestrate multi-Lambda workflow with retries</strong> → Step Functions. <strong>Containers without managing EC2</strong> → Fargate. <strong>Lambda timeout limit: 15 minutes</strong> — long-running tasks need EC2, Batch, or ECS.</p></div>
         <div class="trap">
           <span class="trap-ico">⚠️</span>
@@ -1291,6 +1354,18 @@
           <tr><td>Active-Active (Multi-site)</td><td>Both regions serve traffic simultaneously.</td><td>Near-zero</td><td>Near-zero</td><td>Highest</td></tr>
         </table>
         <div class="ex"><div class="xl">Scenario</div><p>Company requires RPO ≤ 15 min and RTO ≤ 1 hour. Backup &amp; Restore won't meet RTO. Active-Active is too expensive. Best fit: <strong>Warm Standby</strong> — a scaled-down running stack in DR region with continuous replication; scale up within minutes on failover.</p></div>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph LR
+          BR["Backup & Restore\nRPO/RTO: Hours\nCost: $"]
+          PL["Pilot Light\nRPO: Minutes\nRTO: Minutes–Hrs\nCost: $$"]
+          WS["Warm Standby\nRPO: Seconds\nRTO: Minutes\nCost: $$$"]
+          AA["Active-Active\nRPO/RTO: Near-Zero\nCost: $$$$"]
+          BR -->|more resilient| PL
+          PL -->|more resilient| WS
+          WS -->|more resilient| AA
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p>The exam gives you RPO/RTO requirements and asks which strategy fits. Map: hours/hours → Backup &amp; Restore; minutes RPO → Pilot Light or Warm Standby; near-zero → Active-Active. Cost scales with RTO speed.</p></div>
         <div class="trap">
           <span class="trap-ico">⚠️</span>
@@ -1922,6 +1997,17 @@
           <tr><td>Amazon MSK</td><td>Managed Apache Kafka</td><td>Lift-and-shift Kafka workloads; standard Kafka API</td></tr>
         </table>
         <div class="ex"><div class="xl">Pattern</div><p>IoT devices → <strong>Kinesis Data Streams</strong> (real-time processing by Lambda) → transform → <strong>Data Firehose</strong> → S3 data lake → <strong>Athena</strong> for ad-hoc SQL queries → <strong>QuickSight</strong> for dashboards.</p></div>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph LR
+          IoT["IoT Devices /\nApp Events"] -->|"records"| KDS["Kinesis Data Streams\n(shards, 24hr retention)"]
+          KDS -->|"real-time"| Lambda["Lambda\n(transform/filter)"]
+          Lambda -->|"processed"| KDF["Data Firehose\n(managed delivery)"]
+          KDF -->|"batched"| S3["S3 Data Lake"]
+          S3 -->|"SQL"| Athena["Athena\n(pay per TB scanned)"]
+          Athena --> QS["QuickSight\n(dashboards)"]
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>Real-time custom processing</strong> → KDS. <strong>Managed delivery without consumer management</strong> → Data Firehose. <strong>Existing Kafka infrastructure</strong> → Amazon MSK. <strong>Firehose can't replay data</strong>; KDS can (within retention window).</p></div>
         <div class="trap">
           <span class="trap-ico">⚠️</span>
@@ -1961,6 +2047,18 @@
           <li>Partition S3 data by date/region/category — Athena skips entire partitions when WHERE clause matches</li>
           <li>AWS Glue can automate CSV → Parquet conversion in ETL pipelines</li>
         </ul>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph LR
+          Raw["S3\nRaw CSV/JSON"] -->|"Glue Crawler"| Cat["Glue Data Catalog\n(schema discovery)"]
+          Raw -->|"Glue ETL Job"| Parquet["S3\nParquet/ORC\n(10× cheaper queries)"]
+          Parquet -->|"SQL queries"| Athena["Athena\n(serverless)"]
+          Parquet -->|"COPY"| RS["Redshift\n(data warehouse)"]
+          Athena --> QS["QuickSight\n(dashboards)"]
+          RS --> QS
+          Cat --> Athena
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>Serverless SQL on S3</strong> → Athena. <strong>Managed Spark/Hadoop big data</strong> → EMR. <strong>Serverless ETL</strong> → Glue. <strong>Fine-grained data lake permissions</strong> → Lake Formation. <strong>BI dashboards</strong> → QuickSight. Athena cost: convert to Parquet + partition = massive savings.</p></div>
         <div class="trap">
           <span class="trap-ico">⚠️</span>
@@ -2017,6 +2115,15 @@
           <tr><td>S3 Glacier Flexible Retrieval</td><td>1–12 hours</td><td>90 days</td><td>Compliance archives, not time-sensitive</td></tr>
           <tr><td>S3 Glacier Deep Archive</td><td>12–48 hours</td><td>180 days</td><td>Lowest cost; regulatory long-term archives</td></tr>
         </table>
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph LR
+          Std["S3 Standard\nFrequent access"] -->|"≥30 days"| IA["Standard-IA\nInfrequent access"]
+          Std -->|"auto-managed"| IT["Intelligent-Tiering\nUnknown patterns"]
+          IA -->|"≥90 days"| GIR["Glacier Instant\nQuarterly access"]
+          GIR -->|"≥90 days"| GFR["Glacier Flexible\n1–12hr retrieval"]
+          GFR -->|"≥180 days"| DA["Deep Archive\n12–48hr retrieval\nLowest cost"]
+        </div>
+
         <div class="sec-lbl">Cost Reduction Strategies</div>
         <ul class="bl">
           <li><strong>Lifecycle Policies:</strong> Auto-transition objects to cheaper tiers based on age — set-and-forget cost savings</li>
@@ -2133,6 +2240,18 @@
           <li>AWS Trusted Advisor: flags low-utilization EC2 instances (&lt;10% CPU for 4+ days)</li>
           <li>Use T-family burstable instances for workloads with low baseline + occasional spikes</li>
         </ul>
+
+        <div class="mermaid" style="margin: 1.5rem 0;">
+        graph TD
+          Q1{"Workload type?"}
+          Q1 -->|"Fault-tolerant / batch / CI-CD"| Spot["Spot Instances\nUp to 90% off\n2-min interruption notice"]
+          Q1 -->|"Steady-state production"| Q2{"Commitment?"}
+          Q1 -->|"Short-term / unpredictable / dev"| OD["On-Demand\nNo commitment, full price"]
+          Q2 -->|"1-3 yr, any family/region"| SP["Compute Savings Plans\nUp to 66% off"]
+          Q2 -->|"1-3 yr, fixed type"| RI["Reserved Instances\nUp to 72% off"]
+          Q2 -->|"BYOL per-socket licensing"| DH["Dedicated Hosts\nPhysical server control"]
+        </div>
+
         <div class="tip"><span class="tip-ico">🎯</span><p><strong>Steady, always-on prod workloads</strong> → Reserved or Compute Savings Plans. <strong>Maximum savings + can tolerate interruption</strong> → Spot. <strong>BYOL Oracle/Windows</strong> → Dedicated Hosts. <strong>Mix for ASG</strong> → On-Demand base capacity + Spot for scaling. <strong>Most flexible discount</strong> → Compute Savings Plans (applies to Lambda and Fargate too).</p></div>
         <div class="trap">
           <span class="trap-ico">⚠️</span>
