@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AWS Well-Architected Framework — Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../assets/css/saa-enhancements.css" />
+<link rel="stylesheet" href="../../assets/css/style.css" />
+<script>(function(){var h=document.documentElement,s=localStorage.getItem('saa-theme');if(s==='dark'){h.classList.remove('light');}else if(!s){var n=new Date(),hr=n.getHours()+n.getMinutes()/60,ss=[17.5,18,18.5,19.5,20,20.5,20.5,20,19,18,17.5,17];if(hr>=ss[n.getMonth()]||hr<6){h.classList.remove('light');}}})();</script>
+<style>
+  /* Pillar accent colours */
+  .p1 { --pillar: #f59e0b; }   /* Operational Excellence — amber */
+  .p2 { --pillar: #ef4444; }   /* Security — red */
+  .p3 { --pillar: #3b82f6; }   /* Reliability — blue */
+  .p4 { --pillar: #8b5cf6; }   /* Performance Efficiency — violet */
+  .p5 { --pillar: #10b981; }   /* Cost Optimization — emerald */
+  .p6 { --pillar: #06b6d4; }   /* Sustainability — cyan */
+
+  .pillar-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.78rem;
+    font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .pillar-badge.p1 { background: rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.35); }
+  .pillar-badge.p2 { background: rgba(239,68,68,0.15);  color:#ef4444; border:1px solid rgba(239,68,68,0.35); }
+  .pillar-badge.p3 { background: rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.35); }
+  .pillar-badge.p4 { background: rgba(139,92,246,0.15); color:#8b5cf6; border:1px solid rgba(139,92,246,0.35); }
+  .pillar-badge.p5 { background: rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.35); }
+  .pillar-badge.p6 { background: rgba(6,182,212,0.15);  color:#06b6d4; border:1px solid rgba(6,182,212,0.35); }
+
+  .principle-list { counter-reset: dp; list-style: none; padding: 0; }
+  .principle-list li {
+    counter-increment: dp;
+    display: grid; grid-template-columns: 2rem 1fr; gap: 0.5rem;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.93rem;
+  }
+  .principle-list li::before {
+    content: counter(dp);
+    background: var(--accent); color: #000; border-radius: 50%;
+    width: 1.5rem; height: 1.5rem; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 0.75rem;
+    flex-shrink: 0; margin-top: 0.1rem;
+  }
+  .pillar-services {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem;
+  }
+  .svc-chip {
+    font-size: 0.72rem; font-family: var(--mono,'JetBrains Mono',monospace);
+    padding: 0.2rem 0.55rem; border-radius: 6px;
+    background: rgba(245,158,11,0.1); color: var(--accent);
+    border: 1px solid rgba(245,158,11,0.25);
+  }
+</style>
+</head>
+<body data-page-id="well-architected" data-domain="0" data-page-title="AWS Well-Architected Framework Study Guide">
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header>
+  <div class="hdr-inner">
+    <div class="hdr-text">
+      <a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" class="exam-badge">AWS Well-Architected Framework · 6 Pillars</a>
+      <h1>Well-Architected Framework<br/><em>Exam Reference Guide</em></h1>
+      <div class="hdr-meta">
+        <span>🏛️ Pillars: <strong>6</strong></span>
+        <span>📐 Design Principles: <strong>30+</strong></span>
+        <span>🎯 Exam Relevance: <strong>SAA · DVA · SAP</strong></span>
+      </div>
+    </div>
+    <div class="hdr-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" aria-label="AWS Well-Architected">
+        <defs>
+          <linearGradient id="hdr-waf" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF9900"/>
+            <stop offset="100%" stop-color="#38bdf8"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="#1b2536" stroke="url(#hdr-waf)" stroke-width="3"/>
+        <circle cx="50" cy="50" r="36" fill="none" stroke="url(#hdr-waf)" stroke-width="1" opacity="0.4"/>
+        <text x="50" y="44" text-anchor="middle" fill="#FF9900" font-size="11" font-weight="900" font-family="Arial Black,Arial,sans-serif">WELL</text>
+        <text x="50" y="56" text-anchor="middle" fill="#ffffff" font-size="7" font-family="Arial,sans-serif" letter-spacing="1">ARCHITECTED</text>
+        <text x="50" y="67" text-anchor="middle" fill="#38bdf8" font-size="6" font-family="Arial,sans-serif" letter-spacing="0.5">FRAMEWORK</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="dom-link">← All Guides</a>
+    <span class="nav-sep">Well-Architected</span>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="toglbl">🌙 Switch to Dark</span>
+      <div class="tog-track"><div class="tog-thumb"></div></div>
+    </button>
+  </div>
+  <div class="nav-domains">
+    <div class="dtab active"  onclick="showDomain(0)">P1 — Operational Excellence</div>
+    <div class="dtab"         onclick="showDomain(1)">P2 — Security</div>
+    <div class="dtab"         onclick="showDomain(2)">P3 — Reliability</div>
+    <div class="dtab"         onclick="showDomain(3)">P4 — Performance</div>
+    <div class="dtab"         onclick="showDomain(4)">P5 — Cost Optimization</div>
+    <div class="dtab"         onclick="showDomain(5)">P6 — Sustainability</div>
+  </div>
+  <div class="nav-subtasks dtasks active" id="tasks-d0">
+    <a href="#oe-principles"  class="tlink">Design Principles</a>
+    <a href="#oe-bestpractice" class="tlink">Best Practices</a>
+    <a href="#oe-services"    class="tlink">Key Services</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d1">
+    <a href="#sec-principles"  class="tlink">Design Principles</a>
+    <a href="#sec-bestpractice" class="tlink">Best Practices</a>
+    <a href="#sec-services"    class="tlink">Key Services</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d2">
+    <a href="#rel-principles"  class="tlink">Design Principles</a>
+    <a href="#rel-bestpractice" class="tlink">Best Practices</a>
+    <a href="#rel-services"    class="tlink">Key Services</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d3">
+    <a href="#perf-principles"  class="tlink">Design Principles</a>
+    <a href="#perf-bestpractice" class="tlink">Best Practices</a>
+    <a href="#perf-services"    class="tlink">Key Services</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d4">
+    <a href="#cost-principles"  class="tlink">Design Principles</a>
+    <a href="#cost-bestpractice" class="tlink">Best Practices</a>
+    <a href="#cost-services"    class="tlink">Key Services</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d5">
+    <a href="#sus-principles"  class="tlink">Design Principles</a>
+    <a href="#sus-bestpractice" class="tlink">Best Practices</a>
+    <a href="#sus-services"    class="tlink">Key Services</a>
+  </div>
+  <div class="nav-progress"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+</nav>
+
+<!-- ════════════════════ MAIN ════════════════════ -->
+<main>
+<div class="content-wrapper">
+
+<div class="content-toolbar">
+  <input type="text" id="globalSearch" placeholder="Search concepts (Ctrl+K)..." />
+  <button id="toggleAllCardsBtn" onclick="toggleAllCards()">Expand All</button>
+  <button id="quizModeBtn" onclick="toggleQuizMode()" style="background:var(--accent); color:#fff; border:none;">Quiz Mode</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PILLAR 1 — OPERATIONAL EXCELLENCE
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section active" id="d0">
+  <div class="domain-intro">
+    <h2>Pillar 1 — Operational Excellence</h2>
+    <p>The ability to support development and run workloads effectively, gain insight into their operations, and continually improve processes and procedures to deliver business value.</p>
+    <span class="wt-badge">🎯 Focus: Run, monitor, and continuously improve operations</span>
+  </div>
+
+  <section class="task-section" id="oe-principles">
+    <div class="task-header">
+      <div class="task-badge p1" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Design Principles</div>
+      <div class="task-title">
+        <h2>Operational Excellence Design Principles</h2>
+        <p>Six guiding principles that shift operations from reactive, manual, and siloed to proactive, automated, and collaborative.</p>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">⚙️</span>
+        <span class="card-title">6 Design Principles of Operational Excellence</span>
+        <div class="tags"><span class="tag te">Exam Fave</span><span class="pillar-badge p1">Operational Excellence</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <ol class="principle-list">
+          <li><div><strong>Perform operations as code</strong> — Define your entire workload (infrastructure, config, procedures) as code. Use IaC (CloudFormation, CDK) and runbooks as code to reduce human error and enable consistent, repeatable operations.</div></li>
+          <li><div><strong>Make frequent, small, reversible changes</strong> — Design workloads for incremental updates. Small changes reduce blast radius and enable faster rollback. Use CI/CD pipelines, blue/green deployments, and feature flags.</div></li>
+          <li><div><strong>Refine operations procedures frequently</strong> — Evolve runbooks, playbooks, and processes as the workload changes. Schedule game days to exercise procedures and validate they work before an incident.</div></li>
+          <li><div><strong>Anticipate failure</strong> — Perform pre-mortem exercises — imagine what could fail and design mitigations. Test failure scenarios regularly (chaos engineering, DR drills). Never assume; inject faults to verify resilience.</div></li>
+          <li><div><strong>Learn from all operational failures</strong> — Run post-incident reviews (blameless post-mortems). Share learnings across teams. Drive improvements from every event, not just outages.</div></li>
+          <li><div><strong>Use managed services</strong> — Remove operational burden by using managed AWS services. AWS manages patching, availability, and scaling; you focus on business logic.</div></li>
+        </ol>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Mnemonic — FMRALU:</strong> <strong>F</strong>requent small changes · <strong>M</strong>anaged services · <strong>R</strong>efine procedures · <strong>A</strong>nticipate failure · <strong>L</strong>earn from failures · <strong>U</strong>se ops as code.</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p>On the exam, <strong>"run books as code"</strong> and <strong>"automate operational procedures"</strong> point to Operational Excellence. If a scenario says "manual process prone to human error" → the OE principle is <em>Perform operations as code</em>. If it says "big-bang releases" → <em>Make frequent, small, reversible changes</em>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="oe-bestpractice">
+    <div class="task-header">
+      <div class="task-badge p1" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Best Practices</div>
+      <div class="task-title">
+        <h2>Operational Excellence Best Practices</h2>
+        <p>Organize, Prepare, Operate, Evolve — the four areas of operational best practices.</p>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📋</span>
+        <span class="card-title">Organize, Prepare, Operate &amp; Evolve</span>
+        <div class="tags"><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Organize</div>
+        <ul class="bl">
+          <li>Understand business priorities — each team member understands their role in delivering business outcomes</li>
+          <li>Structure teams around products/services (two-pizza teams) not infrastructure layers</li>
+          <li>Define and publish operational runbooks (how to handle known events) and playbooks (how to investigate unknowns)</li>
+        </ul>
+        <div class="sec-lbl">Prepare</div>
+        <ul class="bl">
+          <li><strong>Design for operations:</strong> Instrument workloads with telemetry (logs, metrics, traces). Design dashboards before launch.</li>
+          <li><strong>Operational readiness reviews:</strong> Validate a workload is ready to be operated before launch</li>
+          <li><strong>Game days:</strong> Simulate production events (failures, traffic spikes) to test runbooks and team response. Run on a schedule, not just before major launches.</li>
+          <li><strong>Config management:</strong> Use AWS Config, Systems Manager Parameter Store / AppConfig for validated, versioned configuration</li>
+        </ul>
+        <div class="sec-lbl">Operate</div>
+        <ul class="bl">
+          <li>Use <strong>CloudWatch dashboards</strong> for real-time workload health visibility</li>
+          <li>Define KPIs and SLOs; alert on breaches — not just technical metrics but business outcomes (e.g., order success rate)</li>
+          <li><strong>Respond to events with runbooks:</strong> Automate responses where possible (EventBridge → Lambda for auto-remediation)</li>
+          <li>Escalate events through defined severity levels with on-call rotations (e.g., PagerDuty, OpsGenie)</li>
+        </ul>
+        <div class="sec-lbl">Evolve</div>
+        <ul class="bl">
+          <li>Run blameless post-mortems after every significant event — document timeline, root cause, contributing factors, action items</li>
+          <li>Share learnings across teams via internal wikis, post-mortem databases, and all-hands reviews</li>
+          <li>Continuously improve runbooks, architecture, and tooling based on operational experience</li>
+          <li>Track improvement work as backlog items with the same priority as feature work</li>
+        </ul>
+        <div class="sec-lbl">Key AWS Tool — Well-Architected Tool</div>
+        <ul class="bl">
+          <li>Free in the AWS console — run workload reviews against all 6 pillars</li>
+          <li>Produces a list of identified risks (High, Medium) and improvement plan</li>
+          <li>Supports custom Lenses (industry-specific or org-specific questions)</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Validate operational readiness before launch"</strong> → Operational Readiness Review (OE: Prepare). <strong>"Simulate failure to test runbooks"</strong> → Game Day (OE: Prepare). <strong>"Learn from incidents"</strong> → Post-mortem / Evolve. <strong>"Automate response to CloudWatch alarm"</strong> → EventBridge rule + Lambda (OE: Operate as code).</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Operational Excellence is only about monitoring" — <strong>FALSE</strong>; it covers the full ops lifecycle: organization, preparation, day-to-day operations, and continuous evolution.</li>
+              <li>"Post-mortems should identify who caused the outage" — <strong>FALSE</strong>; Well-Architected recommends <em>blameless</em> post-mortems that focus on system/process failures, not individual blame.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="oe-services">
+    <div class="task-header">
+      <div class="task-badge p1" style="background:rgba(245,158,11,0.2);color:#f59e0b;">Key Services</div>
+      <div class="task-title"><h2>Operational Excellence — Key AWS Services</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🛠️</span>
+        <span class="card-title">Services That Implement Operational Excellence</span>
+        <div class="tags"><span class="tag te">Reference</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <table class="tbl">
+          <tr><th>Service</th><th>OE Area</th><th>How It Applies</th></tr>
+          <tr><td>AWS CloudFormation / CDK / SAM</td><td>Operations as Code</td><td>Define and version all infrastructure as templates; repeatable, consistent deployments</td></tr>
+          <tr><td>AWS CodePipeline / CodeBuild / CodeDeploy</td><td>Small, reversible changes</td><td>Automate build → test → deploy pipeline; enable frequent, safe releases</td></tr>
+          <tr><td>Amazon CloudWatch</td><td>Operate</td><td>Metrics, logs, alarms, dashboards, anomaly detection for workload health visibility</td></tr>
+          <tr><td>AWS X-Ray</td><td>Operate</td><td>Distributed tracing to identify latency bottlenecks and errors across microservices</td></tr>
+          <tr><td>AWS CloudTrail</td><td>Operate / Evolve</td><td>Audit log of all API calls — who did what, when. Essential for post-mortem analysis.</td></tr>
+          <tr><td>AWS Systems Manager</td><td>Prepare / Operate</td><td>Run Command, Patch Manager, Parameter Store, OpsCenter for operational automation</td></tr>
+          <tr><td>AWS Config</td><td>Organize / Operate</td><td>Record and evaluate resource configuration changes; compliance rules and auto-remediation</td></tr>
+          <tr><td>Amazon EventBridge</td><td>Operate as Code</td><td>Route operational events to automated Lambda remediation without human intervention</td></tr>
+          <tr><td>AWS Well-Architected Tool</td><td>Evolve</td><td>Guided review against all 6 pillars; produces improvement plan and risk register</td></tr>
+        </table>
+        <div class="pillar-services">
+          <span class="svc-chip">CloudFormation</span><span class="svc-chip">CDK</span><span class="svc-chip">CodePipeline</span>
+          <span class="svc-chip">CloudWatch</span><span class="svc-chip">X-Ray</span><span class="svc-chip">CloudTrail</span>
+          <span class="svc-chip">Systems Manager</span><span class="svc-chip">AWS Config</span><span class="svc-chip">EventBridge</span>
+        </div>
+      </div>
+    </div>
+    <div class="mcq-section" data-task="oe"></div>
+  </section>
+</div><!-- /pillar 1 -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     PILLAR 2 — SECURITY
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d1">
+  <div class="domain-intro">
+    <h2>Pillar 2 — Security</h2>
+    <p>The ability to protect data, systems, and assets while delivering business value through risk assessments and mitigation strategies. Encompasses identity management, detective controls, infrastructure protection, data protection, and incident response.</p>
+    <span class="wt-badge">🎯 Focus: Protect data, systems, and assets — at every layer</span>
+  </div>
+
+  <section class="task-section" id="sec-principles">
+    <div class="task-header">
+      <div class="task-badge p2" style="background:rgba(239,68,68,0.2);color:#ef4444;">Design Principles</div>
+      <div class="task-title"><h2>Security Design Principles</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔐</span>
+        <span class="card-title">7 Design Principles of the Security Pillar</span>
+        <div class="tags"><span class="tag te">Exam Fave</span><span class="pillar-badge p2">Security</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <ol class="principle-list">
+          <li><div><strong>Implement a strong identity foundation</strong> — Apply the principle of least privilege. Centralize identity management. Eliminate long-term static credentials wherever possible (use IAM roles, short-lived STS credentials).</div></li>
+          <li><div><strong>Maintain traceability</strong> — Log and monitor all actions and changes. Enable CloudTrail, VPC Flow Logs, and CloudWatch. Integrate logs into SIEM systems. Ensure every action by a human or system is auditable.</div></li>
+          <li><div><strong>Apply security at all layers</strong> — Defense in depth. Apply controls at the edge (CloudFront + WAF), VPC (security groups, NACLs), compute (OS hardening, instance metadata), and data (encryption). Never rely on a single security control.</div></li>
+          <li><div><strong>Automate security best practices</strong> — Use AWS Config rules for compliance. Automate vulnerability scanning (Amazon Inspector). Use AWS Security Hub to aggregate findings. Automate remediation via EventBridge + Lambda.</div></li>
+          <li><div><strong>Protect data in transit and at rest</strong> — Classify data by sensitivity. Use TLS for all in-transit data (enforce via bucket policy <code>aws:SecureTransport</code>). Encrypt at rest using KMS. Apply SSE-KMS for auditability.</div></li>
+          <li><div><strong>Keep people away from data</strong> — Reduce direct human access to sensitive data. Use automated processes for data access. When humans must access, use temporary, audited credentials. Limit production access to break-glass scenarios.</div></li>
+          <li><div><strong>Prepare for security events</strong> — Define incident response processes before an incident occurs. Run game days simulating security events. Use AWS Config, GuardDuty, and Security Hub for automated detection and pre-built runbooks for response.</div></li>
+        </ol>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Mnemonic — ITAPKPP:</strong> <strong>I</strong>dentity foundation · <strong>T</strong>raceability · <strong>A</strong>ll layers · <strong>A</strong>utomate · <strong>P</strong>rotect data · <strong>K</strong>eep people away · <strong>P</strong>repare for events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="sec-bestpractice">
+    <div class="task-header">
+      <div class="task-badge p2" style="background:rgba(239,68,68,0.2);color:#ef4444;">Best Practices</div>
+      <div class="task-title"><h2>Security Best Practice Areas</h2><p>The 7 security focus areas from the Well-Architected Security whitepaper.</p></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🛡️</span>
+        <span class="card-title">7 Security Focus Areas — Identity, Detection, Infrastructure, Data &amp; Incident Response</span>
+        <div class="tags"><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <table class="tbl">
+          <tr><th>Focus Area</th><th>Key Practices</th><th>Primary AWS Services</th></tr>
+          <tr><td><strong>Security Foundations</strong></td><td>AWS account structure, multi-account strategy with Organizations, trusted advisor checks</td><td>AWS Organizations, Control Tower, Trusted Advisor</td></tr>
+          <tr><td><strong>Identity &amp; Access Management</strong></td><td>Least privilege, no root access keys, IAM roles over users, MFA everywhere, permissions boundaries</td><td>IAM, IAM Identity Center, STS, Cognito</td></tr>
+          <tr><td><strong>Detection</strong></td><td>Enable CloudTrail in all regions, GuardDuty for threat detection, Config for compliance, Security Hub for aggregation</td><td>CloudTrail, GuardDuty, AWS Config, Security Hub, Macie</td></tr>
+          <tr><td><strong>Infrastructure Protection</strong></td><td>VPC with private subnets, security groups (allow-only), NACLs for subnet-level deny, WAF on ALBs/CloudFront</td><td>VPC, WAF, Shield, Network Firewall, Inspector</td></tr>
+          <tr><td><strong>Data Protection</strong></td><td>Classify data by sensitivity (PII, PHI), encrypt at rest (KMS) and in transit (TLS), S3 Block Public Access, MFA Delete</td><td>KMS, ACM, S3, Macie, CloudHSM</td></tr>
+          <tr><td><strong>Incident Response</strong></td><td>Pre-defined runbooks, isolate compromised resources via Security Groups, use forensic accounts, automate containment</td><td>GuardDuty → EventBridge → Lambda, Security Hub, Systems Manager</td></tr>
+          <tr><td><strong>Application Security</strong></td><td>Threat modeling, SAST/DAST in CI/CD pipeline, dependency scanning, secrets management</td><td>Inspector, CodeGuru Security, Secrets Manager</td></tr>
+        </table>
+        <div class="ex"><div class="xl">Exam Scenario — "Detect and auto-remediate"</div><p>GuardDuty detects an EC2 instance communicating with a known C2 server. The recommended automated remediation is: GuardDuty finding → <strong>EventBridge rule</strong> → <strong>Lambda function</strong> that modifies the instance's Security Group to isolate it (removing all inbound/outbound rules except the forensics team's IP). This is "Automate security best practices" + "Prepare for security events" in action.</p></div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Exam pattern — match the service to the security area:</strong> Threat detection → GuardDuty. PII discovery in S3 → Macie. Compliance rules → AWS Config. Vulnerability scanning → Inspector. Aggregate findings → Security Hub. Audit log → CloudTrail. Web exploit protection → WAF.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Security and Operational Excellence are separate concerns" — <strong>FALSE</strong>; Well-Architected explicitly requires both — security must be built into operations, not bolted on.</li>
+              <li>"GuardDuty auto-remediates security threats" — <strong>FALSE</strong>; GuardDuty only generates findings. Remediation requires a separate automation (EventBridge + Lambda).</li>
+              <li>"AWS Shield Standard must be purchased" — <strong>FALSE</strong>; Shield Standard is free and automatically enabled for all AWS customers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="sec-services">
+    <div class="task-header">
+      <div class="task-badge p2" style="background:rgba(239,68,68,0.2);color:#ef4444;">Key Services</div>
+      <div class="task-title"><h2>Security Pillar — Key AWS Services</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔑</span>
+        <span class="card-title">Security Services Map</span>
+        <div class="tags"><span class="tag te">Reference</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <table class="tbl">
+          <tr><th>Category</th><th>Service</th><th>Purpose</th></tr>
+          <tr><td>Identity</td><td>IAM, IAM Identity Center, Cognito, STS</td><td>Authentication, authorization, federation, temporary credentials</td></tr>
+          <tr><td>Detection</td><td>GuardDuty, Macie, Inspector, CloudTrail, Security Hub</td><td>Threat detection, data classification, vulnerability scanning, audit logs, aggregation</td></tr>
+          <tr><td>Infrastructure</td><td>VPC, WAF, Shield, Network Firewall, Firewall Manager</td><td>Network isolation, web exploit protection, DDoS protection</td></tr>
+          <tr><td>Data</td><td>KMS, ACM, CloudHSM, Secrets Manager</td><td>Encryption keys, certificates, HSMs, secret storage</td></tr>
+          <tr><td>Compliance</td><td>AWS Config, Audit Manager, Artifact</td><td>Compliance rules, audit reports, regulatory documentation</td></tr>
+        </table>
+        <div class="pillar-services">
+          <span class="svc-chip">IAM</span><span class="svc-chip">GuardDuty</span><span class="svc-chip">Macie</span>
+          <span class="svc-chip">Inspector</span><span class="svc-chip">Security Hub</span><span class="svc-chip">CloudTrail</span>
+          <span class="svc-chip">KMS</span><span class="svc-chip">ACM</span><span class="svc-chip">WAF</span>
+          <span class="svc-chip">Shield</span><span class="svc-chip">AWS Config</span><span class="svc-chip">Secrets Manager</span>
+        </div>
+      </div>
+    </div>
+    <div class="mcq-section" data-task="sec"></div>
+  </section>
+</div><!-- /pillar 2 -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     PILLAR 3 — RELIABILITY
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d2">
+  <div class="domain-intro">
+    <h2>Pillar 3 — Reliability</h2>
+    <p>The ability of a workload to perform its intended function correctly and consistently when it's expected to. Includes the ability to operate and test the workload through its total lifecycle — from design, through operations, to decommission.</p>
+    <span class="wt-badge">🎯 Focus: Recover quickly from failures, scale to meet demand</span>
+  </div>
+
+  <section class="task-section" id="rel-principles">
+    <div class="task-header">
+      <div class="task-badge p3" style="background:rgba(59,130,246,0.2);color:#3b82f6;">Design Principles</div>
+      <div class="task-title"><h2>Reliability Design Principles</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔄</span>
+        <span class="card-title">5 Design Principles of the Reliability Pillar</span>
+        <div class="tags"><span class="tag te">Exam Fave</span><span class="pillar-badge p3">Reliability</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <ol class="principle-list">
+          <li><div><strong>Automatically recover from failure</strong> — Monitor KPIs and trigger automation when thresholds are breached. Use Auto Scaling, Route 53 health checks, and ALB health checks to replace unhealthy resources without human intervention.</div></li>
+          <li><div><strong>Test recovery procedures</strong> — Use automation to simulate component failures. Don't wait for real incidents to find out your DR plan doesn't work. Run regular failover drills — test Multi-AZ failover, backup restoration, and cross-region DR.</div></li>
+          <li><div><strong>Scale horizontally to increase aggregate workload availability</strong> — Replace one large resource with many smaller resources distributed across multiple AZs. If one fails, the remaining capacity absorbs load. Avoid single large instances; prefer Auto Scaling groups.</div></li>
+          <li><div><strong>Stop guessing capacity</strong> — Use Auto Scaling to provision the right amount of capacity at any given time. Add and remove resources automatically based on demand — never over-provision for peak or under-provision and throttle.</div></li>
+          <li><div><strong>Manage change through automation</strong> — Use IaC (CloudFormation) and CI/CD to make changes in a consistent, tested, automated way. Unmanaged manual changes are a leading cause of reliability incidents.</div></li>
+        </ol>
+        <div class="sec-lbl">Availability Targets — Know Your Numbers</div>
+        <table class="tbl">
+          <tr><th>Availability</th><th>Downtime per year</th><th>Downtime per month</th></tr>
+          <tr><td>99% ("Two nines")</td><td>~87.6 hours</td><td>~7.3 hours</td></tr>
+          <tr><td>99.9% ("Three nines")</td><td>~8.76 hours</td><td>~43.8 minutes</td></tr>
+          <tr><td>99.99% ("Four nines")</td><td>~52.6 minutes</td><td>~4.38 minutes</td></tr>
+          <tr><td>99.999% ("Five nines")</td><td>~5.26 minutes</td><td>~26.3 seconds</td></tr>
+        </table>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Eliminate single points of failure"</strong> → Scale horizontally + Multi-AZ. <strong>"Never test DR only during a real incident"</strong> → Test recovery procedures principle. <strong>"Unpredictable traffic causes outages"</strong> → Stop guessing capacity → Auto Scaling.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="rel-bestpractice">
+    <div class="task-header">
+      <div class="task-badge p3" style="background:rgba(59,130,246,0.2);color:#3b82f6;">Best Practices</div>
+      <div class="task-title"><h2>Reliability Best Practices</h2><p>Foundations, workload architecture, change management, and failure management.</p></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🏗️</span>
+        <span class="card-title">Foundations, Workload Architecture &amp; Failure Management</span>
+        <div class="tags"><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Foundations</div>
+        <ul class="bl">
+          <li><strong>Service quotas:</strong> Understand and proactively request increases for limits that could affect workload availability (e.g., Lambda concurrency, EC2 vCPUs, VPC subnets)</li>
+          <li><strong>Network topology:</strong> Design VPCs with multiple AZs. Use private subnets for compute; public only for load balancers and NAT. Plan IP address space to avoid exhaustion.</li>
+        </ul>
+        <div class="sec-lbl">Workload Architecture</div>
+        <ul class="bl">
+          <li><strong>Service-oriented architecture:</strong> Each component deployed independently. Failures in one component don't cascade to others.</li>
+          <li><strong>Bulkhead pattern:</strong> Isolate components so failure of one doesn't exhaust resources for others (e.g., separate thread pools, separate queues per tier)</li>
+          <li><strong>Circuit breaker:</strong> Detect downstream failures and stop sending requests to a failing service; fail fast instead of queuing up and causing cascading timeouts</li>
+          <li><strong>Idempotency:</strong> Design operations that can be retried without side effects — critical for at-least-once delivery systems (SQS, Lambda async)</li>
+        </ul>
+        <div class="sec-lbl">Change Management</div>
+        <ul class="bl">
+          <li>Deploy changes using CI/CD with automated tests and rollback capabilities</li>
+          <li>Use CloudWatch alarms as <strong>CloudFormation rollback triggers</strong> — automatically roll back a stack update if alarm fires post-deployment</li>
+          <li>Feature flags (AppConfig) allow disabling problematic features without redeployment</li>
+        </ul>
+        <div class="sec-lbl">Failure Management</div>
+        <ul class="bl">
+          <li><strong>Backup and restore:</strong> AWS Backup for centralized, policy-based backup across services. Test restores regularly.</li>
+          <li><strong>Multi-AZ:</strong> Deploy across ≥2 AZs. RDS Multi-AZ, ALB across AZs, ECS service across AZs. Synchronous replication for zero-data-loss failover.</li>
+          <li><strong>Multi-Region DR strategies (RTO/RPO tradeoffs):</strong></li>
+        </ul>
+        <table class="tbl">
+          <tr><th>Strategy</th><th>RTO</th><th>RPO</th><th>Cost</th><th>Description</th></tr>
+          <tr><td>Backup &amp; Restore</td><td>Hours</td><td>Hours</td><td>Lowest</td><td>Restore from backups in DR region when disaster occurs</td></tr>
+          <tr><td>Pilot Light</td><td>~10 min</td><td>Minutes</td><td>Low</td><td>Minimal infrastructure (DB replicas) running; scale up on disaster</td></tr>
+          <tr><td>Warm Standby</td><td>Minutes</td><td>Seconds</td><td>Medium</td><td>Scaled-down copy fully running in DR region; scale to full on disaster</td></tr>
+          <tr><td>Multi-Site Active-Active</td><td>Near-zero</td><td>Near-zero</td><td>Highest</td><td>Full production load in ≥2 regions simultaneously; instant failover</td></tr>
+        </table>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>DR Cost vs. Speed:</strong> B&amp;R (cheapest, slowest) → Pilot Light → Warm Standby → Active-Active (costliest, fastest). Exam will describe RTO/RPO requirements and ask which strategy fits.</p>
+        </div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Multi-AZ and Multi-Region are the same" — <strong>FALSE</strong>; Multi-AZ provides HA within a region. Multi-Region is for disaster recovery and geographic distribution across regions.</li>
+              <li>"RTO is how much data you can afford to lose" — <strong>FALSE</strong>; RTO is Recovery Time Objective (how long recovery takes). RPO is Recovery Point Objective (how much data loss is acceptable).</li>
+              <li>"Pilot Light means no resources are running in DR" — <strong>FALSE</strong>; Pilot Light keeps minimal critical resources (like DB replicas) running. Backup &amp; Restore has nothing running.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="rel-services">
+    <div class="task-header">
+      <div class="task-badge p3" style="background:rgba(59,130,246,0.2);color:#3b82f6;">Key Services</div>
+      <div class="task-title"><h2>Reliability Pillar — Key AWS Services</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">⚡</span>
+        <span class="card-title">Reliability Services Map</span>
+        <div class="tags"><span class="tag te">Reference</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <table class="tbl">
+          <tr><th>Category</th><th>Service</th><th>Reliability Role</th></tr>
+          <tr><td>Compute HA</td><td>Auto Scaling Groups, ALB</td><td>Replace unhealthy instances; distribute load across AZs</td></tr>
+          <tr><td>Database HA</td><td>RDS Multi-AZ, Aurora Global DB, DynamoDB Global Tables</td><td>Synchronous replication; automatic failover; cross-region HA</td></tr>
+          <tr><td>DNS / Traffic</td><td>Route 53 health checks, failover routing, latency routing</td><td>Automatic traffic cutover to healthy endpoints</td></tr>
+          <tr><td>Backup</td><td>AWS Backup, S3 Cross-Region Replication, EBS snapshots</td><td>Centralized backup policies; cross-region data durability</td></tr>
+          <tr><td>Decoupling</td><td>SQS, SNS, EventBridge</td><td>Buffer requests; prevent cascade failures between components</td></tr>
+          <tr><td>Serverless HA</td><td>Lambda, DynamoDB, S3</td><td>Built-in HA across AZs by design — no customer configuration needed</td></tr>
+        </table>
+        <div class="pillar-services">
+          <span class="svc-chip">Auto Scaling</span><span class="svc-chip">ALB</span><span class="svc-chip">RDS Multi-AZ</span>
+          <span class="svc-chip">Aurora Global</span><span class="svc-chip">Route 53</span><span class="svc-chip">AWS Backup</span>
+          <span class="svc-chip">SQS</span><span class="svc-chip">S3 CRR</span><span class="svc-chip">CloudFormation</span>
+        </div>
+      </div>
+    </div>
+    <div class="mcq-section" data-task="rel"></div>
+  </section>
+</div><!-- /pillar 3 -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     PILLAR 4 — PERFORMANCE EFFICIENCY
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d3">
+  <div class="domain-intro">
+    <h2>Pillar 4 — Performance Efficiency</h2>
+    <p>The ability to use computing resources efficiently to meet system requirements, and to maintain that efficiency as demand changes and technologies evolve.</p>
+    <span class="wt-badge">🎯 Focus: Use the right resource type, right size, and continuously measure</span>
+  </div>
+
+  <section class="task-section" id="perf-principles">
+    <div class="task-header">
+      <div class="task-badge p4" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">Design Principles</div>
+      <div class="task-title"><h2>Performance Efficiency Design Principles</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🚀</span>
+        <span class="card-title">5 Design Principles of Performance Efficiency</span>
+        <div class="tags"><span class="tag te">Exam Fave</span><span class="pillar-badge p4">Performance</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <ol class="principle-list">
+          <li><div><strong>Democratize advanced technologies</strong> — Use managed services for complex capabilities (ML with SageMaker, search with OpenSearch, graph with Neptune). Don't build what AWS manages; consume it as a service to reduce effort and accelerate innovation.</div></li>
+          <li><div><strong>Go global in minutes</strong> — Deploy to multiple AWS Regions with minimal effort. Use CloudFront to serve users from edge locations worldwide. Aurora Global Database replicates with &lt;1s lag. Route 53 latency routing directs users to the nearest region.</div></li>
+          <li><div><strong>Use serverless architectures</strong> — Remove the need to run and maintain servers. Lambda, Fargate, DynamoDB, Aurora Serverless, S3 — these services eliminate undifferentiated heavy lifting and scale automatically.</div></li>
+          <li><div><strong>Experiment more often</strong> — The low cost of cloud resources enables A/B testing of architecture choices (instance types, storage classes, caching strategies) to find the best-performing option without long-term commitment.</div></li>
+          <li><div><strong>Consider mechanical sympathy</strong> — Understand how services work internally and use them in alignment with their design. Example: DynamoDB performs best with high-cardinality partition keys; use keys that distribute load evenly across partitions.</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="perf-bestpractice">
+    <div class="task-header">
+      <div class="task-badge p4" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">Best Practices</div>
+      <div class="task-title"><h2>Performance Efficiency Best Practices</h2><p>Architecture selection, compute, data management, networking, and continuous review.</p></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">⚡</span>
+        <span class="card-title">Architecture Selection, Compute, Data &amp; Networking</span>
+        <div class="tags"><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Architecture Selection</div>
+        <table class="tbl">
+          <tr><th>Workload Type</th><th>Recommended Architecture</th><th>AWS Services</th></tr>
+          <tr><td>Event-driven / variable load</td><td>Serverless</td><td>Lambda, DynamoDB, API GW, S3</td></tr>
+          <tr><td>Containerized microservices</td><td>Container platform</td><td>ECS Fargate, EKS, ECR</td></tr>
+          <tr><td>Stateful long-running</td><td>Compute instances</td><td>EC2 with right-sized instance family</td></tr>
+          <tr><td>High-performance compute (HPC)</td><td>Cluster placement groups</td><td>C/P/G instance families, EFA networking</td></tr>
+          <tr><td>Data analytics</td><td>Purpose-built data services</td><td>Redshift, Athena, EMR, Kinesis</td></tr>
+        </table>
+        <div class="sec-lbl">Compute &amp; Hardware Selection</div>
+        <ul class="bl">
+          <li><strong>Right-size instances:</strong> Use CloudWatch metrics (CPU, memory via custom metric) + AWS Compute Optimizer to find underutilized instances and resize to the correct family and size</li>
+          <li><strong>Instance families:</strong> General (M/T) · Compute-optimized (C) · Memory-optimized (R/X) · Storage-optimized (I/D) · Accelerated (P/G/Inf/Trn)</li>
+          <li><strong>Graviton (ARM):</strong> Up to 40% better price/performance for many workloads (Lambda, EC2, RDS). Cost optimization AND performance simultaneously.</li>
+          <li><strong>Auto Scaling:</strong> Predictive Scaling anticipates traffic; Target Tracking maintains a metric at a target value</li>
+        </ul>
+        <div class="sec-lbl">Data Management</div>
+        <ul class="bl">
+          <li>Choose the right storage: S3 for objects, EBS for block (EC2), EFS for shared file, FSx for HPC/Windows</li>
+          <li>Use caching to reduce read latency: ElastiCache, DAX (DynamoDB), CloudFront (CDN), API GW cache</li>
+          <li>Partition data to enable parallel reads — DynamoDB partition key design, Kinesis shard count</li>
+        </ul>
+        <div class="sec-lbl">Networking &amp; Content Delivery</div>
+        <ul class="bl">
+          <li><strong>Proximity:</strong> Deploy resources in regions close to users. Use Route 53 latency routing or geolocation routing.</li>
+          <li><strong>CloudFront:</strong> Cache static assets and API responses at 400+ edge locations globally — dramatically reduces latency and origin load</li>
+          <li><strong>Enhanced Networking:</strong> For HPC and low-latency networking — use ENA (Elastic Network Adapter) and EFA (Elastic Fabric Adapter) on supported instance types</li>
+          <li><strong>Global Accelerator:</strong> Routes traffic over the AWS backbone to the nearest healthy endpoint — reduces hops and jitter for non-cacheable traffic (dynamic APIs, gaming)</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Exam shortcut — Performance Efficiency service matching:</strong> "Low latency for global users" → CloudFront. "Low latency for global dynamic API" → Global Accelerator. "Database query latency" → ElastiCache / DAX. "Wrong EC2 instance size" → Compute Optimizer. "Faster Lambda on Java" → SnapStart / Graviton.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="perf-services">
+    <div class="task-header">
+      <div class="task-badge p4" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">Key Services</div>
+      <div class="task-title"><h2>Performance Efficiency — Key AWS Services</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📊</span>
+        <span class="card-title">Performance Services Map</span>
+        <div class="tags"><span class="tag te">Reference</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="pillar-services">
+          <span class="svc-chip">CloudFront</span><span class="svc-chip">Global Accelerator</span><span class="svc-chip">ElastiCache</span>
+          <span class="svc-chip">DAX</span><span class="svc-chip">Auto Scaling</span><span class="svc-chip">Lambda</span>
+          <span class="svc-chip">Graviton EC2</span><span class="svc-chip">Compute Optimizer</span><span class="svc-chip">Kinesis</span>
+          <span class="svc-chip">Aurora Serverless</span><span class="svc-chip">SageMaker</span><span class="svc-chip">EFA</span>
+        </div>
+      </div>
+    </div>
+    <div class="mcq-section" data-task="perf"></div>
+  </section>
+</div><!-- /pillar 4 -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     PILLAR 5 — COST OPTIMIZATION
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d4">
+  <div class="domain-intro">
+    <h2>Pillar 5 — Cost Optimization</h2>
+    <p>The ability to run systems to deliver business value at the lowest price point. Covers understanding spending, controlling fund allocation, selecting the right resource type and quantity, and scaling to meet business needs without overspending.</p>
+    <span class="wt-badge">🎯 Focus: Eliminate waste, right-size resources, use pricing models strategically</span>
+  </div>
+
+  <section class="task-section" id="cost-principles">
+    <div class="task-header">
+      <div class="task-badge p5" style="background:rgba(16,185,129,0.2);color:#10b981;">Design Principles</div>
+      <div class="task-title"><h2>Cost Optimization Design Principles</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">💰</span>
+        <span class="card-title">5 Design Principles of Cost Optimization</span>
+        <div class="tags"><span class="tag te">Exam Fave</span><span class="pillar-badge p5">Cost</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <ol class="principle-list">
+          <li><div><strong>Implement cloud financial management</strong> — Build organizational capability (FinOps practice). Establish a Cloud Center of Excellence. Finance and engineering must collaborate on cost goals. Tag all resources for chargeback/showback reporting.</div></li>
+          <li><div><strong>Adopt a consumption model</strong> — Pay only for what you use. Use on-demand and serverless resources. Shut down non-production environments outside business hours. Use Auto Scaling to match supply to demand — never idle capacity.</div></li>
+          <li><div><strong>Measure overall efficiency</strong> — Track cost per unit of business outcome (e.g., cost per order, cost per active user). Use AWS Cost Explorer, Cost &amp; Usage Reports, and cost allocation tags.</div></li>
+          <li><div><strong>Stop spending money on undifferentiated heavy lifting</strong> — Use managed services (RDS instead of self-managed MySQL on EC2, Lambda instead of always-on EC2). AWS manages patching, HA, and scaling — you stop paying for that operational work.</div></li>
+          <li><div><strong>Analyze and attribute expenditure</strong> — Use cost allocation tags and AWS Organizations to attribute costs to teams/products. Enable cost visibility so engineers see the impact of their architectural decisions.</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="cost-bestpractice">
+    <div class="task-header">
+      <div class="task-badge p5" style="background:rgba(16,185,129,0.2);color:#10b981;">Best Practices</div>
+      <div class="task-title"><h2>Cost Optimization Best Practices</h2><p>Cloud financial management, usage awareness, cost-effective resources, demand management, and continuous optimization.</p></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📉</span>
+        <span class="card-title">Pricing Models, Right-Sizing, and Waste Elimination</span>
+        <div class="tags"><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">EC2 Pricing Models</div>
+        <table class="tbl">
+          <tr><th>Model</th><th>Discount vs On-Demand</th><th>Commitment</th><th>Best For</th></tr>
+          <tr><td>On-Demand</td><td>Baseline</td><td>None</td><td>Variable, unpredictable workloads; dev/test</td></tr>
+          <tr><td>Reserved Instances (Standard)</td><td>Up to 72%</td><td>1 or 3 years, specific type</td><td>Steady-state production workloads with known instance type</td></tr>
+          <tr><td>Reserved Instances (Convertible)</td><td>Up to 54%</td><td>1 or 3 years, flexible type</td><td>Steady-state but may change instance family</td></tr>
+          <tr><td>Savings Plans (Compute)</td><td>Up to 66%</td><td>1 or 3 years, $/hr commitment</td><td>Flexible — applies to EC2, Lambda, Fargate, any region/family</td></tr>
+          <tr><td>Savings Plans (EC2 Instance)</td><td>Up to 72%</td><td>1 or 3 years, specific family+region</td><td>Specific instance family in specific region</td></tr>
+          <tr><td>Spot Instances</td><td>Up to 90%</td><td>None (can be interrupted)</td><td>Fault-tolerant, stateless, batch, CI/CD, ML training</td></tr>
+          <tr><td>Dedicated Hosts</td><td>On-demand or Reserved</td><td>Optional</td><td>Licensing compliance (per-socket, per-core) or regulatory isolation</td></tr>
+        </table>
+        <div class="sec-lbl">Right-Sizing &amp; Waste Elimination</div>
+        <ul class="bl">
+          <li><strong>AWS Compute Optimizer:</strong> ML-based right-sizing recommendations for EC2, Lambda, ECS tasks, Auto Scaling groups, EBS volumes — based on 14 days of CloudWatch metrics</li>
+          <li><strong>AWS Trusted Advisor:</strong> Free cost optimization checks — identifies idle EC2 instances, underutilized EBS volumes, unassociated Elastic IPs, low-utilization RDS instances</li>
+          <li><strong>Idle resources:</strong> Terminate stopped EC2 instances with attached EBS, delete unattached EBS volumes, release unassociated Elastic IPs ($0.005/hr charge when unassociated)</li>
+          <li><strong>S3 lifecycle policies:</strong> Move objects to cheaper storage classes over time (Standard → Standard-IA → Glacier → Glacier Deep Archive)</li>
+        </ul>
+        <div class="sec-lbl">Expenditure &amp; Usage Awareness</div>
+        <table class="tbl">
+          <tr><th>Tool</th><th>Purpose</th></tr>
+          <tr><td>AWS Cost Explorer</td><td>Visualize and analyze historical spend; forecast future costs; RI utilization and coverage reports</td></tr>
+          <tr><td>AWS Budgets</td><td>Set cost/usage/coverage thresholds; alert via SNS when threshold breached; take automated actions</td></tr>
+          <tr><td>Cost &amp; Usage Report (CUR)</td><td>Most granular billing data — exported to S3, queryable with Athena; gold standard for chargeback</td></tr>
+          <tr><td>Cost Allocation Tags</td><td>Must be activated in Billing console; tag resources with Team/Project/Environment; filter Cost Explorer by tag</td></tr>
+        </table>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Savings Plans vs. Reserved Instances:</strong> Savings Plans are <em>more flexible</em> (apply across EC2 + Lambda + Fargate, any region, any family). Standard RIs are <em>less flexible</em> but slightly higher discount for specific instance types. Compute Savings Plans = best all-round for most organizations.</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Alert when monthly spend exceeds $500"</strong> → AWS Budgets. <strong>"Find underutilized EC2 instances"</strong> → Compute Optimizer + Trusted Advisor. <strong>"Maximize discount for predictable 3-year workload"</strong> → Standard Reserved Instances. <strong>"Fault-tolerant batch processing cheaply"</strong> → Spot Instances. <strong>"Granular per-team billing data"</strong> → Cost &amp; Usage Report + Athena + Cost Allocation Tags.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"AWS Budgets stops spending when the threshold is hit" — <strong>FALSE</strong>; Budgets only alerts/notifies. To actually stop resources, you need a Lambda triggered by the Budget Action or an SCP.</li>
+              <li>"Reserved Instances can be used for any instance type" — <strong>FALSE</strong>; Standard RIs are locked to specific instance family, size, region, and OS. Convertible RIs allow changing type within the same family.</li>
+              <li>"Spot Instances are suitable for production databases" — <strong>FALSE</strong>; Spot Instances can be interrupted with 2 minutes notice. Never use for stateful workloads requiring persistence.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="cost-services">
+    <div class="task-header">
+      <div class="task-badge p5" style="background:rgba(16,185,129,0.2);color:#10b981;">Key Services</div>
+      <div class="task-title"><h2>Cost Optimization — Key AWS Services</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📊</span>
+        <span class="card-title">Cost Services Map</span>
+        <div class="tags"><span class="tag te">Reference</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="pillar-services">
+          <span class="svc-chip">Cost Explorer</span><span class="svc-chip">AWS Budgets</span><span class="svc-chip">Savings Plans</span>
+          <span class="svc-chip">Reserved Instances</span><span class="svc-chip">Spot Instances</span><span class="svc-chip">Compute Optimizer</span>
+          <span class="svc-chip">Trusted Advisor</span><span class="svc-chip">Cost &amp; Usage Report</span><span class="svc-chip">S3 Lifecycle</span>
+          <span class="svc-chip">Lambda (serverless)</span><span class="svc-chip">Aurora Serverless</span><span class="svc-chip">Graviton</span>
+        </div>
+      </div>
+    </div>
+    <div class="mcq-section" data-task="cost"></div>
+  </section>
+</div><!-- /pillar 5 -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     PILLAR 6 — SUSTAINABILITY
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d5">
+  <div class="domain-intro">
+    <h2>Pillar 6 — Sustainability</h2>
+    <p>The ability to continually improve sustainability impacts by reducing energy consumption and increasing efficiency across all components of a workload by maximizing the benefits from provisioned resources and minimizing the total resources required.</p>
+    <span class="wt-badge">🎯 Focus: Minimize environmental impact — maximize utilization, minimize waste</span>
+  </div>
+
+  <section class="task-section" id="sus-principles">
+    <div class="task-header">
+      <div class="task-badge p6" style="background:rgba(6,182,212,0.2);color:#06b6d4;">Design Principles</div>
+      <div class="task-title"><h2>Sustainability Design Principles</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🌱</span>
+        <span class="card-title">6 Design Principles of the Sustainability Pillar</span>
+        <div class="tags"><span class="tag te">Medium Frequency</span><span class="pillar-badge p6">Sustainability</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <ol class="principle-list">
+          <li><div><strong>Understand your impact</strong> — Measure the environmental impact of your workload. Use the Customer Carbon Footprint Tool to track your AWS carbon emissions. Establish KPIs for sustainability (e.g., carbon per API call).</div></li>
+          <li><div><strong>Establish sustainability goals</strong> — Set long-term goals for carbon reduction aligned with your organization's sustainability commitments. Prioritize workloads with the highest impact.</div></li>
+          <li><div><strong>Maximize utilization</strong> — Right-size resources to maximize utilization and reduce idle waste. Use Auto Scaling so resources only run when needed. Consolidate workloads onto fewer, larger instances vs. many small ones.</div></li>
+          <li><div><strong>Anticipate and adopt new, more efficient hardware and software</strong> — Monitor AWS for new, more energy-efficient instance types (e.g., Graviton processors use up to 60% less energy than equivalent x86 instances). Adopt them as they become available.</div></li>
+          <li><div><strong>Use managed services</strong> — AWS managed services are optimized for energy efficiency at scale (shared infrastructure, higher utilization). Moving from self-managed to managed (e.g., RDS vs MySQL on EC2) reduces your environmental footprint.</div></li>
+          <li><div><strong>Reduce the downstream impact of your cloud workloads</strong> — Minimize data transfer, storage, and processing that end users perform. Use efficient data formats (Parquet vs CSV), compress data, deliver assets from edge (CloudFront) to reduce client-side energy use.</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="sus-bestpractice">
+    <div class="task-header">
+      <div class="task-badge p6" style="background:rgba(6,182,212,0.2);color:#06b6d4;">Best Practices</div>
+      <div class="task-title"><h2>Sustainability Best Practices</h2><p>Region selection, behavior patterns, software architecture, data patterns, hardware, and development process.</p></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">♻️</span>
+        <span class="card-title">Sustainability Best Practice Areas &amp; Exam Scenarios</span>
+        <div class="tags"><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <table class="tbl">
+          <tr><th>Area</th><th>Practice</th><th>AWS Implementation</th></tr>
+          <tr><td>Region Selection</td><td>Choose regions powered by higher % renewable energy</td><td>Check AWS sustainability region data; consider carbon footprint per region</td></tr>
+          <tr><td>User Behavior</td><td>Reduce unnecessary data transfer and client-side compute</td><td>CloudFront edge caching; efficient pagination; compression (gzip/brotli)</td></tr>
+          <tr><td>Software Architecture</td><td>Use serverless to eliminate idle compute; adopt event-driven</td><td>Lambda (no idle servers), Fargate (no idle EC2), DynamoDB On-Demand</td></tr>
+          <tr><td>Data Patterns</td><td>Minimize data stored and processed; use efficient formats</td><td>S3 Intelligent-Tiering; archive to Glacier; use Parquet/ORC over CSV; delete unused data</td></tr>
+          <tr><td>Hardware Patterns</td><td>Use energy-efficient processor architectures</td><td>Graviton (ARM) instances — up to 60% less energy for same workload</td></tr>
+          <tr><td>Development Process</td><td>Include sustainability in architecture reviews; measure and improve</td><td>Well-Architected Tool sustainability lens; Customer Carbon Footprint Tool</td></tr>
+        </table>
+        <div class="sec-lbl">Shared Responsibility for Sustainability</div>
+        <ul class="bl">
+          <li><strong>AWS responsibility:</strong> Optimize the physical data center, networking, and hardware (energy-efficient cooling, renewable energy procurement, efficient hardware design)</li>
+          <li><strong>Customer responsibility:</strong> Optimize their workloads — right-size, remove idle resources, choose efficient architectures, use efficient data formats, leverage managed services</li>
+        </ul>
+        <div class="ex"><div class="xl">Sustainability vs. Cost Optimization</div><p>Sustainability and Cost Optimization are closely aligned — both benefit from eliminating waste and maximizing utilization. Key difference: Sustainability focuses on minimizing environmental impact (carbon emissions, energy use); Cost Optimization focuses on minimizing financial spend. In practice, actions like right-sizing, using Graviton, and switching to serverless achieve both goals simultaneously.</p></div>
+        <div class="tip"><span class="tip-ico">🎯</span><p>On the exam, Sustainability scenarios often involve: <strong>Graviton instances</strong> (energy-efficient compute), <strong>S3 Intelligent-Tiering</strong> (reduce storage waste), <strong>serverless architectures</strong> (no idle compute), and <strong>data lifecycle policies</strong> (delete unused data). If the question mentions "reduce carbon footprint" or "minimize environmental impact" → Sustainability pillar.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Sustainability is only relevant for large enterprises with ESG requirements" — <strong>FALSE</strong>; it's one of the 6 pillars and tested on all associate and professional exams.</li>
+              <li>"Using more powerful instances improves sustainability because jobs finish faster" — <strong>CONTEXT-DEPENDENT</strong>; over-provisioning wastes energy. Right-sizing is the key — use the minimum power needed to meet performance requirements.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="task-section" id="sus-services">
+    <div class="task-header">
+      <div class="task-badge p6" style="background:rgba(6,182,212,0.2);color:#06b6d4;">Key Services</div>
+      <div class="task-title"><h2>Sustainability — Key AWS Services</h2></div>
+    </div>
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🌿</span>
+        <span class="card-title">Sustainability Services Map</span>
+        <div class="tags"><span class="tag te">Reference</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="pillar-services">
+          <span class="svc-chip">Graviton EC2</span><span class="svc-chip">Lambda (serverless)</span><span class="svc-chip">Fargate</span>
+          <span class="svc-chip">S3 Intelligent-Tiering</span><span class="svc-chip">S3 Glacier</span><span class="svc-chip">Aurora Serverless</span>
+          <span class="svc-chip">CloudFront</span><span class="svc-chip">Auto Scaling</span><span class="svc-chip">Carbon Footprint Tool</span>
+          <span class="svc-chip">Spot Instances</span><span class="svc-chip">Compute Optimizer</span>
+        </div>
+      </div>
+    </div>
+    <div class="mcq-section" data-task="sus"></div>
+  </section>
+</div><!-- /pillar 6 -->
+
+</div><!-- /content-wrapper -->
+
+<div class="toc-sidebar">
+  <div class="toc-inner">
+    <h4>On this page</h4>
+    <ul id="toc-list"></ul>
+  </div>
+</div>
+
+</main><!-- /main -->
+
+<footer>
+  AWS Well-Architected Framework · 6 Pillars · Reference Guide · Relevant for SAA-C03, DVA-C02, SAP-C02
+  <span>Curated from official AWS Well-Architected whitepapers · For study purposes only</span>
+</footer>
+
+<script src="mcqs.js"></script>
+<script src="../../assets/js/saa-shared.js"></script>
+<script src="../../assets/js/script.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  window.initMermaid = function() {
+    const isLight = document.documentElement.classList.contains('light');
+    mermaid.initialize({ startOnLoad: true, theme: isLight ? 'default' : 'dark', securityLevel: 'loose' });
+  };
+  window.initMermaid();
+</script>
+</body>
+</html>

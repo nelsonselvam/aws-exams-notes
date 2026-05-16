@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AWS Certification Study Guides</title>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #080c14;
@@ -19,7 +19,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Sora', sans-serif;
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
@@ -37,9 +37,9 @@
       text-align: center;
     }
     h1 {
-      font-family: 'Merriweather', serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 1rem;
       background: linear-gradient(135deg, #fff, #a1a1aa);
@@ -62,7 +62,9 @@
       gap: 2rem;
     }
     .card {
-      background: var(--surface);
+      background:
+        radial-gradient(ellipse at 15% 20%, var(--c-soft, transparent) 0%, transparent 60%),
+        var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 2rem;
@@ -79,13 +81,13 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--accent), #fcd34d);
+      background: linear-gradient(90deg, var(--c, var(--accent)), color-mix(in srgb, var(--c, var(--accent)) 65%, white));
       opacity: 0;
       transition: opacity 0.3s;
     }
     .card:hover {
       transform: translateY(-5px);
-      border-color: rgba(245, 158, 11, 0.4);
+      border-color: var(--c-border, rgba(245, 158, 11, 0.4));
       box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
     }
     .card:hover::before {
@@ -97,15 +99,15 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      background: rgba(245, 158, 11, 0.15);
-      color: var(--accent);
+      background: var(--c-soft, rgba(245, 158, 11, 0.15));
+      color: var(--c, var(--accent));
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid var(--c-border, rgba(245, 158, 11, 0.3));
     }
     .card h2 {
-      font-family: 'Merriweather', serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.4rem;
       font-weight: 600;
       margin-bottom: 0.8rem;
@@ -128,7 +130,7 @@
       font-weight: 500;
     }
     .arrow {
-      color: var(--accent);
+      color: var(--c, var(--accent));
       transition: transform 0.3s;
     }
     .card:hover .arrow {
@@ -161,16 +163,65 @@
     .card:hover .exam-logo svg {
       filter: drop-shadow(0 4px 14px rgba(255,153,0,0.45));
     }
+    /* ─── Light theme ─────────────────────────────────────── */
+    html.light {
+      --bg: #f8fafc;
+      --surface: rgba(255, 255, 255, 0.95);
+      --border: rgba(203, 213, 225, 0.8);
+      --text: #0f172a;
+      --muted: #64748b;
+    }
+    html.light h1 {
+      background: linear-gradient(135deg, #0f172a, #64748b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    html.light .card {
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    }
+    html.light .card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    }
+    /* ─── Theme toggle ─────────────────────────────────────── */
+    #lp-toggle {
+      position: fixed; top: 1.2rem; right: 1.5rem; z-index: 100;
+      display: flex; align-items: center; gap: 0.45rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 0.25rem 0.4rem 0.25rem 0.75rem;
+      cursor: pointer; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; color: var(--muted); user-select: none;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    #lp-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .lp-track {
+      width: 28px; height: 16px; background: var(--border);
+      border-radius: 8px; position: relative; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    html.light .lp-track { background: var(--accent); }
+    .lp-thumb {
+      position: absolute; top: 2px; left: 2px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    html.light .lp-thumb { transform: translateX(12px); }
   </style>
+  <script>(function(){var h=document.documentElement,s=localStorage.getItem('saa-theme');if(s==='dark'){h.classList.remove('light');}else if(!s){var n=new Date(),hr=n.getHours()+n.getMinutes()/60,ss=[17.5,18,18.5,19.5,20,20.5,20.5,20,19,18,17.5,17];if(hr>=ss[n.getMonth()]||hr<6){h.classList.remove('light');}}})();</script>
 </head>
 <body>
   <div class="hero-bg"></div>
+  <button id="lp-toggle" aria-label="Toggle theme">
+    <span id="lp-lbl">Dark</span>
+    <span class="lp-track"><span class="lp-thumb"></span></span>
+  </button>
   <header>
     <h1>AWS Study Guides</h1>
     <p class="subtitle">Comprehensive, high-yield preparation notes for AWS Certifications. Select a guide below to begin.</p>
   </header>
   <main>
-    <a href="./exams/aws-saa-c03/index.html" class="card">
+    <a href="./exams/aws-saa-c03/index.html" class="card" style="--c:#f59e0b;--c-soft:rgba(245,158,11,0.10);--c-border:rgba(245,158,11,0.4)">
       <div class="card-top">
         <span class="badge">SAA-C03</span>
         <div class="exam-logo">
@@ -198,7 +249,7 @@
       </div>
     </a>
 
-    <a href="#" class="card disabled">
+    <a href="./exams/aws-dva-c02/index.html" class="card" style="--c:#8b5cf6;--c-soft:rgba(139,92,246,0.10);--c-border:rgba(139,92,246,0.4)">
       <div class="card-top">
         <span class="badge">DVA-C02</span>
         <div class="exam-logo">
@@ -221,11 +272,39 @@
       <h2>Developer – Associate</h2>
       <p>In-depth coverage of AWS development, deployment, security, and troubleshooting.</p>
       <div class="card-footer">
-        <span>Coming Soon</span>
+        <span>4 Domains</span>
+        <span class="arrow">View Guide &rarr;</span>
       </div>
     </a>
 
-    <a href="#" class="card disabled">
+    <a href="./exams/well-architected/index.html" class="card" style="--c:#3b82f6;--c-soft:rgba(59,130,246,0.10);--c-border:rgba(59,130,246,0.4)">
+      <div class="card-top">
+        <span class="badge">WAF</span>
+        <div class="exam-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="76" height="76" aria-label="AWS Well-Architected Framework">
+            <defs>
+              <linearGradient id="g-waf" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="44" fill="#1b2536" stroke="url(#g-waf)" stroke-width="3"/>
+            <circle cx="50" cy="50" r="34" fill="none" stroke="url(#g-waf)" stroke-width="1" opacity="0.4"/>
+            <text x="50" y="44" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="700" font-family="Arial,sans-serif" letter-spacing="0.5">WELL</text>
+            <text x="50" y="55" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="700" font-family="Arial,sans-serif" letter-spacing="0.5">ARCHITECTED</text>
+            <text x="50" y="67" text-anchor="middle" fill="#8fa3b8" font-size="6" font-family="Arial,sans-serif" letter-spacing="0.4">FRAMEWORK</text>
+          </svg>
+        </div>
+      </div>
+      <h2>Well-Architected Framework</h2>
+      <p>All 6 pillars from an exam perspective: design principles, best practices, key services, and scenario-based MCQs.</p>
+      <div class="card-footer">
+        <span>6 Pillars</span>
+        <span class="arrow">View Guide &rarr;</span>
+      </div>
+    </a>
+
+    <a href="#" class="card disabled" style="--c:#10b981;--c-border:rgba(16,185,129,0.4)">
       <div class="card-top">
         <span class="badge">SAP-C02</span>
         <div class="exam-logo">
@@ -252,5 +331,20 @@
       </div>
     </a>
   </main>
+  <script>
+    (function () {
+      var btn = document.getElementById('lp-toggle');
+      var lbl = document.getElementById('lp-lbl');
+      function sync() {
+        lbl.textContent = document.documentElement.classList.contains('light') ? 'Dark' : 'Light';
+      }
+      sync();
+      btn.addEventListener('click', function () {
+        var isLight = document.documentElement.classList.toggle('light');
+        localStorage.setItem('saa-theme', isLight ? 'light' : 'dark');
+        sync();
+      });
+    })();
+  </script>
 </body>
 </html>

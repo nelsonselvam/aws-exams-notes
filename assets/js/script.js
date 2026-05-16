@@ -2,18 +2,24 @@
 window.toggleTheme = function() {
   const isLight = document.documentElement.classList.toggle('light');
   const toglbl = document.getElementById('toglbl');
-  if (toglbl) toglbl.textContent = isLight ? '🌙 Dark' : '☀ Light';
+  if (toglbl) toglbl.textContent = isLight ? '🌙 Switch to Dark' : '☀ Switch to Light';
   localStorage.setItem('saa-theme', isLight ? 'light' : 'dark');
 };
 
 (function() {
-  if (localStorage.getItem('saa-theme') !== 'dark') {
+  const _t = localStorage.getItem('saa-theme');
+  if (_t === 'dark') {
+    document.documentElement.classList.remove('light');
+  } else {
     document.documentElement.classList.add('light');
-    document.addEventListener('DOMContentLoaded', function() {
-      const l = document.getElementById('toglbl');
-      if (l) l.textContent = '🌙 Dark';
-    });
   }
+  document.addEventListener('DOMContentLoaded', function() {
+    const l = document.getElementById('toglbl');
+    if (l) {
+      const _isLight = document.documentElement.classList.contains('light');
+      l.textContent = _isLight ? '🌙 Switch to Dark' : '☀ Switch to Light';
+    }
+  });
 })();
 
 // ─── CARD TOGGLE ────────────────────────────────────────────
@@ -50,33 +56,30 @@ const DOMAINS = [
 let currentDomain = 0;
 
 window.showDomain = function(idx) {
-  // hide all domain sections
   document.querySelectorAll('.domain-section').forEach(s => s.classList.remove('active'));
-  const targetDomain = document.getElementById(DOMAINS[idx].id);
+  const targetDomain = document.getElementById('d' + idx);
   if (targetDomain) targetDomain.classList.add('active');
-  
-  // toggle domain tasks visibility
-  document.querySelectorAll('.dtasks').forEach((s, i) => s.classList.toggle('active', i === idx));
 
-  // update tabs
-  document.querySelectorAll('.dtab').forEach((t,i) => t.classList.toggle('active', i === idx));
-  
-  // update progress bar
-  const prog = document.getElementById('prog');
-  if (prog) prog.style.width = DOMAINS[idx].pct;
+  document.querySelectorAll('.dtasks').forEach((s, i) => s.classList.toggle('active', i === idx));
+  document.querySelectorAll('.dtab').forEach((t, i) => t.classList.toggle('active', i === idx));
 
   currentDomain = idx;
-  window.scrollTo({top:0, behavior:'smooth'});
+  if (window.SAA) window.SAA.setDomain(idx);
+  window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
 // init
 document.addEventListener('DOMContentLoaded', function() {
   window.showDomain(0);
-  // open first card in each task section
-  document.querySelectorAll('.task-section').forEach(sec => {
-    const first = sec.querySelector('.card');
-    if (first) first.classList.add('open');
-  });
+  // Open first card of each task section only on first visit.
+  // When SAA card-state is saved, the Phase 3 restore handles open/closed state.
+  const _pid = document.body.dataset.pageId || 'unknown';
+  if (!localStorage.getItem('saa-card-state-' + _pid)) {
+    document.querySelectorAll('.task-section').forEach(sec => {
+      const first = sec.querySelector('.card');
+      if (first) first.classList.add('open');
+    });
+  }
 });
 
 // smooth scroll for any in-page anchors (skip bare "#" hrefs)
@@ -182,7 +185,7 @@ window.addEventListener('scroll', () => {
 
   // Scroll-to-top button visibility
   const btn = document.getElementById('scrollTopBtn');
-  if (btn) btn.classList.toggle('visible', window.scrollY > 300);
+  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
 });
 
 // Extend showDomain to also rebuild TOC, update progress, and reset expand state

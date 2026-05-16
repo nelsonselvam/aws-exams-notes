@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AWS DVA-C02 — Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../assets/css/saa-enhancements.css" />
+<link rel="stylesheet" href="../../assets/css/style.css" />
+<script>(function(){var h=document.documentElement,s=localStorage.getItem('saa-theme');if(s==='dark'){h.classList.remove('light');}else if(!s){var n=new Date(),hr=n.getHours()+n.getMinutes()/60,ss=[17.5,18,18.5,19.5,20,20.5,20.5,20,19,18,17.5,17];if(hr>=ss[n.getMonth()]||hr<6){h.classList.remove('light');}}})();</script>
+</head>
+<body data-page-id="dva-c02" data-domain="0" data-page-title="AWS DVA-C02 — Developer Associate Study Guide">
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header>
+  <div class="hdr-inner">
+    <div class="hdr-text">
+      <a href="https://docs.aws.amazon.com/aws-certification/latest/developer-associate-02/developer-associate-02.html" target="_blank" class="exam-badge">AWS Certified Developer — Associate · DVA-C02</a>
+      <h1>Complete Study Guide<br/><em>All Four Domains</em></h1>
+      <div class="hdr-meta">
+        <span>📋 Domains: <strong>4</strong></span>
+        <span>⚡ Pass Score: <strong>720 / 1000</strong></span>
+        <span>❓ Scored Questions: <strong>50</strong></span>
+      </div>
+    </div>
+    <div class="hdr-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" aria-label="AWS Certified Developer Associate">
+        <defs>
+          <linearGradient id="hdr-g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF9900"/>
+            <stop offset="100%" stop-color="#FFC300"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#1b2536" stroke="url(#hdr-g)" stroke-width="3.5"/>
+        <polygon points="50,14 82,32.5 82,67.5 50,86 18,67.5 18,32.5" fill="none" stroke="url(#hdr-g)" stroke-width="1.2" opacity="0.45"/>
+        <text x="50" y="48" text-anchor="middle" fill="#FF9900" font-size="22" font-weight="900" font-family="Arial Black,Arial,sans-serif">AWS</text>
+        <text x="50" y="59.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-family="Arial,sans-serif" letter-spacing="1.8">CERTIFIED</text>
+        <text x="50" y="71" text-anchor="middle" fill="#FF9900" font-size="7" font-family="Arial,sans-serif">Developer</text>
+        <text x="50" y="81" text-anchor="middle" fill="#8fa3b8" font-size="5.2" font-family="Arial,sans-serif" letter-spacing="0.6">ASSOCIATE</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="dom-link">← All Guides</a>
+    <span class="nav-sep">DVA-C02</span>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="toglbl">🌙 Switch to Dark</span>
+      <div class="tog-track"><div class="tog-thumb"></div></div>
+    </button>
+  </div>
+  <div class="nav-domains">
+    <div class="dtab active" onclick="showDomain(0)">D1 — Development <small>32%</small></div>
+    <div class="dtab" onclick="showDomain(1)">D2 — Security <small>26%</small></div>
+    <div class="dtab" onclick="showDomain(2)">D3 — Deployment <small>24%</small></div>
+    <div class="dtab" onclick="showDomain(3)">D4 — Troubleshooting <small>18%</small></div>
+  </div>
+  <div class="nav-subtasks dtasks active" id="tasks-d0">
+    <a href="#t11" class="tlink">1.1 — App Development Patterns</a>
+    <a href="#t12" class="tlink">1.2 — AWS Lambda</a>
+    <a href="#t13" class="tlink">1.3 — Data Stores</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d1">
+    <a href="#t21" class="tlink">2.1 — Authentication &amp; Authorization</a>
+    <a href="#t22" class="tlink">2.2 — Encryption</a>
+    <a href="#t23" class="tlink">2.3 — Sensitive Data</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d2">
+    <a href="#t31" class="tlink">3.1 — Prepare Artifacts</a>
+    <a href="#t32" class="tlink">3.2 — Test Applications</a>
+    <a href="#t33" class="tlink">3.3 — Automate Testing</a>
+    <a href="#t34" class="tlink">3.4 — CI/CD Services</a>
+  </div>
+  <div class="nav-subtasks dtasks" id="tasks-d3">
+    <a href="#t41" class="tlink">4.1 — Root Cause Analysis</a>
+    <a href="#t42" class="tlink">4.2 — Observability</a>
+    <a href="#t43" class="tlink">4.3 — Optimization</a>
+  </div>
+  <div class="nav-progress"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+</nav>
+
+<!-- ════════════════════ MAIN ════════════════════ -->
+<main>
+
+<div class="content-wrapper">
+
+<div class="content-toolbar">
+  <input type="text" id="globalSearch" placeholder="Search concepts (Ctrl+K)..." />
+  <button id="toggleAllCardsBtn" onclick="toggleAllCards()">Expand All</button>
+  <button id="quizModeBtn" onclick="toggleQuizMode()" style="background:var(--accent); color:#fff; border:none;">Quiz Mode</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     DOMAIN 1: DEVELOPMENT WITH AWS SERVICES
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section active" id="d0">
+  <div class="domain-intro">
+    <h2>Domain 1 Overview</h2>
+    <p>Develop, test, and maintain applications on AWS. Covers architectural patterns, AWS SDKs and APIs, messaging and event-driven services, Lambda development, and data store integration. The highest-weighted domain at 32%.</p>
+    <span class="wt-badge">⚡ 32% of scored content — Highest weighted domain</span>
+  </div>
+
+  <!-- Task 1.1 -->
+  <section class="task-section" id="t11">
+    <div class="task-header">
+      <div class="task-badge">Task 1.1</div>
+      <div class="task-title">
+        <h2>Develop Code for Applications Hosted on AWS</h2>
+        <p>Architectural patterns, SDK usage, API design, messaging services, streaming, and event-driven patterns.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Describe architectural patterns (event-driven, microservices, monolithic, choreography, orchestration, fanout)</li>
+    <li>Describe differences between stateful/stateless and tightly/loosely coupled components</li>
+    <li>Describe differences between synchronous and asynchronous patterns</li>
+    <li>Write and run unit tests; write code that interacts with AWS services via APIs and SDKs</li>
+    <li>Use messaging services, handle streaming data, implement resilient application code</li>
+    <li>Use Amazon EventBridge for event-driven patterns; use Amazon Q Developer</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🏗️</span>
+        <span class="card-title">Architectural Patterns — Event-Driven, Microservices, Choreography vs. Orchestration</span>
+        <div class="tags"><span class="tag ti">Architecture</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">The DVA-C02 exam tests your ability to choose the right architectural pattern for a given scenario. Understand the tradeoffs deeply.</p>
+        <div class="sec-lbl">Pattern Comparison</div>
+        <table class="tbl">
+          <tr><th>Pattern</th><th>Description</th><th>AWS Services</th><th>Best For</th></tr>
+          <tr><td>Monolithic</td><td>Single deployable unit; tightly coupled</td><td>EC2, Elastic Beanstalk</td><td>Simple apps, small teams, early stage</td></tr>
+          <tr><td>Microservices</td><td>Independent services with own data stores</td><td>ECS, EKS, Lambda, API GW</td><td>Scale independently, team autonomy</td></tr>
+          <tr><td>Event-Driven</td><td>Components react to events asynchronously</td><td>EventBridge, SNS, SQS, Lambda</td><td>Decoupled, scalable workflows</td></tr>
+          <tr><td>Fanout</td><td>One publisher → multiple subscribers</td><td>SNS → SQS queues</td><td>Parallel processing of same event</td></tr>
+        </table>
+        <div class="sec-lbl">Choreography vs. Orchestration</div>
+        <table class="tbl">
+          <tr><th></th><th>Choreography</th><th>Orchestration</th></tr>
+          <tr><td>Control</td><td>Decentralized — each service reacts to events</td><td>Centralized — one service directs the flow</td></tr>
+          <tr><td>Coupling</td><td>Loose — services don't know each other</td><td>Tighter — orchestrator knows all services</td></tr>
+          <tr><td>AWS Service</td><td>EventBridge, SNS, SQS</td><td>AWS Step Functions</td></tr>
+          <tr><td>Visibility</td><td>Harder to trace the full workflow</td><td>Full execution history &amp; audit trail</td></tr>
+          <tr><td>Best for</td><td>Simple, independent workflows</td><td>Complex multi-step processes with error handling</td></tr>
+        </table>
+        <div class="ex"><div class="xl">Fanout Pattern</div><p>An e-commerce order event is published to an SNS topic. Three SQS queues subscribe: one for inventory, one for shipping, one for email notifications. All three process the order <strong>in parallel</strong>. This is the classic SNS fanout pattern — one message, multiple independent consumers.</p></div>
+        <div class="sec-lbl">Stateful vs. Stateless</div>
+        <ul class="bl">
+          <li><strong>Stateless:</strong> No session data stored in the application instance — any request can go to any instance. Store state externally (DynamoDB, ElastiCache, S3). Lambda functions are stateless by design.</li>
+          <li><strong>Stateful:</strong> Session data in memory — the same client must hit the same instance. Requires sticky sessions (ALB) or session replication. Harder to scale horizontally.</li>
+        </ul>
+        <div class="sec-lbl">Tight vs. Loose Coupling</div>
+        <ul class="bl">
+          <li><strong>Tightly coupled:</strong> Service A calls Service B synchronously and waits. If B fails, A fails. Direct function calls or synchronous HTTP are examples.</li>
+          <li><strong>Loosely coupled:</strong> Service A sends a message to a queue or topic and continues. B processes when ready. SQS, SNS, and EventBridge enable loose coupling.</li>
+        </ul>
+        <div class="sec-lbl">Sync vs. Async Patterns</div>
+        <table class="tbl">
+          <tr><th>Synchronous</th><th>Asynchronous</th></tr>
+          <tr><td>Caller waits for response</td><td>Caller fires and continues</td></tr>
+          <tr><td>REST API calls, Lambda invoked by API GW</td><td>SQS, SNS, EventBridge, Lambda async invoke</td></tr>
+          <tr><td>Immediate feedback</td><td>Better scalability and resilience</td></tr>
+          <tr><td>Timeout risk under load</td><td>Backpressure handled by queue depth</td></tr>
+        </table>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Mnemonic — CHESS:</strong> <strong>C</strong>horeography = each service reacts. <strong>H</strong>ard to trace. <strong>E</strong>ventBridge/SNS. <strong>S</strong>tep Functions = <strong>S</strong>tate machine for orchestration.</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Long-running multi-step workflow"</strong> → Step Functions Standard. <strong>"Multiple services react to same event"</strong> → SNS fanout to SQS. <strong>"Decouple producer from consumer"</strong> → SQS. <strong>"Route events based on rules"</strong> → EventBridge.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Microservices are always better than monolithic" — <strong>FALSE</strong>; microservices add operational complexity. For simple apps, a monolith is appropriate.</li>
+              <li>"Lambda functions are stateful within their execution environment" — <strong>PARTIALLY TRUE</strong>; the execution context can be reused between warm invocations, but you cannot rely on it. Store durable state externally.</li>
+              <li>"Choreography is better than orchestration because it's loosely coupled" — <strong>CONTEXT-DEPENDENT</strong>; orchestration (Step Functions) is preferred when you need visibility, error handling, and complex branching logic.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔧</span>
+        <span class="card-title">AWS SDK, APIs &amp; Credential Chain</span>
+        <div class="tags"><span class="tag ti">SDK</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Every interaction with AWS from code goes through the SDK. Understanding the credential resolution chain and retry behavior is critical for DVA-C02.</p>
+        <div class="sec-lbl">SDK Credential Resolution Order (checked in order)</div>
+        <ul class="bl">
+          <li><strong>1. Explicit in code</strong> — hardcoded (never do this in production)</li>
+          <li><strong>2. Environment variables</strong> — <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code></li>
+          <li><strong>3. AWS credentials file</strong> — <code>~/.aws/credentials</code> (default profile)</li>
+          <li><strong>4. AWS config file</strong> — <code>~/.aws/config</code></li>
+          <li><strong>5. Container credentials</strong> — ECS task role via metadata endpoint</li>
+          <li><strong>6. Instance profile</strong> — EC2 IAM Role via IMDS (<code>169.254.169.254</code>)</li>
+        </ul>
+        <div class="sec-lbl">Retry Logic &amp; Exponential Backoff</div>
+        <ul class="bl">
+          <li>AWS SDKs automatically retry on retryable errors (e.g., throttling <code>ThrottlingException</code>, server errors 5xx)</li>
+          <li><strong>Exponential backoff:</strong> Wait 2<sup>n</sup> seconds × random jitter between retries — prevents thundering herd</li>
+          <li>Non-retryable errors (4xx like <code>AccessDeniedException</code>) are NOT retried by the SDK</li>
+          <li>When you receive <code>ProvisionedThroughputExceededException</code> from DynamoDB or SQS throttling, implement backoff in your code</li>
+        </ul>
+        <div class="sec-lbl">Common API Patterns</div>
+        <table class="tbl">
+          <tr><th>Pattern</th><th>Description</th><th>Example</th></tr>
+          <tr><td>Paginator</td><td>Auto-handles NextToken pagination</td><td><code>list_objects_v2</code> on large S3 buckets</td></tr>
+          <tr><td>Waiter</td><td>Poll until resource reaches target state</td><td>Wait for EC2 instance to be running</td></tr>
+          <tr><td>Presigned URL</td><td>Temporary, signed URL for S3 access</td><td>Upload/download without credentials</td></tr>
+          <tr><td>Batch operations</td><td>Reduce API calls by batching</td><td>DynamoDB BatchWriteItem, SQS SendMessageBatch</td></tr>
+        </table>
+        <pre><span class="cm">// Example: S3 presigned URL generation (Python boto3)</span>
+s3 = boto3.client(<span class="vl">'s3'</span>)
+url = s3.generate_presigned_url(
+    <span class="vl">'get_object'</span>,
+    Params={<span class="vl">'Bucket'</span>: <span class="vl">'my-bucket'</span>, <span class="vl">'Key'</span>: <span class="vl">'file.pdf'</span>},
+    ExpiresIn=<span class="vl">3600</span>  <span class="cm"># URL valid for 1 hour</span>
+)</pre>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Never hardcode credentials.</strong> On EC2 → use IAM Role. On Lambda → use execution role. On ECS → use task role. The SDK resolves credentials in the chain order above automatically.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"SDK retries all errors automatically" — <strong>FALSE</strong>; only retryable errors (5xx, throttling). AccessDenied (403) is not retried.</li>
+              <li>"Presigned URLs can be used to grant permanent access to S3 objects" — <strong>FALSE</strong>; they are time-limited (max 7 days for SDK-generated, 12h for STS-based).</li>
+              <li>"Environment variable credentials override instance profile credentials" — <strong>TRUE</strong>; they are checked earlier in the chain (position 2 vs 6).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🌐</span>
+        <span class="card-title">Amazon API Gateway — REST, HTTP &amp; WebSocket APIs</span>
+        <div class="tags"><span class="tag tn">API Gateway</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">API Gateway is the front door for serverless applications. The DVA-C02 exam tests all three API types, authorization methods, stages, and caching.</p>
+        <div class="sec-lbl">API Types Compared</div>
+        <table class="tbl">
+          <tr><th>Feature</th><th>REST API</th><th>HTTP API</th><th>WebSocket API</th></tr>
+          <tr><td>Protocol</td><td>HTTP/HTTPS</td><td>HTTP/HTTPS</td><td>WebSocket</td></tr>
+          <tr><td>Cost</td><td>Higher</td><td>~70% cheaper</td><td>Per message/connection</td></tr>
+          <tr><td>Features</td><td>Full-featured (caching, WAF, usage plans)</td><td>Lightweight, low-latency</td><td>Persistent connections</td></tr>
+          <tr><td>Auth</td><td>Lambda, Cognito, IAM, API Keys</td><td>Lambda, Cognito, IAM</td><td>Lambda authorizer</td></tr>
+          <tr><td>Best for</td><td>APIs needing advanced features</td><td>Simple proxies, microservices</td><td>Real-time (chat, notifications)</td></tr>
+        </table>
+        <div class="sec-lbl">Authorization Methods</div>
+        <table class="tbl">
+          <tr><th>Authorizer Type</th><th>How It Works</th><th>Use Case</th></tr>
+          <tr><td>IAM Authorization</td><td>Caller signs request with Sig V4</td><td>Internal AWS service-to-service</td></tr>
+          <tr><td>Cognito User Pool</td><td>Validates JWT from Cognito</td><td>Web/mobile apps with Cognito login</td></tr>
+          <tr><td>Lambda Authorizer (Token)</td><td>Lambda receives Bearer token, returns IAM policy</td><td>Custom JWT, OAuth, 3rd-party IdP</td></tr>
+          <tr><td>Lambda Authorizer (Request)</td><td>Lambda receives full request (headers, query)</td><td>Complex auth logic, IP allow-listing</td></tr>
+          <tr><td>API Key</td><td>Key sent in header; not authentication — use for rate limiting</td><td>Usage plans, partner throttling</td></tr>
+        </table>
+        <div class="sec-lbl">Stages &amp; Stage Variables</div>
+        <ul class="bl">
+          <li>Stages are named snapshots of your API (e.g., <code>dev</code>, <code>staging</code>, <code>prod</code>)</li>
+          <li><strong>Stage variables</strong> are key-value pairs like environment variables — referenced as <code>${stageVariables.lambdaAlias}</code> in integrations</li>
+          <li>Use stage variables to point different stages to different Lambda aliases or backends without changing the API definition</li>
+          <li><strong>Canary deployments:</strong> Route a % of traffic to new deployment for testing before full release</li>
+        </ul>
+        <div class="sec-lbl">Caching &amp; Throttling</div>
+        <ul class="bl">
+          <li><strong>API Gateway cache:</strong> Caches responses per stage; configurable TTL (0–3600s); reduces Lambda invocations for repeated identical requests</li>
+          <li><strong>Throttling:</strong> Default 10,000 RPS per account; per-method throttling possible via usage plans</li>
+          <li>Returns <code>429 Too Many Requests</code> when throttled</li>
+        </ul>
+        <div class="ex"><div class="xl">Stage Variable Pattern</div><p>Your API has three stages. The Lambda integration URL uses <code>${stageVariables.lambdaAlias}</code>. In <code>dev</code> stage, the variable = <code>dev</code>. In <code>prod</code>, = <code>live</code>. Deploying a new Lambda version to the <code>dev</code> alias doesn't affect production — the same API definition routes to the correct Lambda alias per stage.</p></div>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Auth choice:</strong> Internal AWS service → IAM. Mobile/web app users → Cognito User Pool. Custom/3rd-party token → Lambda Authorizer. Rate-limiting partners → API Keys + Usage Plans.</p>
+        </div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"API Keys authenticate and authorize users" — <strong>FALSE</strong>; API Keys identify the calling application, not the user. They are used for throttling/metering, not security authorization.</li>
+              <li>"HTTP API supports caching and WAF integration" — <strong>FALSE</strong>; HTTP API is lightweight and does NOT support response caching or AWS WAF integration. Use REST API for these features.</li>
+              <li>"Caching is free" — <strong>FALSE</strong>; API Gateway caching is an additional charge based on cache size.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📨</span>
+        <span class="card-title">Messaging &amp; Eventing — SQS, SNS, EventBridge &amp; Fanout</span>
+        <div class="tags"><span class="tag ti">Messaging</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Understanding when to use SQS vs SNS vs EventBridge is a core DVA-C02 skill. Know the delivery model, ordering guarantees, and failure handling for each.</p>
+        <div class="sec-lbl">Service Comparison</div>
+        <table class="tbl">
+          <tr><th>Feature</th><th>SQS</th><th>SNS</th><th>EventBridge</th></tr>
+          <tr><td>Model</td><td>Pull (consumer polls)</td><td>Push (fan-out)</td><td>Push (rule-based routing)</td></tr>
+          <tr><td>Consumers</td><td>One consumer per message</td><td>Multiple subscribers</td><td>Multiple targets per rule</td></tr>
+          <tr><td>Persistence</td><td>Up to 14 days</td><td>No storage (fire &amp; forget)</td><td>No storage</td></tr>
+          <tr><td>Ordering</td><td>FIFO queue only</td><td>None</td><td>None</td></tr>
+          <tr><td>Exactly-once</td><td>FIFO only</td><td>No</td><td>No</td></tr>
+          <tr><td>Message size</td><td>256 KB</td><td>256 KB</td><td>256 KB</td></tr>
+        </table>
+        <div class="sec-lbl">SQS Key Concepts</div>
+        <ul class="bl">
+          <li><strong>Visibility Timeout:</strong> How long a message is hidden after being received. If processing doesn't finish &amp; delete within this window, the message becomes visible again → potential duplicate processing</li>
+          <li><strong>Dead-Letter Queue (DLQ):</strong> After <code>maxReceiveCount</code> failed processing attempts, message is moved to DLQ for investigation</li>
+          <li><strong>Long Polling:</strong> <code>WaitTimeSeconds</code> up to 20s — waits for messages instead of returning empty responses. Reduces API costs and false empties</li>
+          <li><strong>FIFO Queues:</strong> Exactly-once processing, strict ordering, max 3,000 TPS (with batching) — use Message Group ID for ordered processing per group</li>
+          <li><strong>Message Retention:</strong> Default 4 days, max 14 days</li>
+        </ul>
+        <div class="sec-lbl">SNS Fanout Pattern</div>
+        <div class="mermaid" style="margin:1rem 0;">
+graph LR
+  P["Publisher"] --> T["SNS Topic"]
+  T --> Q1["SQS Queue A\n(Inventory)"]
+  T --> Q2["SQS Queue B\n(Shipping)"]
+  T --> Q3["SQS Queue C\n(Email)"]
+  Q1 --> L1["Lambda\nProcessor"]
+  Q2 --> L2["Lambda\nProcessor"]
+  Q3 --> L3["Lambda\nProcessor"]
+        </div>
+        <div class="sec-lbl">Amazon EventBridge</div>
+        <ul class="bl">
+          <li>Serverless event bus — routes events based on content-based filtering rules</li>
+          <li><strong>Event sources:</strong> AWS services, SaaS partners (Zendesk, Shopify), custom apps</li>
+          <li><strong>Targets:</strong> Lambda, SQS, SNS, Step Functions, API GW, Kinesis, etc.</li>
+          <li><strong>Event Patterns:</strong> Filter events by source, detail-type, and any field in the event JSON</li>
+          <li><strong>Scheduled Rules (cron):</strong> Replace CloudWatch Events scheduled rules; run tasks on a schedule</li>
+          <li><strong>Event Buses:</strong> Default (AWS services), custom (your app events), partner (SaaS events)</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Route events to multiple targets based on rules</strong> → EventBridge. <strong>One message, multiple parallel consumers</strong> → SNS → SQS fanout. <strong>Ensure exactly-once ordered processing</strong> → SQS FIFO. <strong>Decouple and buffer with retry</strong> → SQS Standard + DLQ.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"SQS Standard guarantees at-most-once delivery" — <strong>FALSE</strong>; Standard provides at-least-once (duplicates can occur). Only FIFO provides exactly-once.</li>
+              <li>"If a Lambda function fails to process an SQS message, the message is automatically sent to DLQ" — <strong>FALSE</strong>; it goes to DLQ only after <code>maxReceiveCount</code> failures. The message is retried first.</li>
+              <li>"SNS stores messages if a subscriber is unavailable" — <strong>FALSE</strong>; SNS is fire-and-forget. If the subscriber (e.g., HTTP endpoint) is down, the message is lost. Use SQS subscriber to persist.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🌊</span>
+        <span class="card-title">Amazon Kinesis — Streaming Data</span>
+        <div class="tags"><span class="tag ta">Kinesis</span><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Kinesis enables real-time data streaming. Know the difference between the Kinesis products and when to use each vs SQS.</p>
+        <div class="sec-lbl">Kinesis Products</div>
+        <table class="tbl">
+          <tr><th>Service</th><th>Purpose</th><th>Consumers</th><th>Key Feature</th></tr>
+          <tr><td>Kinesis Data Streams (KDS)</td><td>Custom real-time processing</td><td>Multiple (Lambda, KCL, Analytics)</td><td>Configurable retention 1–365 days; ordered per shard</td></tr>
+          <tr><td>Kinesis Data Firehose</td><td>Load streaming data to destinations</td><td>S3, Redshift, OpenSearch, Splunk</td><td>Fully managed, no custom consumer code needed</td></tr>
+          <tr><td>Kinesis Data Analytics</td><td>Real-time SQL/Flink on streams</td><td>KDS or Firehose as source</td><td>Detect anomalies, aggregate, filter in real-time</td></tr>
+        </table>
+        <div class="sec-lbl">KDS Core Concepts</div>
+        <ul class="bl">
+          <li><strong>Shard:</strong> Unit of capacity — 1 MB/s write, 2 MB/s read per shard. Add shards to scale.</li>
+          <li><strong>Partition Key:</strong> Determines which shard receives the record. Use high-cardinality keys for even distribution</li>
+          <li><strong>Sequence Number:</strong> Unique per record per shard; ordered within a shard</li>
+          <li><strong>Enhanced Fan-Out:</strong> Dedicated 2 MB/s per consumer per shard using HTTP/2 push — for multiple high-throughput consumers</li>
+          <li>Lambda + KDS: Lambda polls via event source mapping; batch size configurable; bisect on error for failed batches</li>
+        </ul>
+        <div class="sec-lbl">Kinesis vs. SQS</div>
+        <table class="tbl">
+          <tr><th></th><th>Kinesis Data Streams</th><th>SQS</th></tr>
+          <tr><td>Multiple consumers</td><td>Yes — same data read by multiple consumers</td><td>No — message consumed by one consumer</td></tr>
+          <tr><td>Ordering</td><td>Ordered per shard</td><td>FIFO only (SQS FIFO)</td></tr>
+          <tr><td>Replay</td><td>Yes — replay up to retention period</td><td>No — messages deleted after processing</td></tr>
+          <tr><td>Use case</td><td>Real-time analytics, event replay, audit logs</td><td>Task queue, job distribution, decoupling</td></tr>
+        </table>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Multiple consumers process same data stream"</strong> → Kinesis. <strong>"Real-time clickstream analytics"</strong> → Kinesis. <strong>"Deliver streaming data to S3 without code"</strong> → Kinesis Firehose. <strong>"Decouple service X from service Y"</strong> → SQS.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Kinesis Firehose delivers data in real-time with sub-second latency" — <strong>FALSE</strong>; Firehose buffers data (minimum 60-second buffer interval or 1 MB) before delivering. It is near-real-time, not sub-second.</li>
+              <li>"Adding more shards to KDS increases read throughput for all consumers equally" — <strong>FALSE</strong> without Enhanced Fan-Out. With standard consumers, total read throughput is shared across consumers on the same shard (2 MB/s shared).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 1.1 -->
+    <div class="mcq-section" data-task="t11"></div>
+  </section><!-- /task 1.1 -->
+
+  <!-- Task 1.2 -->
+  <section class="task-section" id="t12">
+    <div class="task-header">
+      <div class="task-badge">Task 1.2</div>
+      <div class="task-title">
+        <h2>Develop Code for AWS Lambda</h2>
+        <p>Lambda fundamentals, configuration, event sources, error handling, VPC access, and performance tuning.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Describe access to private resources in VPCs from Lambda code</li>
+    <li>Configure Lambda functions: environment variables, memory, concurrency, timeout, runtime, handler, layers, extensions, triggers, destinations</li>
+    <li>Handle the event lifecycle and errors using code (Lambda Destinations, dead-letter queues)</li>
+    <li>Write and run test code; integrate Lambda with AWS services</li>
+    <li>Tune Lambda functions for optimal performance; process and transform data in near real time</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">λ</span>
+        <span class="card-title">Lambda Fundamentals — Execution Model &amp; Cold Starts</span>
+        <div class="tags"><span class="tag ti">Lambda</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Lambda is the core of serverless development on AWS. Understanding its execution lifecycle, concurrency model, and cold start behavior is essential.</p>
+        <div class="sec-lbl">Execution Lifecycle</div>
+        <ul class="bl">
+          <li><strong>Init phase:</strong> Download code, start runtime, run initialization code outside handler. Happens on cold start. Keep this fast.</li>
+          <li><strong>Invoke phase:</strong> Run the handler function. Called for every invocation.</li>
+          <li><strong>Shutdown phase:</strong> Runtime receives shutdown signal; run cleanup extensions.</li>
+        </ul>
+        <div class="sec-lbl">Cold Start vs. Warm Start</div>
+        <table class="tbl">
+          <tr><th></th><th>Cold Start</th><th>Warm Start</th></tr>
+          <tr><td>When</td><td>First invocation or after scale-out/idle</td><td>Reuse of existing execution environment</td></tr>
+          <tr><td>Latency</td><td>Higher (100ms–several seconds, depending on runtime)</td><td>Near-zero overhead</td></tr>
+          <tr><td>Init code runs?</td><td>Yes</td><td>No</td></tr>
+          <tr><td>Global variables cached?</td><td>No (fresh environment)</td><td>Yes (reused from previous invocation)</td></tr>
+        </table>
+        <div class="sec-lbl">Handler Structure</div>
+        <pre><span class="cm"># Python handler — event is the trigger payload, context has metadata</span>
+<span class="kw">def</span> lambda_handler(event, context):
+    print(context.function_name)
+    print(context.get_remaining_time_in_millis())
+    <span class="kw">return</span> {
+        <span class="vl">"statusCode"</span>: <span class="vl">200</span>,
+        <span class="vl">"body"</span>: <span class="vl">"Hello from Lambda"</span>
+    }</pre>
+        <div class="sec-lbl">Key Configuration Parameters</div>
+        <table class="tbl">
+          <tr><th>Parameter</th><th>Range / Default</th><th>Impact</th></tr>
+          <tr><td>Memory</td><td>128 MB – 10,240 MB</td><td>CPU and network bandwidth scale proportionally with memory</td></tr>
+          <tr><td>Timeout</td><td>3s default, max 15 min</td><td>Function killed if exceeded; set higher than p99 duration</td></tr>
+          <tr><td>Ephemeral Storage (/tmp)</td><td>512 MB – 10,240 MB</td><td>Temporary file storage within execution environment</td></tr>
+          <tr><td>Concurrency</td><td>Default account limit: 1,000</td><td>Max simultaneous executions across all functions</td></tr>
+        </table>
+        <div class="sec-lbl">Performance Optimization Tips</div>
+        <ul class="bl">
+          <li><strong>Initialize outside handler:</strong> DB connections, SDK clients, config loading — cached across warm invocations</li>
+          <li><strong>Right-size memory:</strong> More memory = more CPU = faster execution. AWS Lambda Power Tuning tool finds optimal setting</li>
+          <li><strong>Minimize deployment package size:</strong> Faster cold starts; use Layers for shared dependencies</li>
+          <li><strong>Avoid recursive invocations:</strong> Lambda calling Lambda in a loop can rapidly exhaust concurrency and cause runaway costs</li>
+        </ul>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Cold start optimization rule:</strong> Move everything you can <strong>outside</strong> the handler. Connections, clients, and config load once on cold start, then are reused across warm invocations.</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Eliminate cold starts entirely</strong> → Provisioned Concurrency (pre-warms N execution environments). <strong>Java cold starts are long</strong> → use Lambda SnapStart (snapshots initialized environment). <strong>"Function needs more CPU"</strong> → increase memory allocation.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Lambda timeout is 15 minutes by default" — <strong>FALSE</strong>; default is 3 seconds. 15 minutes is the maximum.</li>
+              <li>"Increasing Lambda memory only helps memory-bound functions" — <strong>FALSE</strong>; memory also increases allocated vCPU, so CPU-bound functions also benefit.</li>
+              <li>"Global variables persist indefinitely between invocations" — <strong>FALSE</strong>; they persist only within the same execution environment instance. New instances start fresh.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔗</span>
+        <span class="card-title">Lambda Event Sources, Triggers &amp; Concurrency</span>
+        <div class="tags"><span class="tag ti">Lambda</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Invocation Types</div>
+        <table class="tbl">
+          <tr><th>Type</th><th>Behavior</th><th>Retry on failure</th><th>Triggered by</th></tr>
+          <tr><td>Synchronous</td><td>Caller waits for response</td><td>No (caller handles errors)</td><td>API GW, ALB, SDK invoke, Cognito triggers</td></tr>
+          <tr><td>Asynchronous</td><td>Lambda queues event, returns 202 immediately</td><td>Up to 2 retries (auto)</td><td>S3 events, SNS, EventBridge, SES</td></tr>
+          <tr><td>Event Source Mapping (poll-based)</td><td>Lambda polls the source on your behalf</td><td>Retries until success or expiry</td><td>SQS, Kinesis, DynamoDB Streams, MSK</td></tr>
+        </table>
+        <div class="sec-lbl">Concurrency Types</div>
+        <table class="tbl">
+          <tr><th>Type</th><th>Purpose</th><th>Behavior</th></tr>
+          <tr><td>Unreserved Concurrency</td><td>Default — shared pool across all functions</td><td>Throttles when account limit reached</td></tr>
+          <tr><td>Reserved Concurrency</td><td>Guarantee max N for one function; cap others</td><td>Function cannot exceed N; other functions cannot use N</td></tr>
+          <tr><td>Provisioned Concurrency</td><td>Pre-initialize N environments to eliminate cold starts</td><td>Costs money even when idle; enables smooth scaling</td></tr>
+        </table>
+        <div class="ex"><div class="xl">Reserved Concurrency as a Throttle</div><p>You have a Lambda that processes SQS messages and writes to RDS. RDS max connections = 100. Setting Lambda's reserved concurrency to 50 ensures at most 50 concurrent DB connections, protecting RDS from connection storms during traffic spikes. The RDS Proxy is also a solution but reserved concurrency is simpler to configure.</p></div>
+        <div class="sec-lbl">Event Source Mapping (SQS, Kinesis, DDB Streams)</div>
+        <ul class="bl">
+          <li>Lambda polls the source and invokes your function with a <strong>batch</strong> of records</li>
+          <li><strong>Batch size:</strong> SQS (1–10,000), Kinesis (1–10,000), DDB Streams (1–10,000)</li>
+          <li><strong>Batch window:</strong> Lambda waits up to N seconds to fill a batch before invoking</li>
+          <li><strong>On failure:</strong> For SQS, failed batch items are returned to queue. Use <strong>bisect on error</strong> to split batches and isolate poison pill messages</li>
+          <li><strong>Partial Batch Response:</strong> Return <code>batchItemFailures</code> to tell Lambda which items failed — only those are retried</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Lambda hammering RDS with connections"</strong> → Set reserved concurrency OR use RDS Proxy. <strong>"Cold start latency for critical path"</strong> → Provisioned Concurrency. <strong>"Lambda should not exceed X invocations"</strong> → Reserved Concurrency.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Reserved Concurrency eliminates cold starts" — <strong>FALSE</strong>; Provisioned Concurrency eliminates cold starts. Reserved only caps concurrency.</li>
+              <li>"S3 event notifications invoke Lambda synchronously" — <strong>FALSE</strong>; S3 invokes Lambda asynchronously. The call returns immediately and Lambda retries on failure.</li>
+              <li>"SQS FIFO queues support exactly-once Lambda processing automatically" — <strong>PARTIALLY TRUE</strong>; FIFO provides exactly-once delivery, but your Lambda handler must still be idempotent for robustness.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🚨</span>
+        <span class="card-title">Lambda Error Handling — DLQ, Destinations &amp; Retry Behavior</span>
+        <div class="tags"><span class="tag ti">Lambda</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Async Invocation Retry &amp; DLQ</div>
+        <ul class="bl">
+          <li>On failure, Lambda retries async invocations <strong>up to 2 times</strong> (3 total attempts)</li>
+          <li>Events can wait in the async event queue for up to <strong>6 hours</strong></li>
+          <li><strong>DLQ:</strong> Configure an SQS queue or SNS topic as the DLQ. Failed events (after all retries) are sent here for investigation</li>
+          <li>DLQ only captures the <strong>final failure</strong>; Lambda Destinations capture success OR failure at each attempt</li>
+        </ul>
+        <div class="sec-lbl">Lambda Destinations (preferred over DLQ)</div>
+        <table class="tbl">
+          <tr><th>Destination Type</th><th>On Success</th><th>On Failure</th></tr>
+          <tr><td>SQS Queue</td><td>✅</td><td>✅</td></tr>
+          <tr><td>SNS Topic</td><td>✅</td><td>✅</td></tr>
+          <tr><td>EventBridge Bus</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Another Lambda Function</td><td>✅</td><td>❌</td></tr>
+        </table>
+        <div class="ex"><div class="xl">DLQ vs. Destinations</div><p>DLQ: only captures the event payload when all retries are exhausted. Lambda Destinations: sends a richer record (original event + function response/error + execution context) for <em>both success and failure</em> conditions. Destinations are more flexible and are the modern recommendation.</p></div>
+        <div class="sec-lbl">Error Handling in Event Source Mappings</div>
+        <ul class="bl">
+          <li><strong>Kinesis/DDB Streams:</strong> If batch fails, Lambda retries the entire batch until success OR the data expires from the stream. Risk of blocking the shard. Configure <code>bisectBatchOnFunctionError</code> to split the batch and isolate poison pills.</li>
+          <li><strong>SQS:</strong> Failed messages return to queue and become visible after visibility timeout. After <code>maxReceiveCount</code>, moved to DLQ.</li>
+          <li><strong>Partial Batch Response (SQS/Kinesis):</strong> Return <code>{"batchItemFailures": [{"itemIdentifier": "..."}]}</code> to retry only specific messages, not the whole batch</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Modern pattern:</strong> Use Lambda Destinations over DLQ for async functions — you get richer metadata and can route success and failure independently. Use DLQ for simplicity or SQS event source mapping failures.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"DLQ works for all Lambda invocation types" — <strong>FALSE</strong>; DLQ only works for async invocations. For event source mappings (SQS/Kinesis), configure the source's own DLQ.</li>
+              <li>"Lambda automatically retries synchronous invocations" — <strong>FALSE</strong>; with synchronous invocations, the caller receives the error and must implement its own retry logic.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔒</span>
+        <span class="card-title">Lambda in VPC, Layers &amp; Environment Variables</span>
+        <div class="tags"><span class="tag ti">Lambda</span><span class="tag tn">VPC</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Lambda in VPC</div>
+        <ul class="bl">
+          <li>By default, Lambda runs in an AWS-managed VPC with internet access but no access to your private VPC resources (RDS, ElastiCache, internal ALBs)</li>
+          <li>Configure Lambda with VPC subnets + security groups → Lambda creates an <strong>ENI (Elastic Network Interface)</strong> in your subnet</li>
+          <li><strong>Internet access in VPC:</strong> Lambda in a private subnet needs a <strong>NAT Gateway</strong> to reach the internet. Lambda in a VPC does NOT get internet access via a public subnet without NAT</li>
+          <li><strong>VPC Endpoints:</strong> Use to privately access AWS services (S3, DynamoDB) from Lambda-in-VPC without NAT Gateway</li>
+        </ul>
+        <div class="sec-lbl">Lambda Layers</div>
+        <ul class="bl">
+          <li>Layers are ZIP archives containing libraries, a custom runtime, or data — shared across multiple functions</li>
+          <li>Up to <strong>5 layers</strong> per function; combined unzipped size ≤ 250 MB</li>
+          <li>Common use: Share boto3, numpy, pandas, or common utility code across Lambda functions</li>
+          <li>Layers are versioned — reference a specific layer version ARN in your function config</li>
+        </ul>
+        <div class="sec-lbl">Environment Variables</div>
+        <ul class="bl">
+          <li>Key-value pairs available to function code via <code>os.environ</code> (Python) or <code>process.env</code> (Node.js)</li>
+          <li>Encrypted at rest using KMS (Lambda service key by default, or your CMK)</li>
+          <li><strong>Do NOT store plaintext secrets in environment variables</strong> — use Secrets Manager or SSM Parameter Store and fetch at init time</li>
+          <li>Max 4 KB total for all environment variables combined</li>
+        </ul>
+        <div class="sec-lbl">Lambda Extensions</div>
+        <ul class="bl">
+          <li>Run alongside the Lambda function in the same execution environment</li>
+          <li>Use cases: monitoring agents, security agents, secret rotation, log forwarding (e.g., Datadog, New Relic agents)</li>
+          <li>Internal extensions: run in the same process. External extensions: run as separate processes</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Lambda needs to access RDS in private subnet"</strong> → Configure Lambda with same VPC + security group allowing DB port. <strong>"Lambda needs to call external API but also access RDS in VPC"</strong> → Lambda in private subnet + NAT Gateway for external internet. <strong>"Share common library across 10 Lambda functions"</strong> → Lambda Layer.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Putting Lambda in a public subnet gives it internet access" — <strong>FALSE</strong>; Lambda in a VPC (even public subnet) does NOT get internet access automatically. You need a NAT Gateway in a public subnet, with Lambda in a private subnet routing to it.</li>
+              <li>"Lambda can have unlimited layers" — <strong>FALSE</strong>; maximum 5 layers per function.</li>
+              <li>"Lambda environment variables are always secure" — <strong>PARTIALLY TRUE</strong>; they are encrypted at rest with KMS, but plaintext secrets are visible to anyone with IAM GetFunctionConfiguration permission. Use Secrets Manager for true secrets.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 1.2 -->
+    <div class="mcq-section" data-task="t12"></div>
+  </section><!-- /task 1.2 -->
+
+  <!-- Task 1.3 -->
+  <section class="task-section" id="t13">
+    <div class="task-header">
+      <div class="task-badge">Task 1.3</div>
+      <div class="task-title">
+        <h2>Use Data Stores in Application Development</h2>
+        <p>DynamoDB, S3, RDS/Aurora, ElastiCache, and specialized data stores — selection, access patterns, and caching.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Describe high-cardinality partition keys, database consistency models, and differences between query and scan operations</li>
+    <li>Define Amazon DynamoDB keys and indexing (LSI, GSI)</li>
+    <li>Serialize and deserialize data; manage data lifecycles</li>
+    <li>Use data caching services; use specialized data stores based on access patterns (e.g., Amazon OpenSearch Service)</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🗃️</span>
+        <span class="card-title">Amazon DynamoDB — Keys, Indexes &amp; Data Modeling</span>
+        <div class="tags"><span class="tag td">DynamoDB</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">DynamoDB is a fully managed NoSQL database. The DVA-C02 exam heavily tests data modeling, index selection, and read/write patterns.</p>
+        <div class="sec-lbl">Key Structure</div>
+        <table class="tbl">
+          <tr><th>Key Type</th><th>Components</th><th>Uniqueness</th></tr>
+          <tr><td>Simple Primary Key</td><td>Partition Key (PK) only</td><td>PK must be unique across all items</td></tr>
+          <tr><td>Composite Primary Key</td><td>Partition Key (PK) + Sort Key (SK)</td><td>PK+SK combo must be unique</td></tr>
+        </table>
+        <div class="sec-lbl">Indexes</div>
+        <table class="tbl">
+          <tr><th></th><th>LSI (Local Secondary Index)</th><th>GSI (Global Secondary Index)</th></tr>
+          <tr><td>Partition Key</td><td>Same as base table</td><td>Can be any attribute</td></tr>
+          <tr><td>Sort Key</td><td>Different from base table</td><td>Can be any attribute</td></tr>
+          <tr><td>Creation time</td><td>At table creation only</td><td>Anytime</td></tr>
+          <tr><td>Consistency</td><td>Strongly consistent reads supported</td><td>Eventually consistent only</td></tr>
+          <tr><td>Storage</td><td>Within same partition as base table</td><td>Separate partition space</td></tr>
+          <tr><td>Max per table</td><td>5</td><td>20</td></tr>
+        </table>
+        <div class="ex"><div class="xl">Single-Table Design Example</div><p>A social media app stores users and posts. PK = <code>USER#userId</code>, SK = <code>PROFILE</code> for user items. PK = <code>USER#userId</code>, SK = <code>POST#timestamp</code> for post items. One table, multiple entity types — query all posts for a user with a single Query operation.</p></div>
+        <div class="sec-lbl">Partition Key Selection</div>
+        <ul class="bl">
+          <li>High-cardinality keys = even data distribution across partitions = avoid hot partitions</li>
+          <li>Good: User ID, Order ID, Session ID (high cardinality, random distribution)</li>
+          <li>Bad: Country, Status, Boolean flag (low cardinality = hot partition)</li>
+          <li><strong>Write sharding:</strong> If you must use a low-cardinality key, append a random suffix (1-N) to distribute writes, then use a GSI or Query across shards to read</li>
+        </ul>
+        <div class="sec-lbl">Capacity Modes</div>
+        <table class="tbl">
+          <tr><th></th><th>Provisioned Mode</th><th>On-Demand Mode</th></tr>
+          <tr><td>Billing</td><td>Per RCU/WCU provisioned</td><td>Per request (read/write)</td></tr>
+          <tr><td>Predictability</td><td>Predictable traffic patterns</td><td>Unknown or variable traffic</td></tr>
+          <tr><td>Auto Scaling</td><td>Supported (but lags behind spikes)</td><td>Instant — no pre-planning</td></tr>
+        </table>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>LSI vs. GSI:</strong> <strong>L</strong>ocal = same partition key, <strong>L</strong>imited to creation time. <strong>G</strong>lobal = any key, <strong>G</strong>reat flexibility. If you might need different access patterns later, plan for GSIs at design time.</p>
+        </div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"GSIs support strongly consistent reads" — <strong>FALSE</strong>; GSIs are always eventually consistent. LSIs support both.</li>
+              <li>"You can add an LSI to an existing table" — <strong>FALSE</strong>; LSIs must be created with the table. GSIs can be added anytime.</li>
+              <li>"DynamoDB automatically distributes data evenly across partitions" — <strong>TRUE</strong> only if your partition key has high cardinality. A poorly chosen PK leads to hot partitions and throttling.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📖</span>
+        <span class="card-title">DynamoDB — Query vs. Scan, Consistency &amp; Advanced Features</span>
+        <div class="tags"><span class="tag td">DynamoDB</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Query vs. Scan</div>
+        <table class="tbl">
+          <tr><th></th><th>Query</th><th>Scan</th></tr>
+          <tr><td>Requires</td><td>Partition key value (mandatory)</td><td>Nothing (reads entire table)</td></tr>
+          <tr><td>Optional filter</td><td>Sort key condition + filter expression</td><td>Filter expression</td></tr>
+          <tr><td>Efficiency</td><td>Efficient — reads only matching items</td><td>Expensive — reads all items, filters after read</td></tr>
+          <tr><td>Cost</td><td>Low (reads proportional to results)</td><td>High (reads entire table)</td></tr>
+          <tr><td>Use</td><td>Production access pattern</td><td>Avoid in production; admin/migration use</td></tr>
+        </table>
+        <div class="sec-lbl">Consistency Models</div>
+        <table class="tbl">
+          <tr><th></th><th>Eventually Consistent</th><th>Strongly Consistent</th></tr>
+          <tr><td>Latency</td><td>Lower</td><td>Slightly higher</td></tr>
+          <tr><td>Cost</td><td>0.5 RCU per 4 KB</td><td>1 RCU per 4 KB</td></tr>
+          <tr><td>Reads latest data?</td><td>Not guaranteed (may see stale data)</td><td>Always latest committed data</td></tr>
+          <tr><td>Default</td><td>Yes</td><td>Opt-in via ConsistentRead=true</td></tr>
+        </table>
+        <div class="sec-lbl">DynamoDB Streams</div>
+        <ul class="bl">
+          <li>Ordered log of item-level changes (INSERT, MODIFY, REMOVE) — retained 24 hours</li>
+          <li>View types: KEYS_ONLY, NEW_IMAGE, OLD_IMAGE, NEW_AND_OLD_IMAGES</li>
+          <li>Trigger Lambda functions for change-data-capture patterns (e.g., update search index, send notification)</li>
+        </ul>
+        <div class="sec-lbl">DynamoDB Accelerator (DAX)</div>
+        <ul class="bl">
+          <li>In-memory cache specifically for DynamoDB — microsecond read latency (vs milliseconds)</li>
+          <li><strong>Fully API-compatible</strong> with DynamoDB SDK — change endpoint, no code rewrite needed</li>
+          <li>Cache hit: response from DAX. Cache miss: DAX reads from DynamoDB and caches result</li>
+          <li>Ideal for: read-heavy workloads, hot items, gaming leaderboards, social feeds</li>
+          <li>Does NOT help for write-heavy or strongly consistent read workloads</li>
+        </ul>
+        <div class="sec-lbl">TTL (Time to Live)</div>
+        <ul class="bl">
+          <li>Automatically deletes expired items based on a timestamp attribute — no charge for TTL deletes</li>
+          <li>Use for session data, temporary tokens, cart items with expiry</li>
+          <li>TTL deletions are eventually consistent — items may be visible for up to 48 hours after expiry</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"DynamoDB reads are slow"</strong> → Add DAX. <strong>"Need to trigger Lambda on table changes"</strong> → DynamoDB Streams + Lambda event source mapping. <strong>"Auto-expire session data"</strong> → TTL attribute. <strong>"Read only latest price for a product"</strong> → Query with ConsistentRead=true (pay double RCU).</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Scan with FilterExpression only reads filtered items" — <strong>FALSE</strong>; FilterExpression applies AFTER reading the data. You still pay for all read items before filtering — use Query instead.</li>
+              <li>"DAX works for all DynamoDB operations including Scan and transactional" — <strong>FALSE</strong>; DAX caches GetItem and Query results. Scans pass through DAX to DynamoDB. Transactional API calls bypass DAX.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🪣</span>
+        <span class="card-title">Amazon S3 — Developer Access Patterns</span>
+        <div class="tags"><span class="tag ts">S3</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Key Developer APIs</div>
+        <table class="tbl">
+          <tr><th>Feature</th><th>Description</th><th>Use Case</th></tr>
+          <tr><td>Presigned URL (GET)</td><td>Temporary URL to download object; no AWS credentials needed by caller</td><td>Share private files with users</td></tr>
+          <tr><td>Presigned URL (PUT)</td><td>Temporary URL to upload directly to S3 without going through your server</td><td>Client-side file uploads (browser, mobile)</td></tr>
+          <tr><td>Multipart Upload</td><td>Upload large files in parts (required &gt;5 GB, recommended &gt;100 MB)</td><td>Large file uploads with resume capability</td></tr>
+          <tr><td>S3 Select</td><td>SQL query to retrieve subset of data from CSV/JSON/Parquet object</td><td>Reduce data transfer for log analysis</td></tr>
+          <tr><td>Event Notifications</td><td>Trigger SNS, SQS, or Lambda on object events</td><td>Thumbnail generation, virus scanning</td></tr>
+        </table>
+        <div class="sec-lbl">Consistency Model</div>
+        <ul class="bl">
+          <li>S3 provides <strong>strong read-after-write consistency</strong> for new objects and overwrites (as of December 2020)</li>
+          <li>After a successful PUT, any GET of that key returns the latest version</li>
+          <li>Applies to both objects and object listings</li>
+        </ul>
+        <div class="sec-lbl">S3 Event Notifications</div>
+        <ul class="bl">
+          <li>Trigger on: s3:ObjectCreated:*, s3:ObjectRemoved:*, s3:Replication:*, etc.</li>
+          <li>Destinations: SQS, SNS, Lambda, EventBridge</li>
+          <li>For complex routing (multiple targets, filtering), use <strong>EventBridge</strong> as the destination — then route to multiple targets via EventBridge rules</li>
+        </ul>
+        <pre><span class="cm">// Presigned URL generation (SDK v3, JavaScript)</span>
+<span class="kw">const</span> { getSignedUrl } = require(<span class="vl">"@aws-sdk/s3-request-presigner"</span>);
+<span class="kw">const</span> url = await getSignedUrl(s3Client,
+  new GetObjectCommand({ Bucket, Key }),
+  { expiresIn: <span class="vl">3600</span> }
+);</pre>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"User uploads large file directly to S3"</strong> → Presigned PUT URL (server generates URL, client uploads directly — bypasses your server). <strong>"Trigger image resizing Lambda on upload"</strong> → S3 Event Notification → Lambda. <strong>"Multiple services need to react to the same S3 event"</strong> → S3 Event Notification → EventBridge → multiple targets.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"S3 is eventually consistent for new PUTs" — <strong>FALSE</strong> (post-2020); S3 now provides strong consistency for all operations including new object creation.</li>
+              <li>"Multipart upload can be used for objects less than 5 MB" — technically possible but not meaningful. Parts must be at least 5 MB (except last part).</li>
+              <li>"S3 event notifications can trigger multiple Lambda functions directly" — <strong>FALSE</strong>; each event configuration has one destination. Use SNS fanout or EventBridge for multiple targets.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">⚡</span>
+        <span class="card-title">Amazon ElastiCache — Caching Patterns &amp; RDS Connection Pooling</span>
+        <div class="tags"><span class="tag td">ElastiCache</span><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Redis vs. Memcached</div>
+        <table class="tbl">
+          <tr><th>Feature</th><th>Redis</th><th>Memcached</th></tr>
+          <tr><td>Data structures</td><td>Rich (lists, sets, sorted sets, hashes, bitmaps)</td><td>Simple key-value strings only</td></tr>
+          <tr><td>Persistence</td><td>Yes (RDB snapshots, AOF)</td><td>No (in-memory only)</td></tr>
+          <tr><td>Replication/HA</td><td>Yes (primary-replica, Multi-AZ)</td><td>No</td></tr>
+          <tr><td>Pub/Sub</td><td>Yes</td><td>No</td></tr>
+          <tr><td>Cluster mode</td><td>Yes (sharding)</td><td>Yes (multi-node, no replication)</td></tr>
+          <tr><td>Best for</td><td>Sessions, leaderboards, queues, complex caching</td><td>Simple caching, multi-threaded scale-out</td></tr>
+        </table>
+        <div class="sec-lbl">Caching Patterns</div>
+        <table class="tbl">
+          <tr><th>Pattern</th><th>Read Flow</th><th>Write Flow</th><th>Drawback</th></tr>
+          <tr><td>Lazy Loading (Cache-Aside)</td><td>Check cache → miss → read DB → store in cache</td><td>Write to DB only (cache updated on next miss)</td><td>Cache miss = 3 trips; potential stale data</td></tr>
+          <tr><td>Write-Through</td><td>Always read from cache</td><td>Write to DB AND cache simultaneously</td><td>Cache bloat (items written but never read)</td></tr>
+          <tr><td>Write-Behind (Write-Back)</td><td>Read from cache</td><td>Write to cache, async write to DB</td><td>Data loss risk if cache fails before DB write</td></tr>
+        </table>
+        <div class="sec-lbl">RDS Proxy</div>
+        <ul class="bl">
+          <li>Sits between your application and RDS — pools and multiplexes database connections</li>
+          <li>Critical for <strong>Lambda → RDS</strong>: Lambda can open thousands of concurrent connections during spikes; RDS Proxy limits actual DB connections</li>
+          <li>Reduces failover time for Aurora Multi-AZ by maintaining connections through DB failover</li>
+          <li>Supports MySQL, PostgreSQL, MariaDB, Aurora (not Oracle)</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Leaderboard with real-time rank"</strong> → Redis sorted set. <strong>"Lambda connecting to RDS causes too many connections"</strong> → RDS Proxy. <strong>"Cache frequently read DB results"</strong> → ElastiCache lazy loading (cache-aside). <strong>"Need HA cache with failover"</strong> → Redis with Multi-AZ enabled.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Memcached supports HA with primary-replica failover" — <strong>FALSE</strong>; Memcached is a distributed cache with no replication. If a node fails, that data is lost. Use Redis for HA.</li>
+              <li>"DAX and ElastiCache serve the same purpose" — <strong>FALSE</strong>; DAX is DynamoDB-specific and API-compatible. ElastiCache is a general-purpose cache for any backend. Use DAX for DynamoDB, ElastiCache for RDS/MySQL/etc.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 1.3 -->
+    <div class="mcq-section" data-task="t13"></div>
+  </section><!-- /task 1.3 -->
+
+</div><!-- /domain 0 -->
+
+<!-- ══════════════════════════════════════════════════════
+     DOMAIN 2: SECURITY
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d1">
+  <div class="domain-intro">
+    <h2>Domain 2 Overview</h2>
+    <p>Secure applications and data on AWS. Covers authentication and authorization (Cognito, IAM, STS), encryption at rest and in transit (KMS, ACM), and management of sensitive data (Secrets Manager, Parameter Store).</p>
+    <span class="wt-badge">⚡ 26% of scored content</span>
+  </div>
+
+  <!-- Task 2.1 -->
+  <section class="task-section" id="t21">
+    <div class="task-header">
+      <div class="task-badge">Task 2.1</div>
+      <div class="task-title">
+        <h2>Implement Authentication and/or Authorization</h2>
+        <p>IAM roles, Cognito User &amp; Identity Pools, bearer tokens, STS, programmatic access, and cross-service auth.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Use an identity provider to implement federated access (Amazon Cognito, IAM)</li>
+    <li>Secure applications by using bearer tokens; configure programmatic access to AWS</li>
+    <li>Assume an IAM role; define permissions for IAM principals</li>
+    <li>Implement application-level authorization for fine-grained access control</li>
+    <li>Handle cross-service authentication in microservice architectures</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔑</span>
+        <span class="card-title">IAM for Developers — Roles, STS &amp; Programmatic Access</span>
+        <div class="tags"><span class="tag ti">IAM</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Developers interact with IAM primarily through roles and the STS credential chain. Understanding how services assume roles and how temporary credentials flow is fundamental to DVA-C02.</p>
+        <div class="sec-lbl">SDK Credential Resolution Chain (in order)</div>
+        <ul class="bl">
+          <li><strong>1.</strong> Code-level credentials (never use in production)</li>
+          <li><strong>2.</strong> Environment variables: <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AWS_SESSION_TOKEN</code></li>
+          <li><strong>3.</strong> AWS credentials file: <code>~/.aws/credentials</code></li>
+          <li><strong>4.</strong> AWS config file: <code>~/.aws/config</code></li>
+          <li><strong>5.</strong> ECS container credentials (task role via metadata endpoint)</li>
+          <li><strong>6.</strong> EC2 Instance Profile / Lambda execution role (IMDS endpoint)</li>
+        </ul>
+        <div class="sec-lbl">Key STS API Calls</div>
+        <table class="tbl">
+          <tr><th>API</th><th>Use Case</th></tr>
+          <tr><td><code>AssumeRole</code></td><td>Cross-account or service-to-service, Lambda assume role</td></tr>
+          <tr><td><code>AssumeRoleWithWebIdentity</code></td><td>Federated via OIDC (Google, Amazon, GitHub Actions)</td></tr>
+          <tr><td><code>AssumeRoleWithSAML</code></td><td>Federated via enterprise IdP (ADFS, Okta) using SAML 2.0</td></tr>
+          <tr><td><code>GetSessionToken</code></td><td>Add MFA requirement to existing IAM user session</td></tr>
+        </table>
+        <div class="sec-lbl">IAM Policy Evaluation</div>
+        <ul class="bl">
+          <li>Default = implicit <strong>Deny</strong></li>
+          <li>Explicit <strong>Deny</strong> always wins — overrides any Allow</li>
+          <li>Action allowed only when: explicit Allow exists AND no Deny blocks it at any level (SCP → Permission Boundary → Identity Policy → Resource Policy)</li>
+        </ul>
+        <div class="ex"><div class="xl">Cross-Service Auth in Microservices</div><p>Service A (ECS task) calls Service B (Lambda via API Gateway). Pattern: ECS task has an IAM task role. Task calls STS AssumeRole to get temporary credentials for Service B's IAM role, or passes a signed request (Signature Version 4). The Lambda function's resource policy must allow Service A's role to invoke it.</p></div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Lambda execution role</strong> — the role the Lambda function assumes. Defined in <code>Role</code> in function config. <strong>Lambda resource-based policy</strong> — who can invoke the function (e.g., API Gateway, S3). Both must be correct for cross-service invocations.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"A Lambda function with an execution role can call any AWS API" — <strong>FALSE</strong>; the execution role must explicitly allow the specific API actions needed.</li>
+              <li>"IAM permissions boundaries grant additional permissions" — <strong>FALSE</strong>; boundaries only restrict the maximum permissions — they never grant by themselves.</li>
+              <li>"ECS task role and EC2 instance role are the same concept" — conceptually similar but different configuration. ECS uses <code>taskRoleArn</code> in the task definition.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">👤</span>
+        <span class="card-title">Amazon Cognito — User Pools vs. Identity Pools</span>
+        <div class="tags"><span class="tag ti">Cognito</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Cognito is the primary AWS service for application-level auth. The exam frequently tests the distinction between User Pools (authentication) and Identity Pools (authorization for AWS resources).</p>
+        <div class="sec-lbl">User Pools vs. Identity Pools</div>
+        <table class="tbl">
+          <tr><th></th><th>User Pools</th><th>Identity Pools (Federated Identities)</th></tr>
+          <tr><td>Purpose</td><td>User directory + authentication</td><td>Exchange any token for AWS credentials</td></tr>
+          <tr><td>Returns</td><td>JWT tokens (id, access, refresh)</td><td>Temporary STS credentials (IAM role)</td></tr>
+          <tr><td>Supported IdPs</td><td>Username/password, Google, Facebook, SAML, OIDC</td><td>Cognito User Pool, Google, Facebook, SAML, unauthenticated</td></tr>
+          <tr><td>AWS API access</td><td>No (tokens for app-level auth only)</td><td>Yes (STS creds for S3, DynamoDB, etc.)</td></tr>
+          <tr><td>Use case</td><td>Login for web/mobile app</td><td>Let users directly call AWS APIs (e.g., upload to S3)</td></tr>
+        </table>
+        <div class="sec-lbl">Cognito User Pool — JWT Tokens</div>
+        <ul class="bl">
+          <li><strong>ID Token:</strong> Contains user identity claims (sub, email, custom attributes). Verify with your API.</li>
+          <li><strong>Access Token:</strong> Authorize against Cognito APIs (e.g., update user attributes). Use as Bearer token in API Gateway Cognito authorizer.</li>
+          <li><strong>Refresh Token:</strong> Long-lived (default 30 days). Exchange for new id/access tokens without re-login.</li>
+        </ul>
+        <div class="sec-lbl">Common Integration Pattern</div>
+        <div class="mermaid" style="margin:1rem 0;">
+sequenceDiagram
+  participant User
+  participant UP as Cognito User Pool
+  participant IP as Cognito Identity Pool
+  participant S3
+  User->>UP: Login (username/password)
+  UP-->>User: JWT Tokens (id, access, refresh)
+  User->>IP: Exchange JWT for AWS credentials
+  IP-->>User: Temp STS credentials (IAM Role)
+  User->>S3: Upload file using STS credentials
+        </div>
+        <div class="sec-lbl">Lambda Triggers</div>
+        <ul class="bl">
+          <li><strong>Pre-signup:</strong> Validate or auto-confirm users during registration</li>
+          <li><strong>Pre-token generation:</strong> Add custom claims to tokens</li>
+          <li><strong>Post-authentication:</strong> Log or audit successful logins</li>
+          <li><strong>Custom message:</strong> Customize verification/MFA messages</li>
+          <li><strong>User migration:</strong> Migrate users from legacy system on first login</li>
+        </ul>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>User Pool = Who are you? (AuthN)</strong> → returns JWT. <strong>Identity Pool = What can you do on AWS? (AuthZ)</strong> → returns STS credentials. Need both for "login with Google then upload to S3."</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Mobile app users log in and upload to S3 directly"</strong> → User Pool (authenticate) + Identity Pool (get STS creds for S3). <strong>"API Gateway validates JWT from Cognito"</strong> → Cognito User Pool authorizer on API GW. <strong>"Add user's department to JWT claims"</strong> → Pre-token generation Lambda trigger.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Cognito User Pool tokens grant direct access to AWS services like S3" — <strong>FALSE</strong>; User Pool tokens are JWTs for app-level auth. You need Identity Pools to exchange them for STS credentials.</li>
+              <li>"Identity Pools require Cognito User Pools as the IdP" — <strong>FALSE</strong>; Identity Pools support any OIDC-compatible IdP (Google, Facebook, Apple) as well as unauthenticated (guest) access.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🛡️</span>
+        <span class="card-title">API Gateway Authorization — Lambda Authorizers &amp; Bearer Tokens</span>
+        <div class="tags"><span class="tag tn">API Gateway</span><span class="tag ti">IAM</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Authorization Method Decision Tree</div>
+        <table class="tbl">
+          <tr><th>Scenario</th><th>Recommended Authorizer</th></tr>
+          <tr><td>Internal AWS service calling API</td><td>IAM Authorization (Sig V4)</td></tr>
+          <tr><td>Users authenticated via Cognito User Pool</td><td>Cognito User Pool Authorizer</td></tr>
+          <tr><td>Custom JWT from 3rd-party IdP (Auth0, Okta)</td><td>Lambda Authorizer (Token type)</td></tr>
+          <tr><td>Complex rules: IP allowlist, multi-header logic</td><td>Lambda Authorizer (Request type)</td></tr>
+          <tr><td>Throttle / meter partner integrations</td><td>API Keys + Usage Plans</td></tr>
+        </table>
+        <div class="sec-lbl">Lambda Authorizer Flow</div>
+        <ul class="bl">
+          <li>API GW invokes your Lambda with the Bearer token (or full request)</li>
+          <li>Lambda validates the token (e.g., verifies JWT signature, checks expiry)</li>
+          <li>Lambda returns an IAM policy document: <code>{"principalId": "user123", "policyDocument": {...}}</code></li>
+          <li><strong>Policy caching:</strong> API GW caches the returned policy by token (TTL configurable). Reduces Lambda invocations per request.</li>
+        </ul>
+        <pre><span class="cm"># Lambda authorizer response structure</span>
+{
+  <span class="vl">"principalId"</span>: <span class="vl">"user-123"</span>,
+  <span class="vl">"policyDocument"</span>: {
+    <span class="vl">"Version"</span>: <span class="vl">"2012-10-17"</span>,
+    <span class="vl">"Statement"</span>: [{
+      <span class="vl">"Action"</span>: <span class="vl">"execute-api:Invoke"</span>,
+      <span class="vl">"Effect"</span>: <span class="vl">"Allow"</span>,
+      <span class="vl">"Resource"</span>: <span class="vl">"arn:aws:execute-api:*:*:*"</span>
+    }]
+  },
+  <span class="vl">"context"</span>: { <span class="vl">"userId"</span>: <span class="vl">"user-123"</span> }
+}</pre>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Pass context from authorizer to Lambda backend:</strong> Add <code>context</code> field in authorizer response. The backend Lambda receives it via <code>event.requestContext.authorizer.userId</code>. Avoids redundant token parsing in every backend function.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Lambda authorizer is called for every API request" — <strong>FALSE</strong> when caching is enabled. The policy is cached by token value for the configured TTL.</li>
+              <li>"API Keys provide strong security authentication" — <strong>FALSE</strong>; API Keys are for usage tracking and throttling, not for authentication. Never use them as a security mechanism.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 2.1 -->
+    <div class="mcq-section" data-task="t21"></div>
+  </section><!-- /task 2.1 -->
+
+  <!-- Task 2.2 -->
+  <section class="task-section" id="t22">
+    <div class="task-header">
+      <div class="task-badge">Task 2.2</div>
+      <div class="task-title">
+        <h2>Implement Encryption by Using AWS Services</h2>
+        <p>KMS, envelope encryption, S3 encryption options, in-transit TLS, ACM, and key rotation.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Define encryption at rest and in transit; describe differences between client-side and server-side encryption</li>
+    <li>Describe certificate management (AWS Private CA); use encryption keys to encrypt or decrypt data</li>
+    <li>Generate certificates and SSH keys for development; use encryption across account boundaries</li>
+    <li>Enable and disable key rotation</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔐</span>
+        <span class="card-title">AWS KMS — Key Types, Key Policy &amp; Envelope Encryption</span>
+        <div class="tags"><span class="tag ti">KMS</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">AWS KMS is the foundation of encryption on AWS. Every developer must understand the three key types, envelope encryption, and how to call KMS APIs from code.</p>
+        <div class="sec-lbl">KMS Key Types</div>
+        <table class="tbl">
+          <tr><th>Key Type</th><th>Who Manages</th><th>Key Policy</th><th>Cost</th><th>Use Case</th></tr>
+          <tr><td>AWS Managed Key</td><td>AWS (auto-rotated every year)</td><td>Managed by AWS</td><td>Free</td><td>Default for S3, RDS, EBS (e.g., <code>aws/s3</code>)</td></tr>
+          <tr><td>Customer Managed Key (CMK)</td><td>You (optional auto-rotation)</td><td>You control it</td><td>$1/month + API calls</td><td>Custom encryption, cross-account, key policy control</td></tr>
+          <tr><td>Imported Key Material</td><td>You (bring your own key)</td><td>You control it</td><td>$1/month</td><td>Compliance: must own key material</td></tr>
+        </table>
+        <div class="sec-lbl">Envelope Encryption</div>
+        <ul class="bl">
+          <li>KMS can only encrypt data up to <strong>4 KB</strong> directly. For larger data, use envelope encryption:</li>
+          <li><strong>Step 1:</strong> Call <code>GenerateDataKey</code> → KMS returns a plaintext data key (DEK) AND an encrypted DEK</li>
+          <li><strong>Step 2:</strong> Encrypt your data locally with the plaintext DEK (AES-256)</li>
+          <li><strong>Step 3:</strong> Store the encrypted DEK alongside the encrypted data. Discard the plaintext DEK.</li>
+          <li><strong>Decryption:</strong> Call <code>Decrypt</code> with the encrypted DEK → get plaintext DEK → decrypt data locally</li>
+        </ul>
+        <div class="sec-lbl">Encryption Context</div>
+        <ul class="bl">
+          <li>Optional additional authenticated data (AAD) — key-value pairs sent with encrypt/decrypt calls</li>
+          <li>If you encrypt with context <code>{"purpose":"payments"}</code>, you must provide the same context to decrypt</li>
+          <li>Appears in CloudTrail logs — useful for auditing which application/service used a key</li>
+        </ul>
+        <div class="sec-lbl">Key Policy Essentials</div>
+        <ul class="bl">
+          <li>Every KMS key has a <strong>key policy</strong> (resource-based policy). Unlike IAM, the key policy must explicitly allow the AWS account or it has no access — even root.</li>
+          <li>Cross-account: Key policy must allow the external account → then IAM policy in that account must also allow <code>kms:Decrypt</code></li>
+        </ul>
+        <div class="sec-lbl">Key Rotation</div>
+        <table class="tbl">
+          <tr><th></th><th>Automatic Rotation</th><th>Manual Rotation</th></tr>
+          <tr><td>Frequency</td><td>Every 365 days (cannot customize)</td><td>Any schedule you choose</td></tr>
+          <tr><td>Old key material</td><td>Retained for decryption of old ciphertext</td><td>Must keep old key alias active</td></tr>
+          <tr><td>Application change?</td><td>No (same Key ID)</td><td>Yes (update alias to point to new key)</td></tr>
+          <tr><td>Available for</td><td>CMKs only (not imported key material)</td><td>All key types</td></tr>
+        </table>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Envelope Encryption = DEK inside KMS envelope:</strong> Your data is encrypted with a local DEK. The DEK is "wrapped" (encrypted) by KMS. Only KMS can unwrap it. The data never goes to KMS.</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Encrypt a 500 MB file with KMS"</strong> → Use GenerateDataKey + encrypt locally (envelope encryption). <strong>"Compliance requires 90-day rotation"</strong> → Manual key rotation (automatic is fixed at 365 days). <strong>"Audit which app used KMS"</strong> → Add Encryption Context + query CloudTrail.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"AWS Managed Keys can be disabled or deleted by the customer" — <strong>FALSE</strong>; you have no control over AWS Managed Keys. Use CMKs for control.</li>
+              <li>"KMS automatic rotation changes the Key ID" — <strong>FALSE</strong>; rotation only changes the key material. The Key ID and alias stay the same — no application changes needed.</li>
+              <li>"Imported key material supports automatic rotation" — <strong>FALSE</strong>; automatic rotation is only for CMKs with KMS-generated key material.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔒</span>
+        <span class="card-title">Encryption Options — S3, At Rest vs. In Transit, Client vs. Server-Side</span>
+        <div class="tags"><span class="tag ts">S3</span><span class="tag ti">KMS</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">S3 Server-Side Encryption Options</div>
+        <table class="tbl">
+          <tr><th>Method</th><th>Key Management</th><th>Key Access</th><th>Use Case</th></tr>
+          <tr><td>SSE-S3</td><td>S3 manages keys entirely</td><td>Transparent to user</td><td>Default encryption; no key management needed</td></tr>
+          <tr><td>SSE-KMS</td><td>AWS KMS CMK</td><td>You control key policy; CloudTrail logs access</td><td>Audit who accessed, cross-account encryption</td></tr>
+          <tr><td>SSE-C</td><td>Customer provides key in request header</td><td>AWS never stores the key</td><td>Compliance: must own key material; key not on AWS</td></tr>
+          <tr><td>Client-Side</td><td>Encrypted before sending to S3</td><td>AWS never sees plaintext</td><td>Maximum control; AWS cannot access data even with account compromise</td></tr>
+        </table>
+        <div class="sec-lbl">Encryption in Transit</div>
+        <ul class="bl">
+          <li>All AWS SDK and console calls use HTTPS (TLS) by default</li>
+          <li><strong>Enforce HTTPS on S3:</strong> Bucket policy with <code>Deny</code> when <code>aws:SecureTransport = false</code></li>
+          <li><strong>ACM (AWS Certificate Manager):</strong> Free public TLS certificates for ALBs, CloudFront, API GW. Auto-renews.</li>
+          <li>CloudFront certificates <strong>must</strong> be in <code>us-east-1</code> region — hard exam fact</li>
+        </ul>
+        <div class="sec-lbl">Client-Side vs. Server-Side</div>
+        <table class="tbl">
+          <tr><th></th><th>Server-Side (SSE)</th><th>Client-Side</th></tr>
+          <tr><td>Who encrypts</td><td>AWS service (S3, RDS, etc.)</td><td>Your application code</td></tr>
+          <tr><td>AWS sees plaintext?</td><td>Briefly (SSE-S3, SSE-KMS)</td><td>Never</td></tr>
+          <tr><td>Complexity</td><td>Low — checkbox / config</td><td>Higher — you manage encryption library</td></tr>
+          <tr><td>Performance overhead</td><td>None to you</td><td>CPU on client</td></tr>
+        </table>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"AWS must NEVER see the key"</strong> → SSE-C or Client-Side encryption. <strong>"Audit every access to S3 objects"</strong> → SSE-KMS (every decrypt call appears in CloudTrail). <strong>"Simplest encryption with no management"</strong> → SSE-S3 (enabled by default on all new buckets since Jan 2023).</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"SSE-KMS means AWS cannot read your data" — <strong>FALSE</strong>; with SSE-KMS, AWS KMS holds the key. With SSE-C or client-side encryption, AWS cannot read plaintext. Compliance may require one over the other.</li>
+              <li>"ACM certificates can be used in any region for CloudFront" — <strong>FALSE</strong>; CloudFront requires ACM certificates in <code>us-east-1</code>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 2.2 -->
+    <div class="mcq-section" data-task="t22"></div>
+  </section><!-- /task 2.2 -->
+
+  <!-- Task 2.3 -->
+  <section class="task-section" id="t23">
+    <div class="task-header">
+      <div class="task-badge">Task 2.3</div>
+      <div class="task-title">
+        <h2>Manage Sensitive Data in Application Code</h2>
+        <p>Secrets Manager, Parameter Store, environment variable encryption, data classification, and masking.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Describe data classification (PII, PHI); encrypt environment variables containing sensitive data</li>
+    <li>Use secret management services to secure sensitive data</li>
+    <li>Sanitize sensitive data; implement application-level data masking and sanitization</li>
+    <li>Implement data access patterns for multi-tenant applications</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🗝️</span>
+        <span class="card-title">AWS Secrets Manager vs. SSM Parameter Store</span>
+        <div class="tags"><span class="tag ti">Secrets</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Choosing between Secrets Manager and Parameter Store is a common DVA-C02 scenario. Secrets Manager is purpose-built for secrets with rotation; Parameter Store is for configuration and simple secrets.</p>
+        <div class="sec-lbl">Comparison</div>
+        <table class="tbl">
+          <tr><th>Feature</th><th>Secrets Manager</th><th>SSM Parameter Store</th></tr>
+          <tr><td>Purpose</td><td>Secrets (DB passwords, API keys)</td><td>Config + secrets</td></tr>
+          <tr><td>Auto rotation</td><td>✅ Native (uses Lambda)</td><td>❌ No native rotation</td></tr>
+          <tr><td>RDS integration</td><td>✅ Native DB credential rotation</td><td>❌ Manual only</td></tr>
+          <tr><td>Encryption</td><td>Always KMS-encrypted</td><td>SecureString uses KMS; String is plaintext</td></tr>
+          <tr><td>Cost</td><td>$0.40/secret/month + $0.05/10K API calls</td><td>Free (Standard) / $0.05/10K (Advanced)</td></tr>
+          <tr><td>Max value size</td><td>64 KB</td><td>4 KB (Standard), 8 KB (Advanced)</td></tr>
+          <tr><td>Hierarchy / paths</td><td>Limited naming</td><td>✅ Path-based: <code>/app/prod/db-url</code></td></tr>
+          <tr><td>Best for</td><td>Database passwords, API keys needing rotation</td><td>App config, feature flags, non-rotating secrets</td></tr>
+        </table>
+        <div class="sec-lbl">Secrets Manager Auto Rotation</div>
+        <ul class="bl">
+          <li>Rotation uses a Lambda function (AWS provides templates for RDS, Redshift, DocumentDB)</li>
+          <li>Rotation schedule: interval in days or cron expression</li>
+          <li>On rotation: new secret version is created → application fetches latest automatically using the <code>AWSCURRENT</code> label</li>
+          <li>Versions: <code>AWSCURRENT</code> (active), <code>AWSPREVIOUS</code> (just rotated), <code>AWSPENDING</code> (being created)</li>
+        </ul>
+        <div class="sec-lbl">Best Practice: Fetch at Init, Cache in Memory</div>
+        <pre><span class="cm"># Fetch secret once at Lambda cold start — cache for warm invocations</span>
+<span class="kw">import</span> boto3, json
+client = boto3.client(<span class="vl">'secretsmanager'</span>)
+secret = json.loads(client.get_secret_value(
+    SecretId=<span class="vl">'prod/myapp/db'</span>
+)[<span class="vl">'SecretString'</span>])
+DB_PASSWORD = secret[<span class="vl">'password'</span>]  <span class="cm"># cached globally</span></pre>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"DB password needs auto-rotation every 30 days"</strong> → Secrets Manager. <strong>"App config values like feature flags"</strong> → Parameter Store (free). <strong>"Multiple apps share same config path"</strong> → Parameter Store with path hierarchy. <strong>"Secrets Manager or Env Vars?"</strong> → Always Secrets Manager for production secrets.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"SSM Parameter Store SecureString auto-rotates" — <strong>FALSE</strong>; you must write your own rotation logic. Secrets Manager has this built-in.</li>
+              <li>"Storing secrets in Lambda environment variables is secure" — <strong>PARTIALLY</strong>; env vars are KMS-encrypted at rest but are visible in the Lambda console and to any principal with <code>GetFunctionConfiguration</code> access. Use Secrets Manager for sensitive production credentials.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🏷️</span>
+        <span class="card-title">Data Classification, Masking &amp; Multi-Tenant Patterns</span>
+        <div class="tags"><span class="tag ti">Security</span><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Data Classification</div>
+        <table class="tbl">
+          <tr><th>Type</th><th>Examples</th><th>Regulation</th></tr>
+          <tr><td>PII (Personally Identifiable Information)</td><td>Name, email, SSN, phone, IP address</td><td>GDPR, CCPA</td></tr>
+          <tr><td>PHI (Protected Health Information)</td><td>Medical records, diagnoses, insurance IDs</td><td>HIPAA</td></tr>
+          <tr><td>PCI-DSS</td><td>Credit card numbers, CVVs</td><td>PCI-DSS</td></tr>
+        </table>
+        <div class="sec-lbl">Data Masking &amp; Sanitization</div>
+        <ul class="bl">
+          <li><strong>Masking:</strong> Replace sensitive data with a representative value (e.g., <code>4111-****-****-1234</code> for credit card)</li>
+          <li><strong>Tokenization:</strong> Replace sensitive data with a non-sensitive token; original data stored in a secure vault</li>
+          <li><strong>Sanitization:</strong> Remove or replace dangerous characters to prevent injection (SQL injection, XSS)</li>
+          <li>Never log PII/PHI — use structured logging with field-level exclusion</li>
+        </ul>
+        <div class="sec-lbl">Multi-Tenant Data Isolation Patterns</div>
+        <table class="tbl">
+          <tr><th>Pattern</th><th>Isolation Level</th><th>AWS Implementation</th></tr>
+          <tr><td>Silo (per-tenant DB)</td><td>High (physical isolation)</td><td>Separate RDS instances; separate DynamoDB tables</td></tr>
+          <tr><td>Pool (shared DB, tenant ID column)</td><td>Medium (logical isolation)</td><td>DynamoDB partition key = tenantId; RDS with row-level security</td></tr>
+          <tr><td>Bridge (hybrid)</td><td>Medium-High</td><td>Shared infrastructure, per-tenant encryption keys (KMS per tenant)</td></tr>
+        </table>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Scan S3 for PII/PHI"</strong> → Amazon Macie. <strong>"Multi-tenant app — isolate data per tenant in DynamoDB"</strong> → Partition key = tenantId. Use IAM condition <code>dynamodb:LeadingKeys</code> to enforce each user can only access their own partitions via Cognito Identity Pool role.</p></div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 2.3 -->
+    <div class="mcq-section" data-task="t23"></div>
+  </section><!-- /task 2.3 -->
+
+</div><!-- /domain 1 -->
+
+<!-- ══════════════════════════════════════════════════════
+     DOMAIN 3: DEPLOYMENT
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d2">
+  <div class="domain-intro">
+    <h2>Domain 3 Overview</h2>
+    <p>Package, deploy, and automate the release of AWS applications. Covers AWS SAM, CloudFormation, CDK, CI/CD pipeline services (CodeBuild, CodeDeploy, CodePipeline), deployment strategies, and testing approaches.</p>
+    <span class="wt-badge">⚡ 24% of scored content</span>
+  </div>
+
+  <!-- Task 3.1 -->
+  <section class="task-section" id="t31">
+    <div class="task-header">
+      <div class="task-badge">Task 3.1</div>
+      <div class="task-title">
+        <h2>Prepare Application Artifacts to be Deployed to AWS</h2>
+        <p>Lambda packaging, AWS SAM, CloudFormation, CDK, AppConfig, and IaC templates.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Manage dependencies within the package (env vars, config files, container images)</li>
+    <li>Organize files and directory structure for deployment</li>
+    <li>Use code repositories in deployment environments</li>
+    <li>Apply application requirements for resources (memory, cores)</li>
+    <li>Prepare application configurations for specific environments (using AWS AppConfig)</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📦</span>
+        <span class="card-title">AWS SAM — Serverless Application Model</span>
+        <div class="tags"><span class="tag ti">SAM</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">AWS SAM is a shorthand extension of CloudFormation for serverless apps. The exam tests SAM template syntax, local testing, and the build/deploy workflow.</p>
+        <div class="sec-lbl">SAM Template Structure</div>
+        <pre><span class="kw">AWSTemplateFormatVersion</span>: <span class="vl">'2010-09-09'</span>
+<span class="kw">Transform</span>: <span class="vl">AWS::Serverless-2016-10-31</span>   <span class="cm"># Declares this is a SAM template</span>
+<span class="kw">Globals</span>:
+  <span class="kw">Function</span>:
+    <span class="kw">Timeout</span>: <span class="vl">30</span>
+    <span class="kw">Runtime</span>: <span class="vl">python3.12</span>
+    <span class="kw">Environment</span>:
+      <span class="kw">Variables</span>:
+        <span class="kw">TABLE_NAME</span>: !<span class="vl">Ref</span> MyTable
+<span class="kw">Resources</span>:
+  <span class="kw">MyFunction</span>:
+    <span class="kw">Type</span>: <span class="vl">AWS::Serverless::Function</span>
+    <span class="kw">Properties</span>:
+      <span class="kw">Handler</span>: <span class="vl">app.lambda_handler</span>
+      <span class="kw">CodeUri</span>: <span class="vl">./src/</span>
+      <span class="kw">Events</span>:
+        <span class="kw">ApiEvent</span>:
+          <span class="kw">Type</span>: <span class="vl">Api</span>
+          <span class="kw">Properties</span>:
+            <span class="kw">Path</span>: <span class="vl">/hello</span>
+            <span class="kw">Method</span>: <span class="vl">get</span></pre>
+        <div class="sec-lbl">SAM Resource Types</div>
+        <table class="tbl">
+          <tr><th>SAM Type</th><th>Expands To</th></tr>
+          <tr><td><code>AWS::Serverless::Function</code></td><td>Lambda Function + IAM Role + optional Event Source Mapping</td></tr>
+          <tr><td><code>AWS::Serverless::Api</code></td><td>API Gateway REST API + Stage + Deployment</td></tr>
+          <tr><td><code>AWS::Serverless::HttpApi</code></td><td>API Gateway HTTP API</td></tr>
+          <tr><td><code>AWS::Serverless::SimpleTable</code></td><td>DynamoDB table (single primary key)</td></tr>
+          <tr><td><code>AWS::Serverless::StateMachine</code></td><td>Step Functions state machine</td></tr>
+        </table>
+        <div class="sec-lbl">SAM CLI Workflow</div>
+        <ul class="bl">
+          <li><code>sam init</code> — scaffold a new SAM app from a template</li>
+          <li><code>sam build</code> — package code and dependencies into <code>.aws-sam/build</code></li>
+          <li><code>sam local invoke</code> — run a Lambda function locally with a test event JSON</li>
+          <li><code>sam local start-api</code> — start a local API Gateway emulator</li>
+          <li><code>sam deploy --guided</code> — deploy to AWS; creates/updates CloudFormation stack</li>
+          <li><code>sam logs</code> — tail Lambda logs from CloudWatch</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>SAM Transform:</strong> The line <code>Transform: AWS::Serverless-2016-10-31</code> is what makes a template a SAM template. During deployment, CloudFormation calls the SAM transform to expand SAM-specific resource types into standard CloudFormation resources.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"SAM is a completely separate service from CloudFormation" — <strong>FALSE</strong>; SAM is a superset/extension of CloudFormation. <code>sam deploy</code> creates a CloudFormation stack.</li>
+              <li>"sam local invoke tests the same environment as AWS Lambda" — <strong>FALSE</strong>; local invocation runs in a Docker container that simulates Lambda but is not identical (no VPC, different IAM, different resource limits).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🏗️</span>
+        <span class="card-title">AWS CloudFormation — Stacks, Templates &amp; Change Sets</span>
+        <div class="tags"><span class="tag ti">CloudFormation</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Core Concepts</div>
+        <ul class="bl">
+          <li><strong>Stack:</strong> A collection of AWS resources managed as a single unit. Create/update/delete together.</li>
+          <li><strong>Template:</strong> JSON or YAML file defining the desired state. Sections: <code>Parameters</code>, <code>Mappings</code>, <code>Conditions</code>, <code>Resources</code> (required), <code>Outputs</code></li>
+          <li><strong>Change Set:</strong> Preview the impact of a template update before executing. Shows what will be Added/Modified/Removed.</li>
+          <li><strong>Drift Detection:</strong> Identify resources that have been manually modified outside CloudFormation</li>
+          <li><strong>Stack Policy:</strong> Protects stack resources from unintended updates during stack update operations</li>
+        </ul>
+        <div class="sec-lbl">Key Template Functions</div>
+        <table class="tbl">
+          <tr><th>Function</th><th>Purpose</th><th>Example</th></tr>
+          <tr><td><code>!Ref</code></td><td>Reference parameter or resource</td><td><code>!Ref MyBucket</code></td></tr>
+          <tr><td><code>!GetAtt</code></td><td>Get attribute of a resource</td><td><code>!GetAtt MyTable.Arn</code></td></tr>
+          <tr><td><code>!Sub</code></td><td>String substitution</td><td><code>!Sub "arn:aws:s3:::${BucketName}/*"</code></td></tr>
+          <tr><td><code>!ImportValue</code></td><td>Import an exported Output from another stack</td><td>Cross-stack references</td></tr>
+          <tr><td><code>!If</code></td><td>Conditional resource creation</td><td><code>!If [IsProd, ProdConfig, DevConfig]</code></td></tr>
+        </table>
+        <div class="sec-lbl">Nested Stacks &amp; StackSets</div>
+        <ul class="bl">
+          <li><strong>Nested Stacks:</strong> Reusable template components — a root stack references child stack templates via S3 URLs. Used to break up large templates.</li>
+          <li><strong>StackSets:</strong> Deploy a single template to multiple accounts and regions simultaneously — essential for multi-account governance</li>
+        </ul>
+        <div class="sec-lbl">AWS AppConfig</div>
+        <ul class="bl">
+          <li>Managed feature flags and configuration — separate configuration from code deployments</li>
+          <li>Supports validation (JSON schema) before config goes live</li>
+          <li>Supports gradual deployment of config changes (canary, linear, all-at-once)</li>
+          <li>Applications fetch config at runtime without code redeployment</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Preview what changes before updating stack"</strong> → Change Set. <strong>"Deploy same template to 50 accounts"</strong> → StackSets. <strong>"Share VPC ID between stacks"</strong> → Outputs + !ImportValue. <strong>"Separate feature flags from Lambda code"</strong> → AppConfig.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"CloudFormation can import existing resources into a stack"  — <strong>TRUE</strong> via Resource Import, but only for supported resource types.</li>
+              <li>"!ImportValue creates a hard dependency — if the exporting stack tries to delete the exported Output, it will fail until all importing stacks are deleted first."</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 3.1 -->
+    <div class="mcq-section" data-task="t31"></div>
+  </section><!-- /task 3.1 -->
+
+  <!-- Task 3.2 -->
+  <section class="task-section" id="t32">
+    <div class="task-header">
+      <div class="task-badge">Task 3.2</div>
+      <div class="task-title">
+        <h2>Test Applications in Development Environments</h2>
+        <p>API Gateway stages and stage variables, Lambda testing strategies, integration tests, mock APIs.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Test deployed code using AWS services and tools</li>
+    <li>Write integration tests and mock APIs for external dependencies</li>
+    <li>Test applications by using development endpoints (configuring stages in Amazon API Gateway)</li>
+    <li>Deploy application stack updates to existing environments (e.g., deploying SAM template to a different staging environment)</li>
+    <li>Test event-driven applications</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🧪</span>
+        <span class="card-title">API Gateway Stages, Stage Variables &amp; Testing</span>
+        <div class="tags"><span class="tag tn">API Gateway</span><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Stage-Based Testing Pattern</div>
+        <ul class="bl">
+          <li>Deploy same API to <code>dev</code>, <code>test</code>, and <code>prod</code> stages — each stage is an independent deployment</li>
+          <li><strong>Stage Variables:</strong> Use <code>${stageVariables.lambdaAlias}</code> in Lambda integration ARN to route each stage to a different Lambda alias</li>
+          <li><strong>Canary deployments on stages:</strong> Route X% of traffic to a new deployment version while keeping the rest on stable — built into API GW stage settings</li>
+        </ul>
+        <div class="sec-lbl">Testing Approaches</div>
+        <table class="tbl">
+          <tr><th>Test Type</th><th>Tool</th><th>What It Tests</th></tr>
+          <tr><td>Unit test</td><td>pytest, Jest, JUnit</td><td>Individual functions in isolation</td></tr>
+          <tr><td>Local integration</td><td>sam local invoke / start-api</td><td>Lambda handler with real event payloads</td></tr>
+          <tr><td>Integration test</td><td>Deploy to <code>dev</code> stage</td><td>Full stack — API GW → Lambda → DynamoDB</td></tr>
+          <tr><td>Mock API</td><td>API GW mock integration</td><td>Frontend dev without backend</td></tr>
+          <tr><td>Event test</td><td>Lambda console test, SAM CLI</td><td>Event-driven functions (S3, SQS, DDB Streams)</td></tr>
+        </table>
+        <div class="sec-lbl">Testing Event-Driven Apps</div>
+        <ul class="bl">
+          <li>Use SAM CLI event templates: <code>sam local generate-event s3 put</code> — generates sample S3 event JSON</li>
+          <li>For SQS: <code>sam local generate-event sqs receive-message</code></li>
+          <li>Test Lambda → SQS → Lambda pipelines locally with <code>sam local start-lambda</code> + real SQS queue in dev account</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Test new Lambda version without affecting prod traffic"</strong> → Deploy to Lambda alias pointing to new version. Use API GW stage variable to route dev stage to dev alias. <strong>"Frontend team needs API without backend"</strong> → API GW Mock Integration returns hardcoded response.</p></div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 3.2 -->
+    <div class="mcq-section" data-task="t32"></div>
+  </section><!-- /task 3.2 -->
+
+  <!-- Task 3.3 -->
+  <section class="task-section" id="t33">
+    <div class="task-header">
+      <div class="task-badge">Task 3.3</div>
+      <div class="task-title">
+        <h2>Automate Deployment Testing</h2>
+        <p>Lambda versions and aliases, container image tags, Amplify branches, and IaC deployment automation.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Create application test events (JSON payloads for Lambda, API GW, SAM)</li>
+    <li>Deploy API resources to various environments</li>
+    <li>Create application environments using approved versions (Lambda aliases, container image tags, Amplify branches)</li>
+    <li>Implement and deploy IaC templates (SAM, CloudFormation)</li>
+    <li>Manage environments in individual AWS services (dev/test/prod in API GW)</li>
+    <li>Use Amazon Q Developer to generate automated tests</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🏷️</span>
+        <span class="card-title">Lambda Versions &amp; Aliases — Immutable Releases &amp; Traffic Shifting</span>
+        <div class="tags"><span class="tag ti">Lambda</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Versions</div>
+        <ul class="bl">
+          <li>Publishing a version creates an <strong>immutable snapshot</strong> of the function code + config</li>
+          <li>Versions are numbered: <code>:1</code>, <code>:2</code>, <code>:3</code> …</li>
+          <li><code>$LATEST</code> is the mutable, unpublished version — always points to the latest code</li>
+          <li>You cannot update a published version — it is read-only</li>
+        </ul>
+        <div class="sec-lbl">Aliases</div>
+        <ul class="bl">
+          <li>Named pointers to specific versions (e.g., <code>live</code> → v5, <code>beta</code> → v6)</li>
+          <li><strong>Weighted routing:</strong> An alias can split traffic between two versions — e.g., <code>live</code> = 90% v5 + 10% v6. Used for blue/green and canary testing.</li>
+          <li>API Gateway stage variable or event source mapping references the alias — swap the version behind the alias without changing integrations</li>
+        </ul>
+        <div class="mermaid" style="margin:1rem 0;">
+graph LR
+  D["dev stage\n(API GW)"] --> DA["Lambda alias: dev\n→ $LATEST"]
+  P["prod stage\n(API GW)"] --> PA["Lambda alias: live\n90% v5 / 10% v6"]
+  PA -->|90%| V5["Version 5\n(stable)"]
+  PA -->|10%| V6["Version 6\n(new)"]
+        </div>
+        <div class="sec-lbl">Container Image Tags &amp; ECR</div>
+        <ul class="bl">
+          <li>Lambda supports container images up to 10 GB (vs 250 MB for ZIP)</li>
+          <li>Images stored in Amazon ECR — tag with <code>:latest</code>, <code>:v1.2.0</code>, or commit SHA for traceability</li>
+          <li>CI/CD pipeline: build → push to ECR with version tag → update Lambda to use new image URI → run tests → promote tag to <code>:stable</code></li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Test 10% of prod traffic on new Lambda version"</strong> → Lambda alias with weighted routing (90/10). <strong>"Roll back to previous version instantly"</strong> → Update alias to point back to previous version number. <strong>"Prevent accidental deploy of untested code"</strong> → Require published version (not $LATEST) in prod alias.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Updating an alias to point to a new version causes downtime" — <strong>FALSE</strong>; alias update is near-instant and atomic.</li>
+              <li>"$LATEST is a publishable version" — <strong>FALSE</strong>; $LATEST is always the unpublished current state. Publishing creates numbered versions from $LATEST.</li>
+              <li>"Lambda aliases can point to another alias" — <strong>FALSE</strong>; aliases can only point to specific version numbers or $LATEST, not to other aliases.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 3.3 -->
+    <div class="mcq-section" data-task="t33"></div>
+  </section><!-- /task 3.3 -->
+
+  <!-- Task 3.4 -->
+  <section class="task-section" id="t34">
+    <div class="task-header">
+      <div class="task-badge">Task 3.4</div>
+      <div class="task-title">
+        <h2>Deploy Code by Using AWS CI/CD Services</h2>
+        <p>CodeCommit, CodeBuild, CodeDeploy, CodePipeline, deployment strategies, rollback.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Describe Lambda deployment packaging options and API Gateway stages with custom domains</li>
+    <li>Update existing IaC templates; manage application environments using AWS services</li>
+    <li>Deploy an application version using deployment strategies; commit code to invoke build/test/deploy actions</li>
+    <li>Use orchestrated workflows to deploy code to different environments</li>
+    <li>Perform application rollbacks; use labels and branches for version and release management</li>
+    <li>Configure deployment strategies (blue/green, canary, rolling) for application releases</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🚀</span>
+        <span class="card-title">AWS CI/CD Pipeline — CodeCommit, CodeBuild, CodeDeploy &amp; CodePipeline</span>
+        <div class="tags"><span class="tag ti">CI/CD</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">The four Code* services form the AWS-native CI/CD toolchain. Know each service's role and how they integrate in a pipeline.</p>
+        <div class="sec-lbl">Service Roles</div>
+        <table class="tbl">
+          <tr><th>Service</th><th>Purpose</th><th>Key Concept</th></tr>
+          <tr><td>AWS CodeCommit</td><td>Git repository (source control)</td><td>Private Git repos; triggers CodePipeline on push</td></tr>
+          <tr><td>AWS CodeBuild</td><td>Fully managed build &amp; test service</td><td>Runs <code>buildspec.yml</code>; Docker-based; pay-per-minute</td></tr>
+          <tr><td>AWS CodeDeploy</td><td>Automated deployment to compute targets</td><td>EC2, Lambda, ECS; uses <code>appspec.yml</code></td></tr>
+          <tr><td>AWS CodePipeline</td><td>Orchestrates the full CI/CD workflow</td><td>Stages: Source → Build → Test → Deploy; integrates with GitHub/Bitbucket too</td></tr>
+          <tr><td>AWS CodeArtifact</td><td>Artifact repository (npm, Maven, PyPI)</td><td>Cache and share packages; pull-through cache from public repos</td></tr>
+        </table>
+        <div class="sec-lbl">buildspec.yml — CodeBuild</div>
+        <pre><span class="kw">version</span>: <span class="vl">0.2</span>
+<span class="kw">phases</span>:
+  <span class="kw">install</span>:
+    <span class="kw">commands</span>:
+      - pip install -r requirements.txt
+  <span class="kw">build</span>:
+    <span class="kw">commands</span>:
+      - python -m pytest tests/
+      - sam build
+  <span class="kw">post_build</span>:
+    <span class="kw">commands</span>:
+      - sam package --s3-bucket $ARTIFACT_BUCKET
+<span class="kw">artifacts</span>:
+  <span class="kw">files</span>:
+    - packaged-template.yaml</pre>
+        <div class="sec-lbl">appspec.yml — CodeDeploy for Lambda</div>
+        <pre><span class="kw">version</span>: <span class="vl">0.0</span>
+<span class="kw">Resources</span>:
+  - MyLambdaFunction:
+      <span class="kw">Type</span>: AWS::Lambda::Function
+      <span class="kw">Properties</span>:
+        <span class="kw">Name</span>: MyFunction
+        <span class="kw">Alias</span>: live
+        <span class="kw">CurrentVersion</span>: !Ref Version1
+        <span class="kw">TargetVersion</span>: !Ref Version2
+<span class="kw">Hooks</span>:
+  - BeforeAllowTraffic: PreTrafficHookFunction
+  - AfterAllowTraffic: PostTrafficHookFunction</pre>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>CodeBuild vs. CodeDeploy:</strong> CodeBuild compiles, tests, packages. CodeDeploy deploys the artifact to a target. CodePipeline orchestrates both. Common exam trap: mixing up which service does what.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"CodePipeline can only use CodeCommit as source" — <strong>FALSE</strong>; CodePipeline supports GitHub, GitHub Enterprise, GitLab, Bitbucket, S3, and ECR as sources.</li>
+              <li>"CodeBuild replaces CodeDeploy" — <strong>FALSE</strong>; they serve different purposes. CodeBuild builds and tests; CodeDeploy deploys the built artifact.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔄</span>
+        <span class="card-title">Deployment Strategies — Blue/Green, Canary, Rolling, All-at-Once</span>
+        <div class="tags"><span class="tag ti">CI/CD</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Strategy Comparison</div>
+        <table class="tbl">
+          <tr><th>Strategy</th><th>How It Works</th><th>Downtime?</th><th>Rollback Speed</th><th>Cost</th></tr>
+          <tr><td>All-at-once</td><td>Deploy to all instances simultaneously</td><td>Yes (brief)</td><td>Redeploy (slow)</td><td>Cheapest</td></tr>
+          <tr><td>Rolling</td><td>Deploy to one batch at a time</td><td>Reduced capacity briefly</td><td>Redeploy</td><td>Low</td></tr>
+          <tr><td>Rolling with additional batch</td><td>Add new batch before removing old</td><td>No</td><td>Redeploy</td><td>Medium</td></tr>
+          <tr><td>Immutable</td><td>Launch new ASG with new version; swap on success</td><td>No</td><td>Terminate new instances (fast)</td><td>High (double capacity)</td></tr>
+          <tr><td>Blue/Green</td><td>Full duplicate environment; switch DNS/ALB</td><td>No</td><td>Instant (swap back)</td><td>Highest (2× environment)</td></tr>
+          <tr><td>Canary</td><td>X% traffic to new, rest to old</td><td>No</td><td>Shift traffic back</td><td>Medium</td></tr>
+        </table>
+        <div class="sec-lbl">Lambda-Specific Deployment via CodeDeploy</div>
+        <ul class="bl">
+          <li><strong>LambdaAllAtOnce:</strong> Instantly shifts all traffic to new version</li>
+          <li><strong>LambdaCanary10Percent5Minutes:</strong> 10% to new version → wait 5 min → 100% if hooks pass</li>
+          <li><strong>LambdaLinear10PercentEvery1Minute:</strong> Increase by 10% every minute until 100%</li>
+          <li><strong>Pre/Post traffic hooks:</strong> Lambda functions that run before/after traffic shift to validate the deployment (e.g., run smoke tests)</li>
+        </ul>
+        <div class="sec-lbl">Elastic Beanstalk Deployment Policies</div>
+        <table class="tbl">
+          <tr><th>Policy</th><th>Downtime</th><th>Best For</th></tr>
+          <tr><td>All at once</td><td>Yes</td><td>Dev/test rapid deployments</td></tr>
+          <tr><td>Rolling</td><td>No (reduced capacity)</td><td>Production with some risk tolerance</td></tr>
+          <tr><td>Rolling with additional batch</td><td>No (full capacity maintained)</td><td>Production zero-downtime</td></tr>
+          <tr><td>Immutable</td><td>No</td><td>Production — fastest rollback</td></tr>
+          <tr><td>Blue/Green (swap URLs)</td><td>No</td><td>Production — full environment isolation</td></tr>
+        </table>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Speed of rollback (fastest to slowest):</strong> Blue/Green (instant DNS swap) → Canary (shift traffic back) → Immutable (terminate ASG) → Rolling (redeploy previous version).</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Zero downtime with fastest rollback for Lambda"</strong> → CodeDeploy LambdaCanary + pre/post traffic hooks. <strong>"Zero downtime for EC2 with no capacity impact"</strong> → Rolling with additional batch. <strong>"Instant full rollback for production"</strong> → Blue/Green. <strong>"Cheapest, accepts downtime"</strong> → All-at-once.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Rolling deployment maintains 100% capacity" — <strong>FALSE</strong>; standard rolling takes instances offline during update, reducing capacity. Use Rolling with additional batch to maintain full capacity.</li>
+              <li>"Blue/Green deployment is always cheaper than rolling" — <strong>FALSE</strong>; Blue/Green requires double the infrastructure temporarily — it is the most expensive strategy.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 3.4 -->
+    <div class="mcq-section" data-task="t34"></div>
+  </section><!-- /task 3.4 -->
+
+</div><!-- /domain 2 -->
+
+<!-- ══════════════════════════════════════════════════════
+     DOMAIN 4: TROUBLESHOOTING AND OPTIMIZATION
+═══════════════════════════════════════════════════════ -->
+<div class="domain-section" id="d3">
+  <div class="domain-intro">
+    <h2>Domain 4 Overview</h2>
+    <p>Debug, monitor, and optimize AWS applications. Covers CloudWatch Logs and Insights, AWS X-Ray distributed tracing, custom metrics (including EMF), structured logging, and performance optimization with caching, concurrency tuning, and messaging efficiency.</p>
+    <span class="wt-badge">⚡ 18% of scored content</span>
+  </div>
+
+  <!-- Task 4.1 -->
+  <section class="task-section" id="t41">
+    <div class="task-header">
+      <div class="task-badge">Task 4.1</div>
+      <div class="task-title">
+        <h2>Assist in a Root Cause Analysis</h2>
+        <p>CloudWatch Logs, Logs Insights queries, X-Ray traces, custom metrics, dashboards, and deployment failure debugging.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Debug code to identify defects; interpret application metrics, logs, and traces</li>
+    <li>Query logs to find relevant data; implement custom metrics (CloudWatch EMF)</li>
+    <li>Review application health using dashboards and insights</li>
+    <li>Troubleshoot deployment failures using service output logs</li>
+    <li>Debug service integration issues in applications</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📋</span>
+        <span class="card-title">Amazon CloudWatch Logs — Log Groups, Insights &amp; Metric Filters</span>
+        <div class="tags"><span class="tag tm">CloudWatch</span><span class="tag te">Exam Fave</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">CloudWatch Logs is the primary log aggregation service on AWS. Knowing how to query, filter, and act on logs is a key DVA-C02 skill.</p>
+        <div class="sec-lbl">Hierarchy</div>
+        <ul class="bl">
+          <li><strong>Log Group:</strong> Container for related log streams (e.g., one per Lambda function or ECS service). Retention configured here (1 day – 10 years, or never expire).</li>
+          <li><strong>Log Stream:</strong> Sequence of log events from a single source (e.g., one Lambda execution environment, one EC2 instance).</li>
+          <li><strong>Log Event:</strong> A single timestamped record.</li>
+        </ul>
+        <div class="sec-lbl">CloudWatch Logs Insights — Query Syntax</div>
+        <pre><span class="cm"># Find Lambda errors in the last hour</span>
+fields @timestamp, @message
+| filter @message like /ERROR/
+| sort @timestamp desc
+| limit 20
+
+<span class="cm"># Calculate p99 Lambda duration</span>
+filter @type = <span class="vl">"REPORT"</span>
+| stats pct(@duration, 99) as p99Duration by bin(5m)
+
+<span class="cm"># Count errors by error type</span>
+filter @message like /Exception/
+| parse @message <span class="vl">"* Exception: *"</span> as exType, exMsg
+| stats count(*) by exType</pre>
+        <div class="sec-lbl">Metric Filters</div>
+        <ul class="bl">
+          <li>Extract numeric values from log events and publish them as CloudWatch custom metrics</li>
+          <li>Example: Count occurrences of <code>ERROR</code> in logs → create metric <code>ErrorCount</code> → set alarm on it</li>
+          <li>Pattern: <code>{ $.level = "ERROR" }</code> (JSON log format) or simple text pattern <code>ERROR</code></li>
+          <li>One metric filter = one CloudWatch metric per log group</li>
+        </ul>
+        <div class="sec-lbl">Lambda Logging</div>
+        <ul class="bl">
+          <li>Lambda automatically sends stdout/stderr to CloudWatch Logs (<code>/aws/lambda/functionName</code>)</li>
+          <li><strong>Lambda Logs format:</strong> START, END, REPORT lines contain requestId, duration, billed duration, memory used, init duration (cold start)</li>
+          <li><strong>CloudWatch Lambda Insights:</strong> Enhanced monitoring — CPU, memory, disk, network utilization via a Lambda layer</li>
+        </ul>
+        <div class="sec-lbl">Common Root Cause Patterns</div>
+        <table class="tbl">
+          <tr><th>Symptom</th><th>Likely Cause</th><th>Where to Look</th></tr>
+          <tr><td>Lambda 502 errors from API GW</td><td>Lambda function exception or timeout</td><td>Lambda log group for error detail</td></tr>
+          <tr><td>Lambda throttling (429)</td><td>Concurrency limit reached</td><td>CloudWatch metric: <code>Throttles</code></td></tr>
+          <tr><td>Lambda timeout</td><td>Function exceeds timeout config</td><td>REPORT line: Duration &gt; configured timeout</td></tr>
+          <tr><td>DynamoDB ProvisionedThroughputExceededException</td><td>Hot partition or insufficient capacity</td><td>CW metric: <code>ConsumedWriteCapacityUnits</code>, <code>ThrottledRequests</code></td></tr>
+          <tr><td>API GW 5xx errors</td><td>Backend Lambda or integration error</td><td>API GW execution logs; enable in stage settings</td></tr>
+        </table>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Enable API Gateway execution logging</strong> in the stage settings to see full request/response cycle. Without this, you only see access logs — insufficient for debugging integration errors. Set log level to <code>INFO</code> or <code>ERROR</code>.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"CloudWatch Logs Insights queries run in real-time as logs arrive" — <strong>FALSE</strong>; Logs Insights queries historical log data. For real-time filtering, use CloudWatch Live Tail or Subscription Filters.</li>
+              <li>"Lambda always writes logs to CloudWatch automatically" — <strong>TRUE</strong> only if the execution role has <code>logs:CreateLogGroup</code>, <code>logs:CreateLogStream</code>, and <code>logs:PutLogEvents</code> permissions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔍</span>
+        <span class="card-title">AWS X-Ray — Distributed Tracing, Segments &amp; Service Map</span>
+        <div class="tags"><span class="tag tm">X-Ray</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">X-Ray provides end-to-end distributed tracing across microservices. It is the go-to tool for identifying latency bottlenecks and errors across a request chain on the DVA-C02 exam.</p>
+        <div class="sec-lbl">Core Concepts</div>
+        <table class="tbl">
+          <tr><th>Concept</th><th>Description</th></tr>
+          <tr><td>Trace</td><td>Complete end-to-end request across all services — identified by unique Trace ID</td></tr>
+          <tr><td>Segment</td><td>Data from a single service (e.g., Lambda function, EC2 app) for one request</td></tr>
+          <tr><td>Subsegment</td><td>Granular unit within a segment (e.g., DynamoDB call, HTTP downstream call, custom code block)</td></tr>
+          <tr><td>Annotation</td><td>Indexed key-value pair — filterable in X-Ray console (e.g., <code>userId</code>, <code>tenantId</code>)</td></tr>
+          <tr><td>Metadata</td><td>Non-indexed key-value pair — visible in trace but not searchable</td></tr>
+          <tr><td>Service Map</td><td>Visual graph of all services in the request chain with latency and error rates</td></tr>
+        </table>
+        <div class="sec-lbl">Enabling X-Ray</div>
+        <ul class="bl">
+          <li><strong>Lambda:</strong> Enable Active Tracing in function config. Lambda sends trace data automatically. Add X-Ray SDK for subsegments.</li>
+          <li><strong>API Gateway:</strong> Enable X-Ray Tracing on the stage settings. Adds trace header to requests.</li>
+          <li><strong>ECS/EC2:</strong> Run X-Ray Daemon as a sidecar or daemon process. SDK sends trace data to daemon → daemon batches and sends to X-Ray API.</li>
+          <li><strong>SDK instrumentation:</strong> Wrap AWS SDK calls and HTTP clients with X-Ray SDK to automatically create subsegments</li>
+        </ul>
+        <div class="sec-lbl">X-Ray SDK — Annotations vs. Metadata</div>
+        <pre><span class="cm"># Python: add annotation (indexed — use for filtering)</span>
+xray_recorder.put_annotation(<span class="vl">"userId"</span>, user_id)
+xray_recorder.put_annotation(<span class="vl">"plan"</span>, <span class="vl">"premium"</span>)
+
+<span class="cm"># Metadata (not indexed — for debugging context)</span>
+xray_recorder.put_metadata(<span class="vl">"requestPayload"</span>, request_body)
+
+<span class="cm"># Custom subsegment</span>
+with xray_recorder.in_subsegment(<span class="vl">"database-query"</span>) as sub:
+    result = table.query(...)
+    sub.put_annotation(<span class="vl">"recordCount"</span>, len(result[<span class="vl">'Items'</span>]))</pre>
+        <div class="sec-lbl">Sampling Rules</div>
+        <ul class="bl">
+          <li>X-Ray does not record every request — it samples to reduce cost and noise</li>
+          <li><strong>Default rule:</strong> Record first request per second + 5% of additional requests per service host</li>
+          <li><strong>Custom sampling rules:</strong> Target specific services, URLs, or HTTP methods with different rates</li>
+          <li>Sampling rules are centrally configured — no code change needed to adjust sampling</li>
+        </ul>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Annotation vs. Metadata:</strong> <strong>A</strong>nnotation = <strong>A</strong>ctionable / searchable (like a database index). <strong>M</strong>etadata = <strong>M</strong>ore context (like a comment — descriptive but not queryable).</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Find all requests from tenantId=ABC that took &gt;2s"</strong> → Add tenantId as X-Ray annotation → filter in X-Ray console. <strong>"Which downstream service is causing latency"</strong> → X-Ray Service Map — look for high response time subsegments. <strong>"Lambda function not sending traces"</strong> → Check Active Tracing is on AND execution role has <code>xray:PutTraceSegments</code> + <code>xray:PutTelemetryRecords</code>.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"X-Ray traces every single request by default" — <strong>FALSE</strong>; X-Ray uses sampling. To trace every request, set a custom sampling rule with 100% fixed rate (not recommended at high volume).</li>
+              <li>"X-Ray metadata is searchable in the console like annotations" — <strong>FALSE</strong>; only annotations are indexed and filterable. Metadata is visible within a specific trace detail but cannot be used to search/filter across traces.</li>
+              <li>"X-Ray is enabled automatically on Lambda functions" — <strong>FALSE</strong>; you must explicitly enable Active Tracing in the Lambda function configuration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 4.1 -->
+    <div class="mcq-section" data-task="t41"></div>
+  </section><!-- /task 4.1 -->
+
+  <!-- Task 4.2 -->
+  <section class="task-section" id="t42">
+    <div class="task-header">
+      <div class="task-badge">Task 4.2</div>
+      <div class="task-title">
+        <h2>Instrument Code for Observability</h2>
+        <p>Logging vs. monitoring vs. observability, custom metrics, EMF, CloudWatch Alarms, X-Ray SDK, structured logging, health checks.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Describe differences between logging, monitoring, and observability</li>
+    <li>Implement an effective logging strategy to record application behavior and state</li>
+    <li>Implement code that emits custom metrics; add annotations for tracing services</li>
+    <li>Implement notification alerts for specific actions (quota limits, deployment completions)</li>
+    <li>Implement tracing using AWS services and tools; implement structured logging</li>
+    <li>Configure application health checks and readiness probes</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📊</span>
+        <span class="card-title">CloudWatch Custom Metrics, EMF &amp; Alarms</span>
+        <div class="tags"><span class="tag tm">CloudWatch</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Publishing custom metrics lets you monitor business-level KPIs alongside infrastructure metrics. EMF is the modern, cost-effective approach for Lambda functions.</p>
+        <div class="sec-lbl">Logging vs. Monitoring vs. Observability</div>
+        <table class="tbl">
+          <tr><th>Pillar</th><th>What It Provides</th><th>AWS Service</th></tr>
+          <tr><td>Logging</td><td>Discrete event records — what happened</td><td>CloudWatch Logs, CloudTrail</td></tr>
+          <tr><td>Monitoring</td><td>Time-series metrics — how things are performing</td><td>CloudWatch Metrics &amp; Alarms</td></tr>
+          <tr><td>Tracing</td><td>Request flow across services — why it happened</td><td>AWS X-Ray</td></tr>
+          <tr><td>Observability</td><td>Combine all three to understand system state</td><td>CloudWatch Application Signals, X-Ray, OTel</td></tr>
+        </table>
+        <div class="sec-lbl">Custom Metrics — PutMetricData</div>
+        <pre><span class="cm"># Emit custom metric: order processing time</span>
+cw = boto3.client(<span class="vl">'cloudwatch'</span>)
+cw.put_metric_data(
+    Namespace=<span class="vl">'MyApp/Orders'</span>,
+    MetricData=[{
+        <span class="vl">'MetricName'</span>: <span class="vl">'ProcessingDuration'</span>,
+        <span class="vl">'Value'</span>: processing_ms,
+        <span class="vl">'Unit'</span>: <span class="vl">'Milliseconds'</span>,
+        <span class="vl">'Dimensions'</span>: [{
+            <span class="vl">'Name'</span>: <span class="vl">'Environment'</span>,
+            <span class="vl">'Value'</span>: <span class="vl">'prod'</span>
+        }]
+    }]
+)</pre>
+        <div class="sec-lbl">Embedded Metric Format (EMF) — Preferred for Lambda</div>
+        <ul class="bl">
+          <li>Embed metric values in structured log JSON — CloudWatch automatically extracts them as metrics</li>
+          <li>Zero additional API calls — metrics are extracted from your existing logs</li>
+          <li>No extra cost for the PutMetricData API call; you only pay for the log ingestion</li>
+          <li>Use the <code>aws-embedded-metrics</code> library (Python/Node.js/Java)</li>
+        </ul>
+        <pre><span class="cm"># Python EMF — metrics extracted automatically from logs</span>
+<span class="kw">from</span> aws_embedded_metrics <span class="kw">import</span> metric_scope
+
+@metric_scope
+<span class="kw">def</span> lambda_handler(event, context, metrics):
+    metrics.set_namespace(<span class="vl">"MyApp"</span>)
+    metrics.put_dimensions({<span class="vl">"Service"</span>: <span class="vl">"OrderProcessor"</span>})
+    metrics.put_metric(<span class="vl">"OrderCount"</span>, <span class="vl">1</span>, <span class="vl">"Count"</span>)
+    metrics.put_metric(<span class="vl">"ProcessingTime"</span>, elapsed_ms, <span class="vl">"Milliseconds"</span>)</pre>
+        <div class="sec-lbl">CloudWatch Alarms</div>
+        <table class="tbl">
+          <tr><th>Alarm Type</th><th>Triggers When</th><th>Use Case</th></tr>
+          <tr><td>Threshold Alarm</td><td>Metric crosses a static threshold</td><td>CPU &gt; 80%, Error count &gt; 5</td></tr>
+          <tr><td>Anomaly Detection</td><td>Metric deviates from ML-predicted band</td><td>Traffic drops/spikes without fixed threshold</td></tr>
+          <tr><td>Composite Alarm</td><td>Combination of multiple alarms (AND/OR)</td><td>Alert only when both high CPU AND high errors</td></tr>
+          <tr><td>Math Expression Alarm</td><td>Metric math result crosses threshold</td><td>Error rate = errors / requests &gt; 1%</td></tr>
+        </table>
+        <div class="sec-lbl">Alarm States</div>
+        <ul class="bl">
+          <li><strong>OK:</strong> Metric is within the threshold</li>
+          <li><strong>ALARM:</strong> Metric has breached the threshold for the configured datapoints-to-alarm</li>
+          <li><strong>INSUFFICIENT_DATA:</strong> Not enough data points yet (common with new metrics or long evaluation periods)</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Notify on Lambda throttling"</strong> → CloudWatch Alarm on <code>Throttles</code> metric → SNS → email/PagerDuty. <strong>"Track business KPI in Lambda"</strong> → Use EMF (no extra API calls, extracted from logs automatically). <strong>"Alert only when multiple conditions are true"</strong> → Composite Alarm.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"An alarm in INSUFFICIENT_DATA state means something is wrong" — <strong>FALSE</strong>; insufficient data is normal for new alarms or when a metric has gaps (e.g., Lambda not invoked recently).</li>
+              <li>"CloudWatch custom metrics are retained indefinitely" — <strong>FALSE</strong>; CloudWatch retains data at different resolutions: 1-second for 3 hours, 1-minute for 15 days, 5-minute for 63 days, 1-hour for 15 months.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">📝</span>
+        <span class="card-title">Structured Logging, Health Checks &amp; Observability Best Practices</span>
+        <div class="tags"><span class="tag tm">Logging</span><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">Structured Logging (JSON)</div>
+        <ul class="bl">
+          <li>Log as JSON instead of plain text — machine-parseable, queryable with Logs Insights</li>
+          <li>Always include: <code>requestId</code>, <code>userId</code>, <code>timestamp</code>, <code>level</code>, <code>message</code>, <code>duration</code></li>
+          <li>Never include PII, credentials, or sensitive data in logs</li>
+          <li>Use a correlation ID (requestId or traceId) to link logs across multiple services for the same request</li>
+        </ul>
+        <pre><span class="cm"># Structured log entry — queryable with Logs Insights</span>
+{
+  <span class="vl">"level"</span>: <span class="vl">"INFO"</span>,
+  <span class="vl">"requestId"</span>: <span class="vl">"abc-123"</span>,
+  <span class="vl">"userId"</span>: <span class="vl">"u-456"</span>,
+  <span class="vl">"action"</span>: <span class="vl">"processOrder"</span>,
+  <span class="vl">"orderId"</span>: <span class="vl">"ord-789"</span>,
+  <span class="vl">"durationMs"</span>: <span class="vl">45</span>,
+  <span class="vl">"status"</span>: <span class="vl">"success"</span>
+}</pre>
+        <div class="sec-lbl">Application Health Checks</div>
+        <table class="tbl">
+          <tr><th>Type</th><th>What It Checks</th><th>Used By</th></tr>
+          <tr><td>ALB Target Health Check</td><td>HTTP endpoint returns 2xx</td><td>ALB removes unhealthy targets from rotation</td></tr>
+          <tr><td>ECS Container Health Check</td><td>Command/HTTP runs successfully inside container</td><td>ECS replaces unhealthy tasks</td></tr>
+          <tr><td>Route 53 Health Check</td><td>DNS-level endpoint availability</td><td>DNS failover routing policies</td></tr>
+          <tr><td>CloudWatch Synthetics Canary</td><td>Scripted browser/API test runs on a schedule</td><td>Proactive endpoint monitoring</td></tr>
+        </table>
+        <div class="sec-lbl">Subscription Filters — Real-Time Log Routing</div>
+        <ul class="bl">
+          <li>Stream filtered log data from a CloudWatch log group to Lambda, Kinesis, or Firehose in real time</li>
+          <li>Use case: Forward ERROR logs from all Lambda functions to a centralized Kinesis stream → Firehose → OpenSearch for analysis</li>
+          <li>One subscription filter per log group (with Firehose); up to 2 with Lambda</li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Real-time log analysis pipeline"</strong> → CloudWatch Logs Subscription Filter → Kinesis Data Firehose → S3 / OpenSearch. <strong>"Proactive endpoint test every 5 min"</strong> → CloudWatch Synthetics Canary. <strong>"Correlate logs across Lambda, API GW, DynamoDB for one request"</strong> → Use X-Ray trace ID as correlation ID in all log statements.</p></div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 4.2 -->
+    <div class="mcq-section" data-task="t42"></div>
+  </section><!-- /task 4.2 -->
+
+  <!-- Task 4.3 -->
+  <section class="task-section" id="t43">
+    <div class="task-header">
+      <div class="task-badge">Task 4.3</div>
+      <div class="task-title">
+        <h2>Optimize Applications by Using AWS Services and Features</h2>
+        <p>Lambda concurrency, caching strategies (ElastiCache, DAX, CloudFront, API GW), messaging optimization, and application profiling.</p>
+<div class="task-details">
+  <strong>Skills in:</strong>
+  <ul>
+    <li>Define concurrency; profile application performance</li>
+    <li>Determine minimum memory and compute power for an application</li>
+    <li>Use subscription filter policies to optimize messaging</li>
+    <li>Cache content based on request headers; implement application-level caching</li>
+    <li>Optimize application resource usage; analyze application performance issues</li>
+    <li>Use application logs to identify performance bottlenecks</li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+    <div class="card open">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">⚡</span>
+        <span class="card-title">Lambda Concurrency Deep Dive — Limits, Throttling &amp; Burst</span>
+        <div class="tags"><span class="tag ti">Lambda</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Concurrency management is one of the most tested Lambda optimization topics. Understanding reserved vs. provisioned concurrency and throttling behavior is essential.</p>
+        <div class="sec-lbl">Concurrency Model</div>
+        <ul class="bl">
+          <li>Each in-flight request uses one concurrent execution</li>
+          <li><strong>Account default limit:</strong> 1,000 concurrent executions (soft limit — can be increased via Service Quotas)</li>
+          <li><strong>Burst limit:</strong> Initial burst capacity (500–3,000 depending on region); after burst, scales by 500 per minute</li>
+          <li>When concurrency limit is hit → <strong>throttling</strong> → <code>TooManyRequestsException</code> (HTTP 429)</li>
+        </ul>
+        <div class="sec-lbl">Concurrency Types Recap</div>
+        <table class="tbl">
+          <tr><th>Type</th><th>Purpose</th><th>Cost when idle</th><th>Eliminates cold start?</th></tr>
+          <tr><td>Unreserved</td><td>Default — shared pool</td><td>No</td><td>No</td></tr>
+          <tr><td>Reserved</td><td>Guarantee max N; protect downstream</td><td>No (just a limit)</td><td>No</td></tr>
+          <tr><td>Provisioned</td><td>Pre-warm N environments</td><td>Yes (charged continuously)</td><td>Yes</td></tr>
+        </table>
+        <div class="sec-lbl">Throttling Behavior by Invocation Type</div>
+        <table class="tbl">
+          <tr><th>Invocation Type</th><th>Throttle Behavior</th></tr>
+          <tr><td>Synchronous (API GW → Lambda)</td><td>Returns 429 immediately to caller; no retry</td></tr>
+          <tr><td>Asynchronous (S3, SNS, EventBridge)</td><td>Lambda retries for up to 6 hours; backs off automatically</td></tr>
+          <tr><td>Event Source Mapping (SQS, Kinesis)</td><td>Messages stay in queue/stream; Lambda retries when concurrency available</td></tr>
+        </table>
+        <div class="sec-lbl">Lambda Power Tuning</div>
+        <ul class="bl">
+          <li>Open-source tool (AWS Lambda Power Tuning) runs your function at multiple memory sizes</li>
+          <li>Finds the optimal memory setting for cost, speed, or both</li>
+          <li>More memory ≠ always slower; often reducing duration pays for memory increase</li>
+          <li>Rule: <strong>Cost = duration × memory</strong>. Higher memory may run faster enough to be cheaper overall.</li>
+        </ul>
+        <div class="mnemonic">
+          <span class="mnemonic-ico">💡</span>
+          <p><strong>Reserved Concurrency = Ceiling (caps usage). Provisioned Concurrency = Floor (pre-warms environments).</strong> Set both: Reserved prevents runaway scale; Provisioned ensures no cold starts up to that level.</p>
+        </div>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Prevent Lambda from overwhelming RDS"</strong> → Reserved Concurrency (cap Lambda). <strong>"Eliminate cold starts for latency-sensitive function"</strong> → Provisioned Concurrency. <strong>"Lambda throttled during traffic spike"</strong> → Request concurrency limit increase via Service Quotas. <strong>"Find cheapest memory setting"</strong> → Lambda Power Tuning tool.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Setting reserved concurrency to 0 disables the function" — <strong>TRUE</strong> — this is actually a useful technique to temporarily disable a function by throttling all executions.</li>
+              <li>"Provisioned concurrency guarantees no throttling" — <strong>FALSE</strong>; Provisioned Concurrency pre-warms execution environments but the function can still be throttled if it exceeds the reserved or account concurrency limit.</li>
+              <li>"Lambda always scales to handle any load instantly" — <strong>FALSE</strong>; there is a burst limit per region. Above the burst, Lambda scales by 500 concurrent executions per minute.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🚀</span>
+        <span class="card-title">Caching Strategies — CloudFront, API GW, ElastiCache &amp; DAX</span>
+        <div class="tags"><span class="tag tm">Performance</span><span class="tag te">High Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <p class="bt">Caching at the right layer dramatically reduces latency and cost. The DVA-C02 exam tests which cache layer to choose for a given scenario.</p>
+        <div class="sec-lbl">Cache Layer Comparison</div>
+        <table class="tbl">
+          <tr><th>Cache Layer</th><th>Service</th><th>What It Caches</th><th>Best For</th></tr>
+          <tr><td>CDN / Edge</td><td>CloudFront</td><td>Static assets, API responses</td><td>Global users; reduce origin load; low latency worldwide</td></tr>
+          <tr><td>API Layer</td><td>API Gateway cache</td><td>API endpoint responses</td><td>Repeated identical API requests; reduce Lambda invocations</td></tr>
+          <tr><td>Application Layer</td><td>ElastiCache (Redis/Memcached)</td><td>DB query results, session data</td><td>RDS read offload; session store; complex data structures</td></tr>
+          <tr><td>Database Layer</td><td>DynamoDB DAX</td><td>DynamoDB GetItem/Query results</td><td>DynamoDB hot reads; microsecond latency</td></tr>
+        </table>
+        <div class="sec-lbl">CloudFront Cache Behaviors</div>
+        <ul class="bl">
+          <li><strong>Cache based on request headers:</strong> Add headers to the Cache Key to vary cached responses (e.g., <code>Accept-Language</code> for localized content). More headers = fewer cache hits.</li>
+          <li><strong>TTL:</strong> Set via <code>Cache-Control: max-age=N</code> response header from origin, or override in CloudFront policy (min/max/default TTL)</li>
+          <li><strong>Cache invalidation:</strong> <code>CreateInvalidation</code> API or console — invalidate specific paths. Cost: first 1,000 paths/month free, then $0.005/path.</li>
+          <li><strong>Origin Shield:</strong> Additional caching layer between CloudFront edge and origin — reduces origin load further</li>
+        </ul>
+        <div class="sec-lbl">API Gateway Caching</div>
+        <ul class="bl">
+          <li>Cache enabled per stage; capacity from 0.5 GB to 237 GB</li>
+          <li>TTL: 0–3600 seconds (default 300s)</li>
+          <li>Cache invalidation: client sends <code>Cache-Control: max-age=0</code> header (if you grant them permission)</li>
+          <li>Cache hit metric: <code>CacheHitCount</code> / <code>CacheMissCount</code> in CloudWatch</li>
+        </ul>
+        <div class="sec-lbl">SNS Subscription Filter Policies</div>
+        <ul class="bl">
+          <li>Filter policies on SNS subscriptions prevent unwanted messages from being delivered to a subscriber</li>
+          <li>Filtering happens at SNS — subscribers only receive messages matching their policy</li>
+          <li>Reduces downstream processing costs (fewer Lambda invocations, fewer SQS messages)</li>
+          <li>Filter on message attributes: <code>{"eventType": ["ORDER_PLACED", "ORDER_SHIPPED"]}</code></li>
+        </ul>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>"Reduce Lambda invocations for repeated API calls"</strong> → API GW cache. <strong>"Reduce RDS load from read-heavy app"</strong> → ElastiCache lazy loading. <strong>"Serve static content globally with low latency"</strong> → CloudFront. <strong>"Only process ORDER events from SNS topic"</strong> → SNS subscription filter policy on your SQS subscriber.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"CloudFront caches POST requests" — <strong>FALSE</strong>; CloudFront only caches GET and HEAD requests by default. POST, PUT, DELETE pass through to origin (not cached).</li>
+              <li>"Adding more headers to the CloudFront cache key improves cache hit rate" — <strong>FALSE</strong>; more headers in the cache key means more unique cache entries → lower cache hit rate. Use only headers that genuinely vary the response.</li>
+              <li>"SNS filter policies are applied at the publisher" — <strong>FALSE</strong>; filter policies are configured on the subscription (subscriber side). The publisher sends the message to all subscribers; SNS filters before delivering.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr" onclick="tog(this)">
+        <span class="card-icon">🔧</span>
+        <span class="card-title">SQS Optimization &amp; Application Performance Profiling</span>
+        <div class="tags"><span class="tag tm">Performance</span><span class="tag te">Medium Frequency</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="sec-lbl">SQS Optimization Techniques</div>
+        <table class="tbl">
+          <tr><th>Technique</th><th>How</th><th>Benefit</th></tr>
+          <tr><td>Long Polling</td><td>Set <code>WaitTimeSeconds</code> = 1–20</td><td>Reduces empty API calls; reduces cost</td></tr>
+          <tr><td>Batch Processing</td><td>Receive up to 10 messages per call (<code>MaxNumberOfMessages</code>)</td><td>Fewer API calls; higher throughput</td></tr>
+          <tr><td>Message Batching (send)</td><td>Use <code>SendMessageBatch</code> (up to 10 messages)</td><td>10× throughput per API call</td></tr>
+          <tr><td>Visibility Timeout Tuning</td><td>Set to &gt; max processing time</td><td>Prevent duplicate processing</td></tr>
+          <tr><td>Dead-Letter Queue</td><td>Set <code>maxReceiveCount</code></td><td>Isolate poison-pill messages; prevent infinite retry loop</td></tr>
+        </table>
+        <div class="sec-lbl">Application Performance Analysis</div>
+        <ul class="bl">
+          <li><strong>CloudWatch Metrics:</strong> Identify CPU/memory saturation, DB connection counts, queue depth trends over time</li>
+          <li><strong>X-Ray Traces:</strong> Find which subsegment (DB call, downstream HTTP, internal code) contributes most to latency</li>
+          <li><strong>CloudWatch Logs Insights:</strong> Query p99 latency: <code>stats pct(@duration, 99) by bin(5m)</code></li>
+          <li><strong>Lambda REPORT logs:</strong> <code>Init Duration</code> reveals cold start cost; <code>Max Memory Used</code> reveals memory waste</li>
+        </ul>
+        <div class="sec-lbl">Performance Bottleneck Decision Tree</div>
+        <table class="tbl">
+          <tr><th>Symptom</th><th>Root Cause</th><th>Fix</th></tr>
+          <tr><td>High Lambda duration</td><td>Slow downstream DB/API call</td><td>Add DAX/ElastiCache; use async pattern</td></tr>
+          <tr><td>Lambda cold starts</td><td>No pre-warmed environment</td><td>Provisioned Concurrency; reduce package size</td></tr>
+          <tr><td>DynamoDB throttling</td><td>Hot partition or under-provisioned</td><td>Better partition key; On-Demand mode; DAX</td></tr>
+          <tr><td>RDS connection errors under load</td><td>Connection pool exhausted</td><td>RDS Proxy; reduce Lambda reserved concurrency</td></tr>
+          <tr><td>High API GW latency</td><td>Repeated identical requests hitting Lambda</td><td>Enable API GW caching</td></tr>
+          <tr><td>SQS high message age</td><td>Consumers too slow</td><td>Increase Lambda concurrency; increase batch size</td></tr>
+        </table>
+        <div class="tip"><span class="tip-ico">🎯</span><p><strong>Full observability stack for Lambda:</strong> X-Ray (tracing) + CloudWatch Logs (structured JSON) + EMF (custom metrics) + CloudWatch Alarms (notification) + Lambda Insights layer (system metrics). This combination gives you complete visibility without external tools.</p></div>
+        <div class="trap">
+          <span class="trap-ico">⚠️</span>
+          <div>
+            <p style="margin-bottom:0.4rem;"><strong>Common traps:</strong></p>
+            <ul class="bl" style="margin-bottom:0;">
+              <li>"Long polling always returns messages faster" — <strong>FALSE</strong>; long polling waits up to <code>WaitTimeSeconds</code> for a message. If no message arrives, it returns empty after the wait. It is more efficient, not necessarily faster.</li>
+              <li>"Increasing Lambda memory always reduces cost" — <strong>FALSE</strong>; if the function is not compute-bound, increasing memory just costs more with no duration benefit. Use Power Tuning to find the optimum.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCQ for Task 4.3 -->
+    <div class="mcq-section" data-task="t43"></div>
+  </section><!-- /task 4.3 -->
+
+</div><!-- /domain 3 -->
+
+</div><!-- /content-wrapper -->
+
+<div class="toc-sidebar">
+  <div class="toc-inner">
+    <h4>On this page</h4>
+    <ul id="toc-list"></ul>
+  </div>
+</div>
+
+</main><!-- /main -->
+
+<footer>
+  AWS DVA-C02 Complete Study Guide · All 4 Domains · Pass score: 720/1000
+  <span>Curated from official AWS DVA-C02 exam guide · For study purposes only</span>
+</footer>
+
+<script src="mcqs.js"></script>
+<script src="../../assets/js/saa-shared.js"></script>
+<script src="../../assets/js/script.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  window.initMermaid = function() {
+    const isLight = document.documentElement.classList.contains('light');
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: isLight ? 'default' : 'dark',
+      securityLevel: 'loose'
+    });
+    document.querySelectorAll('.mermaid').forEach(el => {
+      if (!el.dataset.original) el.dataset.original = el.textContent;
+    });
+  };
+  window.initMermaid();
+</script>
+
+</body>
+</html>

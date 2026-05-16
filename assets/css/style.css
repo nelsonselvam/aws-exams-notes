@@ -8,25 +8,25 @@
   --surface2:  #111111;
   --border:    #333333;
   --accent:    #0070f3;
-  --accent2:   #f81ce5;
-  --accent3:   #50e3c2;
-  --accent4:   #ff0080;
+  --accent2:   #818cf8;
+  --accent3:   #34d399;
+  --accent4:   #fb7185;
   --text:      #ededed;
   --muted:     #888888;
   --h1:        #ffffff;
-  --body-text: #a1a1aa;
-  --list-text: #a1a1aa;
-  --ex-p:      #888888;
-  --tip-p:     #ff0080;
+  --body-text: #c8d3dd;
+  --list-text: #c8d3dd;
+  --ex-p:      #aab8c8;
+  --tip-p:     #fbbf24;
   --code-bg:   #111111;
-  --code-text: #50e3c2;
+  --code-text: #34d399;
   --ex-bg:     #000000;
   --nav-bg:    rgba(0,0,0,0.9);
   --hdr-g1:    #000000;
   --hdr-g2:    #0a0a0a;
   --td-alt:    rgba(255,255,255,0.03);
-  --tip-bg:    rgba(255,0,128,0.1);
-  --tip-bd:    rgba(255,0,128,0.3);
+  --tip-bg:    rgba(251,191,36,0.08);
+  --tip-bd:    rgba(251,191,36,0.2);
 }
 
 /* ─────────────────────────────────────────────
@@ -38,16 +38,16 @@ html.light {
   --surface2:  #f5f5f5;
   --border:    #eaeaea;
   --accent:    #0070f3;
-  --accent2:   #f81ce5;
-  --accent3:   #50e3c2;
-  --accent4:   #ff0080;
+  --accent2:   #4f46e5;
+  --accent3:   #0d9488;
+  --accent4:   #e11d48;
   --text:      #111111;
   --muted:     #666666;
   --h1:        #000000;
-  --body-text: #444444;
-  --list-text: #444444;
-  --ex-p:      #666666;
-  --tip-p:     #ff0080;
+  --body-text: #1f1f1f;
+  --list-text: #1f1f1f;
+  --ex-p:      #3a3a3a;
+  --tip-p:     #92400e;
   --code-bg:   #f5f5f5;
   --code-text: #0070f3;
   --ex-bg:     #fafafa;
@@ -55,8 +55,8 @@ html.light {
   --hdr-g1:    #fafafa;
   --hdr-g2:    #ffffff;
   --td-alt:    rgba(0,0,0,0.02);
-  --tip-bg:    rgba(255,0,128,0.05);
-  --tip-bd:    rgba(255,0,128,0.2);
+  --tip-bg:    rgba(245,158,11,0.06);
+  --tip-bd:    rgba(245,158,11,0.18);
 }
 
 /* ─────────────────────────────────────────────
@@ -67,8 +67,8 @@ html.light {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Sora', sans-serif;
+  font-weight: 400;
   line-height: 1.72;
   min-height: 100vh;
   transition: background .25s, color .25s;
@@ -112,9 +112,9 @@ header::before {
 }
 
 header h1 {
-  font-family:'Merriweather',serif;
+  font-family:'Sora',sans-serif;
   font-size: clamp(1.4rem,3vw,2.2rem);
-  font-weight:700;
+  font-weight:800;
   color: var(--h1);
   line-height:1.12;
   margin-bottom:.4rem;
@@ -149,7 +149,7 @@ nav {
   padding:.75rem .6rem; white-space:nowrap; align-self:center; }
 
 .nav-inner a {
-  font-family:'Open Sans',sans-serif; font-weight:500; font-size:0.98rem;
+  font-family:'Sora',sans-serif; font-weight:500; font-size:0.98rem;
   color:var(--muted); text-decoration:none;
   padding:.75rem .75rem;
   border-bottom:2px solid transparent;
@@ -269,10 +269,10 @@ main { max-width:1400px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
 .domain-intro {
   background:var(--surface); border:1px solid var(--border);
   border-left:4px solid var(--accent); border-radius:8px;
-  padding:1.4rem 1.8rem; margin-bottom:2.8rem;
+  padding:1.1rem 1.5rem; margin-bottom:1.4rem;
 }
 .domain-intro h2 {
-  font-family:'Open Sans',sans-serif; font-size:1.02rem; font-weight:600;
+  font-family:'Sora',sans-serif; font-size:1.02rem; font-weight:600;
   color:var(--accent); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.45rem;
 }
 .domain-intro p { color:var(--muted); font-size:1.1rem; }
@@ -286,14 +286,14 @@ main { max-width:1400px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
 /* ─────────────────────────────────────────────
    TASK SECTION
 ───────────────────────────────────────────── */
-.task-section { margin-bottom:0; padding-bottom:3.5rem; }
+.task-section { margin-bottom:0; padding-bottom:1.8rem; }
 .task-section + .task-section {
   border-top: 2px solid var(--border);
-  padding-top: 3rem;
+  padding-top: 1.8rem;
 }
 .task-header {
   display:flex; align-items:flex-start; gap:1rem;
-  margin-bottom:1.8rem; padding-bottom:1.1rem;
+  margin-bottom:1.2rem; padding-bottom:0.8rem;
   border-bottom:1px solid var(--border);
 }
 .task-badge {
@@ -303,7 +303,7 @@ main { max-width:1400px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
   flex-shrink:0;
 }
 .task-title h2 {
-  font-family:'Merriweather',serif; font-size:1.56rem; font-weight:700; color:var(--h1);
+  font-family:'Sora',sans-serif; font-size:1.56rem; font-weight:700; color:var(--h1);
 }
 .task-title p { color:var(--muted); font-size:1.04rem; margin-top:.3rem; }
 
@@ -325,7 +325,7 @@ main { max-width:1400px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
 }
 .card-icon { font-size:1.44rem; flex-shrink:0; }
 .card-title {
-  font-family:'Open Sans',sans-serif; font-weight:600; font-size:1.21rem;
+  font-family:'Sora',sans-serif; font-weight:600; font-size:1.21rem;
   color:var(--h1); flex:1;
 }
 .tags { display:flex; gap:.35rem; flex-wrap:wrap; }
@@ -481,7 +481,7 @@ html.light .task-details ul li::before { color: var(--accent); }
 
 
 .tlink {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size:0.94rem;
   color: var(--muted);
   text-decoration: none;
@@ -575,12 +575,13 @@ html.light .task-details ul li::before { color: var(--accent); }
   border: 1px solid var(--border);
   border-top: 4px solid var(--accent);
   border-radius: 8px;
-  padding: 1.8rem 2rem;
-  margin: 3rem 0;
+  padding: 1.4rem 1.6rem;
+  margin: 1.5rem 0;
 }
 .domain-reflection h3 {
-  font-family: 'Merriweather', serif;
+  font-family: 'Sora', sans-serif;
   font-size:1.75rem;
+  font-weight: 700;
   color: var(--h1);
   margin-bottom: 1rem;
   display: flex;
@@ -607,7 +608,7 @@ html.light .task-details ul li::before { color: var(--accent); }
   padding-top: 0.5rem;
 }
 .mcq-section-toggle > summary {
-  font-family: 'Merriweather', serif;
+  font-family: 'Sora', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--h1);
@@ -636,6 +637,37 @@ html.light .task-details ul li::before { color: var(--accent); }
   padding-bottom: 0.6rem;
 }
 
+/* ─────────────────────────────────────────────
+   GUIDE IMAGES & LIGHTBOX
+───────────────────────────────────────────── */
+.guide-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem; margin: 1rem 0 0.5rem;
+}
+.guide-images figure { margin: 0; }
+.guide-img {
+  width: 100%; border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block; cursor: zoom-in;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.guide-img:hover { transform: scale(1.012); box-shadow: 0 6px 24px rgba(0,0,0,0.45); }
+.guide-img-cap {
+  font-size: 0.73rem; color: var(--muted);
+  text-align: center; margin-top: 0.3rem;
+}
+#img-lb {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.9); z-index: 9999;
+  align-items: center; justify-content: center; cursor: zoom-out;
+}
+#img-lb.open { display: flex; }
+#img-lb img {
+  max-width: 92vw; max-height: 92vh;
+  border-radius: 8px; box-shadow: 0 0 60px rgba(0,0,0,0.8);
+}
+
 /* scrollbar */
 ::-webkit-scrollbar { width:6px; height:6px; }
 ::-webkit-scrollbar-track { background:var(--bg); }
@@ -659,7 +691,7 @@ html.light .task-details ul li::before { color: var(--accent); }
   .toc-sidebar { display: block; }
 }
 .toc-inner h4 {
-  font-family: var(--font-hdr, 'Merriweather', serif);
+  font-family: var(--font-hdr, 'Sora', sans-serif);
   font-size: 0.95rem;
   color: var(--h1);
   margin-bottom: 1rem;
@@ -667,7 +699,7 @@ html.light .task-details ul li::before { color: var(--accent); }
 .toc-inner ul { list-style: none; padding: 0; }
 .toc-inner li { margin-bottom: 0.6rem; }
 .toc-inner a {
-  font-family: var(--font-body, 'Open Sans', sans-serif);
+  font-family: var(--font-body, 'Sora', sans-serif);
   font-size: 0.85rem;
   color: var(--muted);
   text-decoration: none;
@@ -699,7 +731,7 @@ html.light .task-details ul li::before { color: var(--accent); }
   color: var(--text);
   padding: 0.6rem 1rem;
   border-radius: 6px;
-  font-family: var(--font-body, 'Open Sans', sans-serif);
+  font-family: var(--font-body, 'Sora', sans-serif);
   font-size: 0.9rem;
   transition: border-color 0.2s;
 }
@@ -711,7 +743,7 @@ html.light .task-details ul li::before { color: var(--accent); }
   padding: 0.6rem 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-family: var(--font-body, 'Open Sans', sans-serif);
+  font-family: var(--font-body, 'Sora', sans-serif);
   font-size: 0.85rem;
   transition: all 0.2s;
 }
@@ -762,7 +794,7 @@ body.quiz-mode .toc-sidebar { display: none !important; }
   padding: 0.6rem 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-family: var(--font-body, 'Open Sans', sans-serif);
+  font-family: var(--font-body, 'Sora', sans-serif);
   font-size: 0.85rem;
   transition: all 0.2s;
   font-weight: 600;

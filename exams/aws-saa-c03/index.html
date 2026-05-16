@@ -4,10 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AWS SAA-C03 — Complete Study Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../assets/css/saa-enhancements.css" />
 <link rel="stylesheet" href="../../assets/css/style.css" />
+<script>(function(){var h=document.documentElement,s=localStorage.getItem('saa-theme');if(s==='dark'){h.classList.remove('light');}else if(!s){var n=new Date(),hr=n.getHours()+n.getMinutes()/60,ss=[17.5,18,18.5,19.5,20,20.5,20.5,20,19,18,17.5,17];if(hr>=ss[n.getMonth()]||hr<6){h.classList.remove('light');}}})();</script>
 </head>
-<body>
+<body data-page-id="saa-c03" data-domain="0" data-page-title="AWS SAA-C03 — Solutions Architect Associate Study Guide">
 
 <!-- ════════════════════ HEADER ════════════════════ -->
 <header>
@@ -46,7 +48,7 @@
     <a href="../../index.html" class="dom-link">← All Guides</a>
     <span class="nav-sep">SAA-C03</span>
     <button class="theme-toggle" onclick="toggleTheme()">
-      <span id="toglbl">🌙 Dark</span>
+      <span id="toglbl">🌙 Switch to Dark</span>
       <div class="tog-track"><div class="tog-thumb"></div></div>
     </button>
   </div>
@@ -101,6 +103,39 @@
     <h2>Domain 1 Overview</h2>
     <p>Design architectures that protect AWS resources, workloads, data, and network traffic. Covers IAM, multi-account governance, network security, threat protection, and data encryption controls.</p>
     <span class="wt-badge">⚡ 30% of scored content — Highest weighted domain</span>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog(this)">
+      <span class="card-icon">📊</span>
+      <span class="card-title">Visual Study Guides — Exam Overview &amp; Domain 1</span>
+      <div class="tags"><span class="tag ti">Cheat Sheet</span><span class="tag te">Visual</span></div>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="sec-lbl">SAA-C03 Exam Blueprint</div>
+      <div class="guide-images">
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/Solutions Architect Exam Blueprint.png" alt="SAA-C03 Exam Blueprint — all four domain weights" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">SAA-C03 Exam Blueprint — domain weights &amp; exam mechanics</p>
+        </figure>
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/Solutions Architect Exam Blueprint - 1.png" alt="4 Pillars of AWS Solutions Architecture" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">4 Pillars of AWS Solutions Architecture overview</p>
+        </figure>
+      </div>
+      <div class="sec-lbl">Domain 1 — Secure Architectures</div>
+      <div class="guide-images">
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/1-Secure Architecture Design Study Guide.png" alt="Domain 1: Secure Architecture Design Study Guide" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">Domain 1 — Secure Architecture Design Study Guide</p>
+        </figure>
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/Cloud Security Architecture Blueprint.png" alt="Cloud Security Architecture Blueprint" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">Domain 1 — Cloud Security Architecture Blueprint</p>
+        </figure>
+      </div>
+    </div>
   </div>
 
   <!-- Task 1.1 -->
@@ -1039,6 +1074,34 @@
     <span class="wt-badge">⚡ 26% of scored content</span>
   </div>
 
+  <div class="card">
+    <div class="card-hdr" onclick="tog(this)">
+      <span class="card-icon">📊</span>
+      <span class="card-title">Visual Study Guides — Domain 2</span>
+      <div class="tags"><span class="tag ti">Cheat Sheet</span><span class="tag te">Visual</span></div>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="sec-lbl">Domain 2 — Resilient Architectures</div>
+      <div class="guide-images">
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/2-0-Design Resilient Cloud Architectures Overview.png" alt="Domain 2: Design Resilient Cloud Architectures Overview" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">Resilient Architectures — overview &amp; DR strategies</p>
+        </figure>
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/Resilient Cloud Architecture Pillars.png" alt="The Two Pillars of Resilient AWS Architecture" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">Two Pillars of Resilient Architecture</p>
+        </figure>
+      </div>
+      <div class="guide-images" style="grid-template-columns:1fr;">
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/2-1-Resilient Cloud Architecture Study Guide.png" alt="Domain 2: Resilient Cloud Architecture Study Guide" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">Resilient Cloud Architecture — full study guide</p>
+        </figure>
+      </div>
+    </div>
+  </div>
+
   <!-- Task 2.1 -->
   <section class="task-section" id="t21">
     <div class="task-header">
@@ -1552,6 +1615,28 @@
     <h2>Domain 3 Overview</h2>
     <p>Select optimal AWS services and configurations for storage, compute, databases, networking, and data pipelines to meet performance requirements efficiently at scale.</p>
     <span class="wt-badge">⚡ 24% of scored content</span>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog(this)">
+      <span class="card-icon">📊</span>
+      <span class="card-title">Visual Study Guides — Domain 3</span>
+      <div class="tags"><span class="tag ti">Cheat Sheet</span><span class="tag te">Visual</span></div>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="sec-lbl">Domain 3 — High-Performing Architectures</div>
+      <div class="guide-images">
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/3-High-Performing Cloud Architectures Guide.png" alt="Domain 3: Designing High-Performing Architectures" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">High-Performing Architectures — domain guide</p>
+        </figure>
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/High-Performing Cloud Architecture Pillars.png" alt="5 Pillars of High-Performing AWS Architectures" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">5 Pillars of High-Performing AWS Architectures</p>
+        </figure>
+      </div>
+    </div>
   </div>
 
   <!-- Task 3.1 -->
@@ -2087,6 +2172,28 @@
     <span class="wt-badge">⚡ 20% of scored content</span>
   </div>
 
+  <div class="card">
+    <div class="card-hdr" onclick="tog(this)">
+      <span class="card-icon">📊</span>
+      <span class="card-title">Visual Study Guides — Domain 4</span>
+      <div class="tags"><span class="tag ti">Cheat Sheet</span><span class="tag te">Visual</span></div>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="sec-lbl">Domain 4 — Cost-Optimized Architectures</div>
+      <div class="guide-images">
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/4-Designing Cost Optimized Cloud Architectures.png" alt="Domain 4: Designing Cost-Optimized Architectures" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">Cost-Optimized Architectures — domain guide</p>
+        </figure>
+        <figure>
+          <img src="../../assets/images/solutions-architect-associate/Cloud Cost Optimization Strategy.png" alt="4 Pillars of Cost Optimization Strategy" class="guide-img" loading="lazy" onclick="openLB(this)">
+          <p class="guide-img-cap">4 Pillars of Cost Optimization Strategy</p>
+        </figure>
+      </div>
+    </div>
+  </div>
+
   <!-- Task 4.1 -->
   <section class="task-section" id="t41">
     <div class="task-header">
@@ -2483,6 +2590,7 @@
 </footer>
 
 <script src="mcqs.js"></script>
+<script src="../../assets/js/saa-shared.js"></script>
 <script src="../../assets/js/script.js"></script>
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
@@ -2505,11 +2613,14 @@
   };
 </script>
 
-<button id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Go to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18 15 12 9 6 15"></polyline>
-  </svg>
-</button>
+<!-- Lightbox overlay -->
+<div id="img-lb" onclick="closeLB()"><img id="img-lb-src" src="" alt=""></div>
+<script>
+  function openLB(el) { document.getElementById('img-lb-src').src = el.src; document.getElementById('img-lb').classList.add('open'); }
+  function closeLB() { document.getElementById('img-lb').classList.remove('open'); }
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLB(); });
+</script>
+
 </body>
 
 </html>
