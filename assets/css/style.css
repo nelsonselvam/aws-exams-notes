@@ -303,7 +303,7 @@ main { max-width:1400px; margin:auto; padding:2rem 1.5rem 5rem; display:flex; ga
   flex-shrink:0;
 }
 .task-title h2 {
-  font-family:'Sora',sans-serif; font-size:1.56rem; font-weight:700; color:var(--h1);
+  font-family:'Sora',sans-serif; font-size:clamp(1.15rem, 4vw, 1.56rem); font-weight:700; color:var(--h1);
 }
 .task-title p { color:var(--muted); font-size:1.04rem; margin-top:.3rem; }
 
@@ -841,4 +841,27 @@ a { text-decoration: none !important; border-bottom: none !important; }
   filter: brightness(1.1);
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE OPTIMIZATIONS (≤ 599px)
+───────────────────────────────────────────── */
+@media (max-width: 599px) {
+  /* Tables: make wide tables scroll instead of overflowing the viewport */
+  .tbl { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+  /* Content toolbar: stack search on its own row, buttons below */
+  .content-toolbar { flex-wrap:wrap; }
+  #globalSearch { min-width:100%; order:-1; }
+
+  /* Scroll-to-top button: pull it away from the edge on small screens */
+  #scrollTopBtn { right:16px; bottom:16px; width:42px; height:42px; }
+
+  /* Nav: tighten up the 3 stacked rows to save vertical space */
+  .nav-inner a { padding:.45rem .55rem; font-size:0.9rem; }
+  .nav-sep { padding:.45rem .4rem; font-size:0.76rem; }
+  .nav-domains { padding:.3rem 1rem; gap:.3rem; }
+  .nav-domains .dtab { font-size:0.76rem; padding:.16rem .5rem; }
+  .dtasks.active { padding:.22rem 1rem; }
+  .nav-subtasks .tlink { font-size:0.8rem; padding:.16rem .45rem; }
 }
